@@ -61,3 +61,4 @@ app.MapControllerRoute(
      pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
 app.Run();
+

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wqvWXtW5SM/IdiHfgqmIAUbKm/Bq+se3wMxRMk50w7g=",
+  "Hash": "otu0H3cMfIT9flOtxh9s3cc6TSTAWfX6ZhY5e/2JJak=",
   "Source": "TIE_Decor",
   "BasePath": "_content/TIE_Decor",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TIE_Decor\\wwwroot",
       "Source": "TIE_Decor",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TIE_Decor.styles.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TIE_Decor.styles.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "TIE_Decor.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TIE_Decor.styles.css"
+      "OriginalItemSpec": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TIE_Decor.styles.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TIE_Decor.bundle.scp.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TIE_Decor.bundle.scp.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "TIE_Decor.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TIE_Decor.bundle.scp.css"
+      "OriginalItemSpec": "D:\\a22044\\Techwiz\\TIE_Decor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\TIE_Decor.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\animate.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\animate.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/animate.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\animate.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\before-after.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\before-after.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/before-after.css",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\before-after.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\bootstrap.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\bootstrap.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/bootstrap.min.css",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\close.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\close.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/close.png",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\close.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\magnific-popup.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\magnific-popup.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/magnific-popup.css",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\magnific-popup.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\owl.carousel.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\owl.carousel.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/owl.carousel.min.css",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\owl.carousel.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\owl.theme.default.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\owl.theme.default.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/owl.theme.default.min.css",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\owl.theme.default.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\owl.video.play.html",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\owl.video.play.html",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/owl.video.play.html",
       "AssetKind": "All",
@@ -226,10 +226,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\owl.video.play.html"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\themify-icons.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\themify-icons.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/themify-icons.css",
       "AssetKind": "All",
@@ -245,10 +245,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\themify-icons.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\vegas.slider.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\vegas.slider.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/vegas.slider.min.css",
       "AssetKind": "All",
@@ -264,10 +264,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\vegas.slider.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\plugins\\YouTubePopUp.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\plugins\\YouTubePopUp.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/plugins/YouTubePopUp.css",
       "AssetKind": "All",
@@ -283,10 +283,10 @@
       "OriginalItemSpec": "wwwroot\\css\\plugins\\YouTubePopUp.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\site.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\site.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -302,10 +302,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\css\\style.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\css\\style.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -321,10 +321,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\favicon.ico",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\favicon.ico",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\fonts\\themify.eot",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\fonts\\themify.eot",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "fonts/themify.eot",
       "AssetKind": "All",
@@ -359,10 +359,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\themify.eot"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\fonts\\themify.svg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\fonts\\themify.svg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "fonts/themify.svg",
       "AssetKind": "All",
@@ -378,10 +378,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\themify.svg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\fonts\\themify.ttf",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\fonts\\themify.ttf",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "fonts/themify.ttf",
       "AssetKind": "All",
@@ -397,10 +397,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\themify.ttf"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\fonts\\themify.woff",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\fonts\\themify.woff",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "fonts/themify.woff",
       "AssetKind": "All",
@@ -416,10 +416,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\themify.woff"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\fonts\\themifyd41d.eot",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\fonts\\themifyd41d.eot",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "fonts/themifyd41d.eot",
       "AssetKind": "All",
@@ -435,10 +435,10 @@
       "OriginalItemSpec": "wwwroot\\fonts\\themifyd41d.eot"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\404-image.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\404-image.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/404-image.png",
       "AssetKind": "All",
@@ -454,10 +454,10 @@
       "OriginalItemSpec": "wwwroot\\img\\404-image.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\about.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\about.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/about.jpg",
       "AssetKind": "All",
@@ -473,10 +473,10 @@
       "OriginalItemSpec": "wwwroot\\img\\about.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\arrow.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\arrow.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/arrow.png",
       "AssetKind": "All",
@@ -492,10 +492,10 @@
       "OriginalItemSpec": "wwwroot\\img\\arrow.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\banner.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\banner.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/banner.jpg",
       "AssetKind": "All",
@@ -511,10 +511,10 @@
       "OriginalItemSpec": "wwwroot\\img\\banner.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\after.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\after.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/after.jpg",
       "AssetKind": "All",
@@ -530,10 +530,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\after.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\after2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\after2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/after2.jpg",
       "AssetKind": "All",
@@ -549,10 +549,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\after2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\after3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\after3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/after3.jpg",
       "AssetKind": "All",
@@ -568,10 +568,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\after3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\before.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\before.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/before.jpg",
       "AssetKind": "All",
@@ -587,10 +587,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\before.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\before2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\before2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/before2.jpg",
       "AssetKind": "All",
@@ -606,10 +606,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\before2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\beforeafter\\before3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\beforeafter\\before3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/beforeafter/before3.jpg",
       "AssetKind": "All",
@@ -625,10 +625,10 @@
       "OriginalItemSpec": "wwwroot\\img\\beforeafter\\before3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\1.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\1.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/1.png",
       "AssetKind": "All",
@@ -644,10 +644,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\1.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\2.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\2.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/2.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\2.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\3.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\3.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/3.png",
       "AssetKind": "All",
@@ -682,10 +682,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\3.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\4.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\4.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/4.png",
       "AssetKind": "All",
@@ -701,10 +701,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\4.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\5.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\5.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/5.png",
       "AssetKind": "All",
@@ -720,10 +720,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\5.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\clients\\6.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\clients\\6.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/clients/6.png",
       "AssetKind": "All",
@@ -739,10 +739,10 @@
       "OriginalItemSpec": "wwwroot\\img\\clients\\6.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\favicon.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\favicon.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/favicon.png",
       "AssetKind": "All",
@@ -758,10 +758,10 @@
       "OriginalItemSpec": "wwwroot\\img\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-1.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-1.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-1.png",
       "AssetKind": "All",
@@ -777,10 +777,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-1.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-2.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-2.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-2.png",
       "AssetKind": "All",
@@ -796,10 +796,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-2.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-3.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-3.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-3.png",
       "AssetKind": "All",
@@ -815,10 +815,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-3.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-4.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-4.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-4.png",
       "AssetKind": "All",
@@ -834,10 +834,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-4.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-5.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-5.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-5.png",
       "AssetKind": "All",
@@ -853,10 +853,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-5.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\icons\\icon-6.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\icons\\icon-6.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/icons/icon-6.png",
       "AssetKind": "All",
@@ -872,10 +872,10 @@
       "OriginalItemSpec": "wwwroot\\img\\icons\\icon-6.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\logo.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\logo.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/logo.png",
       "AssetKind": "All",
@@ -891,10 +891,10 @@
       "OriginalItemSpec": "wwwroot\\img\\logo.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\1.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\1.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/1.jpg",
       "AssetKind": "All",
@@ -910,10 +910,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/2.jpg",
       "AssetKind": "All",
@@ -929,10 +929,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/3.jpg",
       "AssetKind": "All",
@@ -948,10 +948,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\4.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\4.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/4.jpg",
       "AssetKind": "All",
@@ -967,10 +967,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\4.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\5.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\5.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/5.jpg",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\5.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\projects\\6.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\projects\\6.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/projects/6.jpg",
       "AssetKind": "All",
@@ -1005,10 +1005,10 @@
       "OriginalItemSpec": "wwwroot\\img\\projects\\6.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\quot.png",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\quot.png",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/quot.png",
       "AssetKind": "All",
@@ -1024,10 +1024,10 @@
       "OriginalItemSpec": "wwwroot\\img\\quot.png"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\1.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\1.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/1.jpg",
       "AssetKind": "All",
@@ -1043,10 +1043,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\10.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\10.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/10.jpg",
       "AssetKind": "All",
@@ -1062,10 +1062,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\10.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\11.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\11.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/11.jpg",
       "AssetKind": "All",
@@ -1081,10 +1081,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\11.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\12.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\12.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/12.jpg",
       "AssetKind": "All",
@@ -1100,10 +1100,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\12.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\13.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\13.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/13.jpg",
       "AssetKind": "All",
@@ -1119,10 +1119,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\13.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\14.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\14.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/14.jpg",
       "AssetKind": "All",
@@ -1138,10 +1138,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\14.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\15.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\15.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/15.jpg",
       "AssetKind": "All",
@@ -1157,10 +1157,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\15.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\16.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\16.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/16.jpg",
       "AssetKind": "All",
@@ -1176,10 +1176,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\16.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\17.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\17.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/17.jpg",
       "AssetKind": "All",
@@ -1195,10 +1195,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\17.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\18.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\18.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/18.jpg",
       "AssetKind": "All",
@@ -1214,10 +1214,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\18.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\19.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\19.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/19.jpg",
       "AssetKind": "All",
@@ -1233,10 +1233,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\19.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/2.jpg",
       "AssetKind": "All",
@@ -1252,10 +1252,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/3.jpg",
       "AssetKind": "All",
@@ -1271,10 +1271,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\4.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\4.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/4.jpg",
       "AssetKind": "All",
@@ -1290,10 +1290,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\4.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\5.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\5.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/5.jpg",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\5.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\6.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\6.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/6.jpg",
       "AssetKind": "All",
@@ -1328,10 +1328,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\6.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\7.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\7.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/7.jpg",
       "AssetKind": "All",
@@ -1347,10 +1347,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\7.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\8.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\8.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/8.jpg",
       "AssetKind": "All",
@@ -1366,10 +1366,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\8.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\services\\9.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\services\\9.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/services/9.jpg",
       "AssetKind": "All",
@@ -1385,10 +1385,10 @@
       "OriginalItemSpec": "wwwroot\\img\\services\\9.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\1.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\1.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/1.jpg",
       "AssetKind": "All",
@@ -1404,10 +1404,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/2.jpg",
       "AssetKind": "All",
@@ -1423,10 +1423,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/3.jpg",
       "AssetKind": "All",
@@ -1442,10 +1442,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\4.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\4.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/4.jpg",
       "AssetKind": "All",
@@ -1461,10 +1461,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\4.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\5.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\5.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/5.jpg",
       "AssetKind": "All",
@@ -1480,10 +1480,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\5.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\6.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\6.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/6.jpg",
       "AssetKind": "All",
@@ -1499,10 +1499,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\6.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\7.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\7.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/7.jpg",
       "AssetKind": "All",
@@ -1518,10 +1518,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\7.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\slider\\8.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\slider\\8.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/slider/8.jpg",
       "AssetKind": "All",
@@ -1537,10 +1537,10 @@
       "OriginalItemSpec": "wwwroot\\img\\slider\\8.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\1.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\1.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/1.jpg",
       "AssetKind": "All",
@@ -1556,10 +1556,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\2.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\2.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/2.jpg",
       "AssetKind": "All",
@@ -1575,10 +1575,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\2.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\3.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\3.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/3.jpg",
       "AssetKind": "All",
@@ -1594,10 +1594,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\3.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\4.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\4.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/4.jpg",
       "AssetKind": "All",
@@ -1613,10 +1613,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\4.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\5.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\5.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/5.jpg",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\5.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\img\\team\\6.jpg",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\img\\team\\6.jpg",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "img/team/6.jpg",
       "AssetKind": "All",
@@ -1651,10 +1651,10 @@
       "OriginalItemSpec": "wwwroot\\img\\team\\6.jpg"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\before-after.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\before-after.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/before-after.js",
       "AssetKind": "All",
@@ -1670,10 +1670,10 @@
       "OriginalItemSpec": "wwwroot\\js\\before-after.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\bootstrap.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\bootstrap.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1689,10 +1689,10 @@
       "OriginalItemSpec": "wwwroot\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\custom.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\custom.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/custom.js",
       "AssetKind": "All",
@@ -1708,10 +1708,10 @@
       "OriginalItemSpec": "wwwroot\\js\\custom.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\imagesloaded.pkgd.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\imagesloaded.pkgd.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/imagesloaded.pkgd.min.js",
       "AssetKind": "All",
@@ -1727,10 +1727,10 @@
       "OriginalItemSpec": "wwwroot\\js\\imagesloaded.pkgd.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery.isotope.v3.0.2.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery.isotope.v3.0.2.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery.isotope.v3.0.2.js",
       "AssetKind": "All",
@@ -1746,10 +1746,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery.isotope.v3.0.2.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery.magnific-popup.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery.magnific-popup.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery.magnific-popup.js",
       "AssetKind": "All",
@@ -1765,10 +1765,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery.magnific-popup.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery.stellar.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery.stellar.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery.stellar.min.js",
       "AssetKind": "All",
@@ -1784,10 +1784,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery.stellar.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery.waypoints.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery.waypoints.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery.waypoints.min.js",
       "AssetKind": "All",
@@ -1803,10 +1803,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery.waypoints.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery-3.6.3.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery-3.6.3.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery-3.6.3.min.js",
       "AssetKind": "All",
@@ -1822,10 +1822,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery-3.6.3.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\jquery-migrate-3.0.0.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\jquery-migrate-3.0.0.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/jquery-migrate-3.0.0.min.js",
       "AssetKind": "All",
@@ -1841,10 +1841,10 @@
       "OriginalItemSpec": "wwwroot\\js\\jquery-migrate-3.0.0.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\modernizr-2.6.2.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\modernizr-2.6.2.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/modernizr-2.6.2.min.js",
       "AssetKind": "All",
@@ -1860,10 +1860,10 @@
       "OriginalItemSpec": "wwwroot\\js\\modernizr-2.6.2.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\owl.carousel.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\owl.carousel.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/owl.carousel.min.js",
       "AssetKind": "All",
@@ -1879,10 +1879,10 @@
       "OriginalItemSpec": "wwwroot\\js\\owl.carousel.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\popper.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\popper.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/popper.min.js",
       "AssetKind": "All",
@@ -1898,10 +1898,10 @@
       "OriginalItemSpec": "wwwroot\\js\\popper.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\scrollIt.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\scrollIt.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/scrollIt.min.js",
       "AssetKind": "All",
@@ -1917,10 +1917,10 @@
       "OriginalItemSpec": "wwwroot\\js\\scrollIt.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\site.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\site.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1936,10 +1936,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\vegas.slider.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\vegas.slider.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/vegas.slider.min.js",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\js\\vegas.slider.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\js\\YouTubePopUp.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\js\\YouTubePopUp.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "js/YouTubePopUp.js",
       "AssetKind": "All",
@@ -1974,10 +1974,10 @@
       "OriginalItemSpec": "wwwroot\\js\\YouTubePopUp.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -1993,10 +1993,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2012,10 +2012,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2031,10 +2031,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2050,10 +2050,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2069,10 +2069,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2088,10 +2088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2107,10 +2107,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2126,10 +2126,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2145,10 +2145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2164,10 +2164,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2183,10 +2183,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2202,10 +2202,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2221,10 +2221,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2240,10 +2240,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2259,10 +2259,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2297,10 +2297,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2316,10 +2316,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2335,10 +2335,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2354,10 +2354,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2373,10 +2373,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2392,10 +2392,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2411,10 +2411,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2430,10 +2430,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2449,10 +2449,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2468,10 +2468,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2487,10 +2487,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2506,10 +2506,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2525,10 +2525,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2544,10 +2544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2563,10 +2563,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2582,10 +2582,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2620,10 +2620,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2639,10 +2639,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2658,10 +2658,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2677,10 +2677,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2696,10 +2696,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2715,10 +2715,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2734,10 +2734,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2753,10 +2753,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2772,10 +2772,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2791,10 +2791,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2810,10 +2810,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2829,10 +2829,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2848,10 +2848,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2867,10 +2867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2886,10 +2886,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2905,10 +2905,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2943,10 +2943,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2962,10 +2962,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2981,10 +2981,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -3000,10 +3000,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -3019,10 +3019,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -3038,10 +3038,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "TIE_Decor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\wwwroot\\",
+      "ContentRoot": "D:\\a22044\\Techwiz\\TIE_Decor\\wwwroot\\",
       "BasePath": "_content/TIE_Decor",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
