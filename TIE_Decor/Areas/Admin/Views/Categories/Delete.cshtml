@@ -1,0 +1,42 @@
+﻿@model TIE_Decor.Entities.Category
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="page-content">
+    <!-- Start Container Fluid -->
+    <div class="row p-4 justify-content-center">
+        <div class="col-md-4">
+            <h3>Are you sure you want to delete this?</h3>
+            <div>
+                <h4>Category</h4>
+                <hr />
+                <div>
+                    <b>@Html.DisplayNameFor(model => model.CategoryName)</b>:
+                    @Html.DisplayFor(model => model.CategoryName)
+                </div>
+
+                <form action="/admin/Categories/Delete" method="post" class="mt-4">
+                    <input type="hidden" asp-for="CategoryId" />
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <a asp-action="Index">Back to List</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Container Fluid -->
+    <!-- ========== Footer Start ========== -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a href="#" class="fw-bold footer-text" target="_blank">Techzaa</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ========== Footer End ========== -->
+
+</div>

@@ -1,27 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj": {}
+    "D:\\Dang01\\Projects\\techwiz5\\TIE\\TIE_Decor\\TIE_Decor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj": {
+    "D:\\Dang01\\Projects\\techwiz5\\TIE\\TIE_Decor\\TIE_Decor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
+        "projectUniqueName": "D:\\Dang01\\Projects\\techwiz5\\TIE\\TIE_Decor\\TIE_Decor.csproj",
         "projectName": "TIE_Decor",
-        "projectPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
-        "packagesPath": "C:\\Users\\PREDATOR\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\obj\\",
+        "projectPath": "D:\\Dang01\\Projects\\techwiz5\\TIE\\TIE_Decor\\TIE_Decor.csproj",
+        "packagesPath": "C:\\Users\\gamin\\.nuget\\packages\\",
+        "outputPath": "D:\\Dang01\\Projects\\techwiz5\\TIE\\TIE_Decor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PREDATOR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gamin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,17 +34,20 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.8, )"
@@ -83,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
