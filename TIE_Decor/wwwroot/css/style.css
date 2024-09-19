@@ -5156,3 +5156,113 @@ hr.border-2 {
         text-align: center;
     }
 }
+
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+    /* Tiêu đề của form */
+    .auth-container h2 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+/* Định dạng cho các nhóm trường nhập liệu */
+.form-group {
+    margin-bottom: 15px;
+}
+
+    .form-group label {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Định dạng cho các nhóm trường nhập liệu gộp */
+.form-group-inline {
+    margin-bottom: 15px;
+}
+
+.form-inline-group {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các trường */
+}
+
+    .form-inline-group > div {
+        flex: 1; /* Chiếm đều không gian */
+    }
+
+/* Nút và liên kết */
+.auth-container .btn,
+.auth-container a {
+    background-color: #b19777;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+    .auth-container .btn:hover {
+        background-color: #6e5744;
+    }
+
+/* Liên kết đăng ký */
+.auth-container .register-link {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .auth-container .register-link:hover {
+        text-decoration: underline;
+    }
+
+/* Hiển thị và ẩn form bằng cách thay đổi display */
+.auth-form {
+    display: none;
+}
+
+    .auth-form.visible {
+        display: block;
+    }
+
+/* Media Queries cho màn hình nhỏ hơn */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 90%;
+    }
+
+        .auth-container .btn {
+            font-size: 14px;
+        }
+
+        .auth-container h2 {
+            font-size: 20px;
+        }
+}
