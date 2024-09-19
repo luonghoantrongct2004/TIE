@@ -1,1 +1,5 @@
 .vs
+/bin/
+/obj/
+git rm --cached -r TIE_Decor/bin/
+git rm --cached -r TIE_Decor/obj/
