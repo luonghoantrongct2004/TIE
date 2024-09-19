@@ -51,7 +51,7 @@ namespace TIE_Decor.Controllers
             }
 
             // Kiểm tra đăng nhập bằng email và mật khẩu
-            var result = await _signInManager.PasswordSignInAsync(user.Email, model.Password, false, lockoutOnFailure: true);
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
