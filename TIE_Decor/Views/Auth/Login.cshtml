@@ -1,7 +1,97 @@
-﻿
+﻿@model TIE_Decor.Models.AuthViewModel
 @{
     ViewData["Title"] = "Login";
 }
+<style>
+    
+</style>
 
-<h1>Login</h1>
+<div class="auth-container">
+    <!-- Login Form -->
+    <div id="login-form" class="auth-form visible">
+        <h2>Login</h2>
+        <form asp-action="Login" method="post">
+            <div class="form-group">
+                <label asp-for="LoginModel.Username"></label>
+                <input asp-for="LoginModel.Username" class="form-control" />
+                <span asp-validation-for="LoginModel.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoginModel.Password"></label>
+                <input asp-for="LoginModel.Password" type="password" class="form-control" />
+                <span asp-validation-for="LoginModel.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input asp-for="LoginModel.RememberMe" class="form-check-input" />
+                    <label class="form-check-label" asp-for="LoginModel.RememberMe"></label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p class="text-center">
+            Don't have an account? <a href="#" class="register-link" onclick="showRegisterForm()">Register</a>
+        </p>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="auth-form hidden">
+        <h2>Register</h2>
+        <form asp-action="Register" method="post">
+            <div class="form-group">
+                <label asp-for="RegisterModel.Username"></label>
+                <input asp-for="RegisterModel.Username" class="form-control" />
+                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegisterModel.Email"></label>
+                <input asp-for="RegisterModel.Email" type="email" class="form-control" />
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group form-group-inline">
+                <div class="form-inline-group">
+                    <div>
+                        <label asp-for="RegisterModel.Password"></label>
+                        <input asp-for="RegisterModel.Password" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="RegisterModel.ConfirmPassword"></label>
+                        <input asp-for="RegisterModel.ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-group-inline">
+                <div class="form-inline-group">
+                    <div>
+                        <label asp-for="RegisterModel.FullName"></label>
+                        <input asp-for="RegisterModel.FullName" class="form-control" />
+                        <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span>
+                    </div>
+                 </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        <p class="text-center">
+            Already have an account? <a href="#" class="register-link" onclick="showLoginForm()">Login</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    function showRegisterForm() {
+        document.getElementById('login-form').classList.remove('visible');
+        document.getElementById('register-form').classList.add('visible');
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
+    }
+
+    function showLoginForm() {
+        document.getElementById('register-form').classList.remove('visible');
+        document.getElementById('login-form').classList.add('visible');
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.remove('hidden');
+    }
+</script>
 
