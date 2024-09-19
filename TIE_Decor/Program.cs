@@ -61,23 +61,6 @@ public class Program
                        name: "default",
                        pattern: "{controller=Home}/{action=Index}/{id?}");
 
-        app.MapControllerRoute(
-             name: "area",
-             pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
-        // Khởi tạo roles khi ứng dụng bắt đầu
-        using (var scope = app.Services.CreateScope())
-        {
-            var services = scope.ServiceProvider;
-            try
-            {
-                await SeedRoles.Initialize(services);
-            }
-            catch (Exception ex)
-            {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred creating roles");
-            }
-        }
 
         await app.RunAsync();
     }

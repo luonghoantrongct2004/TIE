@@ -6,5 +6,5 @@ public class Category
     public string CategoryName { get; set; }
 
     // Quan hệ 1-nhiều với Product (Sản phẩm)
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<Product>? Products { get; set; }
 }
