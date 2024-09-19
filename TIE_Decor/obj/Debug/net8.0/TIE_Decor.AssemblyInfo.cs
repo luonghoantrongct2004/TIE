@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TIE_Decor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6064e2a49e581ae3e5c3687d4d607530feeb12db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c06ca3c38806fbaa6001c3a68ad86e4d6ef0a58")]
 [assembly: System.Reflection.AssemblyProductAttribute("TIE_Decor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TIE_Decor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -7891,24 +7891,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Win10\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\MY PC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\a22044\\TIE\\TIE_Decor\\TIE_Decor.csproj",
+      "projectUniqueName": "D:\\Techwiz_DecorVista\\TIE-TechWiz\\TIE_Decor\\TIE_Decor.csproj",
       "projectName": "TIE_Decor",
-      "projectPath": "D:\\a22044\\TIE\\TIE_Decor\\TIE_Decor.csproj",
-      "packagesPath": "C:\\Users\\Win10\\.nuget\\packages\\",
-      "outputPath": "D:\\a22044\\TIE\\TIE_Decor\\obj\\",
+      "projectPath": "D:\\Techwiz_DecorVista\\TIE-TechWiz\\TIE_Decor\\TIE_Decor.csproj",
+      "packagesPath": "C:\\Users\\MY PC\\.nuget\\packages\\",
+      "outputPath": "D:\\Techwiz_DecorVista\\TIE-TechWiz\\TIE_Decor\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Win10\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\MY PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7978,7 +7973,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
