@@ -34,62 +34,60 @@ namespace TIE_Decor.Controllers
             return View();
         }
 
-        // Xử lý đăng nhập
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                // Trả về lỗi nếu model không hợp lệ
+                return Json(new { success = false, message = "Invalid data", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
             }
 
-            var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: true);
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
+
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                // Đăng nhập thành công
+                return Json(new { success = true, message = "Login successful" });
             }
 
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            return View(model);
+            // Nếu đăng nhập thất bại
+            return Json(new { success = false, message = "Invalid login attempt" });
         }
 
-        // Hiển thị trang đăng ký
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        // Xử lý đăng ký
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return Json(new { success = false, message = "Invalid data"});
             }
 
-            //create new user
             var user = new User
             {
                 UserName = model.Username,
                 Email = model.Email,
                 FullName = model.FullName
-                
             };
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            try
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
-            }
+                var result = await _userManager.CreateAsync(user, model.Password);
 
-            foreach (var error in result.Errors)
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Json(new { success = true, message = "Registration successful" });
+                }
+                // Nếu đăng ký thất bại
+                return Json(new { success = false, message = "Registration failed", errors = result.Errors.Select(e => e.Description) });
+            }
+            catch(Exception ex)
             {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
 
-            return View(model);
+                return Json(new { success = false, message = "Registration failed", errors = ex.Message });
+            }
         }
+
+
     }
 }
