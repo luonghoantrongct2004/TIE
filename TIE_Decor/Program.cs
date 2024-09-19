@@ -1,63 +1,84 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using EduCourse.SeedDataMigration;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Cấu hình Identity
-builder.Services.AddIdentity<User, IdentityRole>(options =>
+public class Program
 {
-    options.Password.RequiredLength = 8;
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireUppercase = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredUniqueChars = 0;
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-    options.Lockout.MaxFailedAccessAttempts = 5;
-    options.Lockout.AllowedForNewUsers = true;
+        // Cấu hình Identity
+        builder.Services.AddIdentity<User, IdentityRole>(options =>
+        {
+            options.Password.RequiredLength = 8;
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredUniqueChars = 0;
 
-    options.User.RequireUniqueEmail = true;
-})
-.AddEntityFrameworkStores<AppDbContext>()
-.AddDefaultTokenProviders();
+            options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            options.Lockout.MaxFailedAccessAttempts = 5;
+            options.Lockout.AllowedForNewUsers = true;
 
-// Cấu hình Cookie
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.LoginPath = "/Auth/Login";
-    options.LogoutPath = "/Auth/Logout";
-});
+            options.User.RequireUniqueEmail = true;
+        })
+        .AddEntityFrameworkStores<AppDbContext>()
+        .AddDefaultTokenProviders();
 
-// Cấu hình DbContext
-builder.Services.AddDbContext<AppDbContext>(opts =>
-{
-    opts.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
-});
-builder.Services.AddControllersWithViews();
+        // Cấu hình Cookie
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.LoginPath = "/Auth/Login";
+            options.LogoutPath = "/Auth/Logout";
+        });
 
-var app = builder.Build();
+        // Cấu hình DbContext
+        builder.Services.AddDbContext<AppDbContext>(opts =>
+        {
+            opts.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+        });
+        builder.Services.AddControllersWithViews();
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+        var app = builder.Build();
+
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
+                       name: "default",
+                       pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.MapControllerRoute(
+             name: "area",
+             pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
+        // Khởi tạo roles khi ứng dụng bắt đầu
+        using (var scope = app.Services.CreateScope())
+        {
+            var services = scope.ServiceProvider;
+            try
+            {
+                await SeedRoles.Initialize(services);
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred creating roles");
+            }
+        }
+
+        await app.RunAsync();
+    }
 }
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllerRoute(
-               name: "default",
-               pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-     name: "area",
-     pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
-
-app.Run();

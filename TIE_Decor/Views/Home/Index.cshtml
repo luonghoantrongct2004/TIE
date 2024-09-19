@@ -39,7 +39,7 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
@@ -87,24 +87,30 @@
                             <li><a href="blog4.html" class="dropdown-item"><span>Blog 4</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Account/Profile">Hello, @User.Identity.Name</a>
-                            </li>
-                            <li class="nav-item">
-                                <form id="logoutForm" action="/Account/Logout" method="post">
-                                    <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
-                                </form>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Auth/Login">Login</a>
-                            </li>
-                        }
+                    <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/Auth/Profile">Profile</a></li>
+                                <li>
+                                    <form id="logoutForm" action="/Auth/Logout" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/Auth/Login">Login</a>
+                        </li>
+                    }
 
                 </ul>
             </div>
