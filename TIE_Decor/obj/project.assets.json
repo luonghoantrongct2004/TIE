@@ -7891,25 +7891,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PREDATOR\\.nuget\\packages\\": {}
+    "C:\\Users\\Win10\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
+      "projectUniqueName": "D:\\a22044\\TIE\\TIE_Decor\\TIE_Decor.csproj",
       "projectName": "TIE_Decor",
-      "projectPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
-      "packagesPath": "C:\\Users\\PREDATOR\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\obj\\",
+      "projectPath": "D:\\a22044\\TIE\\TIE_Decor\\TIE_Decor.csproj",
+      "packagesPath": "C:\\Users\\Win10\\.nuget\\packages\\",
+      "outputPath": "D:\\a22044\\TIE\\TIE_Decor\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\PREDATOR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Win10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -7972,7 +7978,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

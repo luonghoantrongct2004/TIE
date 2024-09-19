@@ -82,7 +82,23 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link nav-color" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="/Auth/Login">Login</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Account/Profile">Hello, @User.Identity.Name</a>
+                        </li>
+                        <li class="nav-item">
+                            <form id="logoutForm" action="/Account/Logout" method="post">
+                                <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Auth/Login">Login</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
