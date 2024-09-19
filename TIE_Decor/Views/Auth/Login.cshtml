@@ -13,13 +13,11 @@
         <form asp-action="Login" method="post">
             <div class="form-group">
                 <label asp-for="LoginModel.Username"></label>
-                <input asp-for="LoginModel.Username" class="form-control" />
-                <span asp-validation-for="LoginModel.Username" class="text-danger"></span>
+                <input type="text" asp-for="LoginModel.Username" />
             </div>
             <div class="form-group">
                 <label asp-for="LoginModel.Password"></label>
-                <input asp-for="LoginModel.Password" type="password" class="form-control" />
-                <span asp-validation-for="LoginModel.Password" class="text-danger"></span>
+                <input asp-for="LoginModel.Password" type="password"  />
             </div>
             <div class="form-group">
                 <div class="form-check">
