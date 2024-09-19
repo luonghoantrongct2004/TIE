@@ -28,5 +28,4 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Consultation> Consultations { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Design> Designs { get; set; }
-    public DbSet<ProductCategory> ProductCategories { get; set; }
 }

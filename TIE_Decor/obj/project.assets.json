@@ -7896,11 +7896,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
+      "projectUniqueName": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
       "projectName": "TIE_Decor",
-      "projectPath": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
+      "projectPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\TIE_Decor.csproj",
       "packagesPath": "C:\\Users\\PREDATOR\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PREDATOR\\Downloads\\TIE\\TIE_Decor\\TIE_Decor\\obj\\",
+      "outputPath": "C:\\Users\\PREDATOR\\OneDrive\\Tài liệu\\TIE_Decor\\TIE_Decor\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PREDATOR\\AppData\\Roaming\\NuGet\\NuGet.Config",

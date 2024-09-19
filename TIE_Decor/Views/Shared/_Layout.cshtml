@@ -45,15 +45,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Projects <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="projects.html" class="dropdown-item"><span>Projects 1</span></a></li>
-                            <li><a href="projects2.html" class="dropdown-item"><span>Projects 2</span></a></li>
-                            <li><a href="projects3.html" class="dropdown-item"><span>Projects 3</span></a></li>
-                            <li><a href="projects4.html" class="dropdown-item"><span>Projects 4</span></a></li>
-                            <li><a href="project-gallery.html" class="dropdown-item"><span>Project Gallery</span></a></li>
-                            <li><a href="project-page.html" class="dropdown-item"><span>Project Page</span></a></li>
-                        </ul>
+                        <a class="nav-link nav-color dropdown-toggle" href="/Products/" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
@@ -97,12 +89,15 @@
     </nav>
     <!-- Content -->
     <div class="content-wrapper">
-        <!-- About -->
-        <section class="about section-padding">
-            <div class="container">
-                @RenderBody()
+        <!-- Lines -->
+        <section class="content-lines-wrapper">
+            <div class="content-lines-inner">
+                <div class="content-lines"></div>
             </div>
         </section>
+        <!-- Header Banner -->
+        <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
+                @RenderBody()
         <!-- Footer -->
         <footer class="main-footer dark">
             <div class="container">

@@ -1,0 +1,33 @@
+﻿@model Cart
+
+  <!-- Services 3 -->
+<section class="services section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <h2 class="section-title">Our <span>Cart</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.Products != null && Model.Products.Any()){
+                @foreach (var item in Model.Products)
+                {
+                    <div class="col-md-4">
+                        <div class="services2 mb-60">
+                        <div class="services2-img"><img src="@item.ImageUrl" alt="" class="w-100"></div>
+                        <div class="services2-content">
+                            <div class="icon"><img src="img/icons/icon-1.png" alt=""></div>
+                            <h3 class="services2-title">@item.ProductName</h3>
+                            <p class="services2-text">@item.Description</p>
+                            <div class="butn-dark mt-20"> <a href="architecture.html"><span>Make An Appointment</span></a> </div>
+                        </div>
+                        <div class="title-box">
+                                <h3 class="mb-0">@item.ProductName</h3>
+                        </div>
+                    </div>
+                </div>
+                }
+            }
+        </div>
+    </div>
+</section>

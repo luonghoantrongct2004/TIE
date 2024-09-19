@@ -1,65 +1,26 @@
 ﻿@model IEnumerable<TIE_Decor.Entities.Product>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<!-- Projects -->
+<section class="projects section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <h2 class="section-title">Our <span>Products</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item">
+                    <div class="position-re o-hidden"> <img src="@item.ImageUrl" alt=""> </div>
+                    <div class="con">
+                            <h6><a href="/Products/Details?id=@item.ProductId">@item.Price</a></h6>
+                        <h5><a href="/Products/Details?id=@item.ProductId">@item.ProductName</a></h5>
+                        <div class="line"></div> <a href="/Products/Details?id=@item.ProductId"><i class="ti-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
