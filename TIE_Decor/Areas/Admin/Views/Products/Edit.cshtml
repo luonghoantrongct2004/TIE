@@ -9,7 +9,7 @@
         <div class="col-xl-3 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <img src="@Model?.ImageUrl?.First()" alt="" class="img-fluid rounded bg-light">
+                        <img src="@Model?.ImageUrl?.Split(',').FirstOrDefault()" alt="" class="img-fluid rounded bg-light">
                     <div class="mt-3">
                         <h4>Men Black Slim Fit T-shirt <span class="fs-14 text-muted ms-1">Year: @Model?.Year</span></h4>
                         <h5 class="text-dark fw-medium mt-3">Price :</h5>
@@ -44,13 +44,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="product-name" class="form-label">Product Name</label>
-                                            <input type="text" id="product-name" class="form-control" name="ProductName" placeholder="Items Name">
+                                            <label asp-for="ProductName" class="form-label">Product Name</label>
+                                            <input type="text" id="ProductName" value="@Model.ProductName" class="form-control" name="ProductName" placeholder="Items Name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <label for="product-categories" class="form-label">Product Categories</label>
-                                        <select class="form-control" id="product-categories" name="CategoryId">
+                                        <label asp-for="CategoryId" class="form-label">Product Categories</label>
+                                        <select class="form-control" id="CategoryId" name="CategoryId">
                                             @foreach (var category in (List<Category>)ViewData["Categories"])
                                             {
                                                 <option value="@category.CategoryId">@category.CategoryName</option>
@@ -61,8 +61,8 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label for="product-brand" class="form-label">Brand</label>
-                                            <select class="form-control" id="product-brand" name="BrandId">
+                                            <label asp-for="Brand" class="form-label">Brand</label>
+                                            <select class="form-control" id="Brand" name="BrandId">
                                                 @foreach (var brand in (List<Brand>)ViewData["Brands"])
                                                 {
                                                     <option value="@brand.Id">@brand.Name</option>
@@ -73,8 +73,8 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label for="product-year" class="form-label">Year</label>
-                                            <input type="number" name="Year" id="product-year" class="form-control" placeholder="Year">
+                                            <label asp-for="Year" class="form-label">Year</label>
+                                            <input type="number" name="Year" value="@Model.Year" id="Year" class="form-control" placeholder="Year">
                                         </div>
                                     </div>
                                 </div>
@@ -87,10 +87,10 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label for="product-price" class="form-label">Price</label>
+                                        <label asp-for="Price" class="form-label">Price</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                            <input type="number" id="product-price" name="Price" class="form-control" placeholder="000">
+                                            <input type="number" id="Price" value="@Model.Price" name="Price" class="form-control" placeholder="000">
                                         </div>
                                     </div>
                                 </div>

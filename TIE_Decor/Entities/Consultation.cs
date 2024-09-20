@@ -10,7 +10,5 @@ public class Consultation
 
     // Quan hệ với ApplicationUser (người dùng)
     public virtual User? User { get; set; }
-    public int DesignerId { get; set; }  // ID của nhà thiết kế
-    public virtual User? Designer { get; set; }  // Quan hệ với nhà thiết kế
 }
 
