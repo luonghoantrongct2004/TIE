@@ -12,8 +12,8 @@ using TIE_Decor.DbContext;
 namespace TIE_Decor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240920064530_updatetrieu")]
-    partial class updatetrieu
+    [Migration("20240920081421_Alter-Database-by-trong")]
+    partial class AlterDatabasebytrong
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -200,9 +200,6 @@ namespace TIE_Decor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConsultationId"));
 
-                    b.Property<int>("DesignerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
@@ -213,8 +210,8 @@ namespace TIE_Decor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
@@ -352,9 +349,6 @@ namespace TIE_Decor.Migrations
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")

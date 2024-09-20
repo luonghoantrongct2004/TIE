@@ -23,7 +23,11 @@ namespace TIE_Decor.Areas.Admin.Controllers
         // GET: Admin/Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(await _context.Products
+                .Include(c => c.Category)
+                .Include(b => b.Brand)
+                .Include(r => r.Reviews)
+                .ToListAsync());
         }
 
         // GET: Admin/Products/Details/5
@@ -35,8 +39,10 @@ namespace TIE_Decor.Areas.Admin.Controllers
             }
 
             var product = await _context.Products
+
                 .Include(c => c.Category)
                 .Include(b => b.Brand)
+                .Include(r => r.Reviews)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
@@ -55,7 +61,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Description,Year")] Product product, List<IFormFile> images)
+        public async Task<IActionResult> Create(Product product, List<IFormFile> images)
         {
             if (ModelState.IsValid)
             {
@@ -132,7 +138,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit([Bind("ProductId,ProductName,Price,Description,Year,CategoryId,BrandId")] Product product, List<IFormFile> images)
+        public async Task<IActionResult> Edit(Product product, List<IFormFile> images)
         {
             var existingProduct = await _context.Products.FindAsync(product.ProductId);
 
@@ -237,7 +243,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToAction(nameof(Index));
+            return Redirect("/admin/products");
         }
 
 
