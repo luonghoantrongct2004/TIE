@@ -1,0 +1,46 @@
+﻿@model IEnumerable<User>
+@using Microsoft.AspNetCore.Identity
+
+<h2>Assign Role to User</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Assign Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    <select id="roleSelect_@user.Id" class="form-control">
+                        <option value="Admin">Admin</option>
+                        <option value="Designer">Designer</option>
+                        <option value="User">User</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="assignRole('@user.Id')">Assign Role</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function assignRole(userId) {
+        var role = $('#roleSelect_' + userId).val();
+        $.post('/Admin/Role/AssignRole', { userId: userId, role: role })
+            .done(function (response) {
+                alert(response);
+                location.reload();
+            })
+            .fail(function (xhr) {
+                alert("Error assigning role: " + xhr.responseText);
+            });
+    }
+</script>

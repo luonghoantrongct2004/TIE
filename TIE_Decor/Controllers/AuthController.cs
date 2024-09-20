@@ -55,6 +55,7 @@ namespace TIE_Decor.Controllers
 
             if (result.Succeeded)
             {
+                
                 return Json(new { success = true, message = "Login successful" });
             }
             else

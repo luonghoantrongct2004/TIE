@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TIE_Decor.Areas.Admin.Controllers;
 
-[Authorize(Roles = "Admin")]
+//[Authorize(Roles = "Admin")]
 [Area("Admin")]
 public class RoleController : Controller
 {
@@ -93,13 +93,14 @@ public class RoleController : Controller
         return BadRequest("Failed to delete role");
     }
 
-    // Assign role to user (already implemented)
+    // Assign role to user
+    [HttpPost]
     public async Task<IActionResult> AssignRole(string userId, string role)
     {
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
         {
-            return NotFound();
+            return NotFound("User not found");
         }
 
         if (!await _roleManager.RoleExistsAsync(role))
