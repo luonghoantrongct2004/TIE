@@ -22,10 +22,7 @@ namespace TIE_Decor.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products
-                .Include(c => c.Category)
-                .Include(b => b.Brand)
-                .ToListAsync());
+            return View(_context.Products.Include(c => c.Category).Include(b => b.Brand).ToList());
         }
 
         // GET: Products/Details/5

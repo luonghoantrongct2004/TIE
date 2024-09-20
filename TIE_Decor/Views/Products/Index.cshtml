@@ -12,14 +12,14 @@
             {
                 <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
                     <div class="item">
-                    <div class="position-re o-hidden"> <img src="@item.ImageUrl" alt=""> </div>
+                        <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
                     <div class="con">
                             <h6><a href="/Products/Details?id=@item.ProductId">@item.Price</a></h6>
                         <h5><a href="/Products/Details?id=@item.ProductId">@item.ProductName</a></h5>
                         <div class="line"></div> <a href="/Products/Details?id=@item.ProductId"><i class="ti-arrow-right"></i></a>
                     </div>
+                    </div>
                 </div>
-            </div>
             }
         </div>
     </div>

@@ -136,7 +136,6 @@ namespace TIE_Decor.Areas.Admin.Controllers
             }
             return View(product);
         }
-
         [HttpPost]
         public async Task<IActionResult> Edit(Product product, List<IFormFile> images)
         {
@@ -156,16 +155,13 @@ namespace TIE_Decor.Areas.Admin.Controllers
                     existingProduct.Price = product.Price;
                     existingProduct.Description = product.Description;
                     existingProduct.Year = product.Year;
-                    existingProduct.Category = product.Category;
-                    existingProduct.Brand = product.Brand;
+                    existingProduct.CategoryId = product.CategoryId;  // Sửa đúng CategoryId
+                    existingProduct.BrandId = product.BrandId;        // Sửa đúng BrandId
 
                     // Nếu có ảnh mới được tải lên
                     if (images != null && images.Count > 0)
                     {
-                        // Danh sách để lưu đường dẫn các ảnh mới upload
                         var imageUrls = new List<string>();
-
-                        // Thư mục lưu trữ ảnh
                         var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
 
                         if (!Directory.Exists(uploadPath))
@@ -177,17 +173,14 @@ namespace TIE_Decor.Areas.Admin.Controllers
                         {
                             if (image != null && image.Length > 0)
                             {
-                                // Tạo tên file duy nhất cho từng ảnh để tránh trùng lặp
                                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
                                 var filePath = Path.Combine(uploadPath, fileName);
 
-                                // Lưu ảnh vào thư mục
                                 using (var stream = new FileStream(filePath, FileMode.Create))
                                 {
                                     await image.CopyToAsync(stream);
                                 }
 
-                                // Thêm đường dẫn ảnh vào danh sách
                                 imageUrls.Add("/uploads/" + fileName);
                             }
                         }
@@ -199,19 +192,20 @@ namespace TIE_Decor.Areas.Admin.Controllers
                     _context.Update(existingProduct);
                     await _context.SaveChangesAsync();
 
-                    return Json(new { success = true, message = "Product updated successfully!" });
+                    return Redirect("/admin/products");
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { success = false, message = "An error occurred: " + ex.Message });
+                    return View(product);
                 }
             }
 
             ViewData["Categories"] = _context.Categories.ToList();
             ViewData["Brands"] = _context.Brands.ToList();
 
-            return Json(new { success = false, message = "Product update false!" });
+            return View(product);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
