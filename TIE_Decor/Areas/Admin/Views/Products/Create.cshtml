@@ -1,46 +1,140 @@
 ﻿@model TIE_Decor.Entities.Product
 
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
+<div class="container-xxl">
+    <form id="productForm" action="/admin/products/create" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 ">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Product Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="product-name" class="form-label">Product Name</label>
+                                    <input type="text" id="product-name" class="form-control" name="ProductName" placeholder="Items Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="product-categories" class="form-label">Product Categories</label>
+                                <select class="form-control" id="product-categories" name="CategoryId">
+                                    @foreach (var category in (List<Category>)ViewData["Categories"])
+                                    {
+                                        <option value="@category.CategoryId">@category.CategoryName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="product-brand" class="form-label">Brand</label>
+                                    <select class="form-control" id="product-brand" name="BrandId">
+                                        @foreach (var brand in (List<Brand>)ViewData["Brands"])
+                                        {
+                                            <option value="@brand.Id">@brand.Name</option>
+                                        }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="product-year" class="form-label">Year</label>
+                                    <input type="number" name="Year" id="product-year" class="form-control" placeholder="Year">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Pricing Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="product-price" class="form-label">Price</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
+                                    <input type="number" id="product-price" name="Price" class="form-control" placeholder="000">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-light mb-3 rounded">
+                    <div class="row justify-content-end g-2">
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-outline-secondary w-100">Create</button>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="/admin/products" class="btn btn-primary w-100">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<h1>Create</h1>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Add Product Photos</h4>
+                </div>
+                <div class="card-body">
+                    <!-- File Upload cho nhiều ảnh -->
+                    <div class="fallback">
+                        <input name="images" type="file" multiple />
+                    </div>
+                    <div class="dz-message needsclick">
+                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                        <h3 class="mt-4">Drop your images here, or <span class="text-primary">click to browse</span></h3>
+                        <span class="text-muted fs-13">
+                            PNG, JPG files are allowed.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('productForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-<h4>Product</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProductName" class="control-label"></label>
-                <input asp-for="ProductName" class="form-control" />
-                <span asp-validation-for="ProductName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+            var formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success!',
+                            text: data.message,
+                            confirmButtonText: 'Ok'
+                        }).then(() => {
+                            window.location.href = '/admin/products';
+                        });
+                    } else {
+                        handleFormError(data.message); 
+                    }
+                })
+                .catch(error => {
+                    handleFormError('An unexpected error occurred. Please try again later.');
+                });
+        });
+        function handleFormError(errorMessage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorMessage,
+                confirmButtonText: 'Try Again'
+            });
+        }
+
+    </script>
+
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

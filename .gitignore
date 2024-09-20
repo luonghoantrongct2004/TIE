@@ -1,5 +1,3 @@
 .vs
-/TIE_Decor/bin/
-/TIE_Decor/obj/
-/bin/
-/obj/
+TIE_Decor/bin/
+TIE_Decor/obj/

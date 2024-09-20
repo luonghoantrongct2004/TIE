@@ -47,23 +47,67 @@ namespace TIE_Decor.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public IActionResult Create()
         {
+            ViewData["Categories"] = _context.Categories.ToList();
+
+            ViewData["Brands"] = _context.Brands.ToList();
             return View();
         }
 
-        // POST: Admin/Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Description,ImageUrl")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Description,Year")] Product product, List<IFormFile> images)
         {
             if (ModelState.IsValid)
             {
+                try
+                {
+                    // Danh sách để lưu đường dẫn các ảnh đã upload
+                    var imageUrls = new List<string>();
+
+                // Thư mục lưu trữ ảnh
+                var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+                if (!Directory.Exists(uploadPath))
+                {
+                    Directory.CreateDirectory(uploadPath);
+                }
+
+                // Xử lý các tệp ảnh được tải lên
+                foreach (var image in images)
+                {
+                    if (image != null && image.Length > 0)
+                    {
+                        // Tạo tên file duy nhất cho từng ảnh để tránh trùng lặp
+                        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                        var filePath = Path.Combine(uploadPath, fileName);
+
+                        // Lưu ảnh vào thư mục
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await image.CopyToAsync(stream);
+                        }
+
+                        // Thêm đường dẫn ảnh vào danh sách
+                        imageUrls.Add("/uploads/" + fileName);
+                    }
+                }
+
+                // Gán danh sách đường dẫn ảnh vào product
+                product.ImageUrl = imageUrls;
+
+                // Thêm sản phẩm vào cơ sở dữ liệu
                 _context.Add(product);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true, message = "Product created successfully!" });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "An error occurred: " + ex.Message });
+                }
             }
-            return View(product);
+
+            ViewData["Categories"] = _context.Categories.ToList();
+            ViewData["Brands"] = _context.Brands.ToList();
+            return Json(new { success = false, message = "Model validation failed." });
         }
 
         // GET: Admin/Products/Edit/5
@@ -75,6 +119,8 @@ namespace TIE_Decor.Areas.Admin.Controllers
             }
 
             var product = await _context.Products.FindAsync(id);
+            ViewData["Categories"] = _context.Categories.ToList();
+            ViewData["Brands"] = _context.Brands.ToList();
             if (product == null)
             {
                 return NotFound();
@@ -82,14 +128,12 @@ namespace TIE_Decor.Areas.Admin.Controllers
             return View(product);
         }
 
-        // POST: Admin/Products/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Price,Description,ImageUrl")] Product product)
+        public async Task<IActionResult> Edit([Bind("ProductId,ProductName,Price,Description,Year,CategoryId,BrandId")] Product product, List<IFormFile> images)
         {
-            if (id != product.ProductId)
+            var existingProduct = await _context.Products.FindAsync(product.ProductId);
+
+            if (existingProduct == null)
             {
                 return NotFound();
             }
@@ -98,57 +142,95 @@ namespace TIE_Decor.Areas.Admin.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    // Cập nhật các trường khác của sản phẩm
+                    existingProduct.ProductName = product.ProductName;
+                    existingProduct.Price = product.Price;
+                    existingProduct.Description = product.Description;
+                    existingProduct.Year = product.Year;
+                    existingProduct.Category = product.Category;
+                    existingProduct.Brand = product.Brand;
+
+                    // Nếu có ảnh mới được tải lên
+                    if (images != null && images.Count > 0)
+                    {
+                        // Danh sách để lưu đường dẫn các ảnh mới upload
+                        var imageUrls = new List<string>();
+
+                        // Thư mục lưu trữ ảnh
+                        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+
+                        if (!Directory.Exists(uploadPath))
+                        {
+                            Directory.CreateDirectory(uploadPath);
+                        }
+
+                        foreach (var image in images)
+                        {
+                            if (image != null && image.Length > 0)
+                            {
+                                // Tạo tên file duy nhất cho từng ảnh để tránh trùng lặp
+                                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                                var filePath = Path.Combine(uploadPath, fileName);
+
+                                // Lưu ảnh vào thư mục
+                                using (var stream = new FileStream(filePath, FileMode.Create))
+                                {
+                                    await image.CopyToAsync(stream);
+                                }
+
+                                // Thêm đường dẫn ảnh vào danh sách
+                                imageUrls.Add("/uploads/" + fileName);
+                            }
+                        }
+
+                        // Gán danh sách đường dẫn ảnh mới vào sản phẩm
+                        existingProduct.ImageUrl = imageUrls;
+                    }
+
+                    // Cập nhật sản phẩm trong cơ sở dữ liệu
+                    _context.Update(existingProduct);
                     await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, message = "Product updated successfully!" });
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-                    if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return Json(new { success = false, message = "An error occurred: " + ex.Message });
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(product);
+
+            ViewData["Categories"] = _context.Categories.ToList();
+            ViewData["Brands"] = _context.Brands.ToList();
+
+            return Json(new { success = false, message = "Product update false!" });
         }
 
-        // GET: Admin/Products/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // POST: Admin/Products/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
                 _context.Products.Remove(product);
+
+                // Nếu cần, cũng có thể xóa các tệp ảnh đã upload:
+                if (product.ImageUrl != null)
+                {
+                    foreach (var imageUrl in product.ImageUrl)
+                    {
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imageUrl.TrimStart('/'));
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Delete(filePath);
+                        }
+                    }
+                }
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool ProductExists(int id)
         {
