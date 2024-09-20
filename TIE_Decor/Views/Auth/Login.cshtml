@@ -27,7 +27,6 @@
         <button type="submit" class="btn btn-primary">Login</button>
         <p class="text-center">
             Don't have an account? <a href="#" class="register-link" onclick="showRegisterForm()">Register</a>
-                You want to Designer? <a href="#" class="register-link" onclick="showRegisterDesignerForm()">Register Designer</a>
         </p>
         
     </form>
@@ -79,53 +78,7 @@
             </p>
         </form>
     </div>
-    <div id="register-designer-form" class="auth-form hidden">
-        <h2>Register Designer</h2>
-        <form id="register-form" action="/Auth/RegisterDesigner" method="post" onsubmit="handleRegisterSubmit(event)">
-
-            <div class="form-group">
-                <label asp-for="RegisterModel.Username"></label>
-                <input name="Username" class="form-control" />
-                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span> <!-- Hiển thị lỗi cho Username -->
-            </div>
-
-            <div class="form-group">
-                <label asp-for="RegisterModel.Email"></label>
-                <input name="Email" type="email" class="form-control" />
-                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> <!-- Hiển thị lỗi cho Email -->
-            </div>
-
-            <div class="form-group form-group-inline">
-                <div class="form-inline-group">
-                    <div>
-                        <label asp-for="RegisterModel.Password"></label>
-                        <input name="Password" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> <!-- Hiển thị lỗi cho Password -->
-                    </div>
-                    <div>
-                        <label asp-for="RegisterModel.ConfirmPassword"></label>
-                        <input name="ConfirmPassword" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span> <!-- Hiển thị lỗi cho Confirm Password -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="RegisterModel.FullName"></label>
-                <input name="FullName" class="form-control" />
-                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span> <!-- Hiển thị lỗi cho Full Name -->
-            </div>
-
-            <button type="submit" class="btn btn-primary">Register</button>
-            <p class="text-center">
-                Already have an account? <a href="#" class="register-link" onclick="showLoginForm()">Login</a>
-            </p>
-        </form>
-    </div>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</div><script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     // Xử lý submit form login
@@ -221,66 +174,6 @@ function handleRegisterSubmit(event) {
         }
     });
 }
-    function handleRegisterSubmit(event) {
-        event.preventDefault(); // Ngăn form submit ngay lập tức
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'Do you want to register this account?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, register!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Kiểm tra xem form nào đang được submit: form user hay form designer
-                var form;
-                if (document.querySelector('#register-form').classList.contains('visible')) {
-                    form = document.querySelector('#register-form form');
-                } else if (document.querySelector('#register-designer-form').classList.contains('visible')) {
-                    form = document.querySelector('#register-designer-form form');
-                }
-
-                var formData = new FormData(form);
-
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: data.message,
-                                confirmButtonText: 'Ok'
-                            }).then(() => {
-                                window.location.href = '/'; // Redirect after successful registration
-                            });
-                        } else {
-                            let errorMessage = data.message;
-                            if (data.errors && data.errors.length > 0) {
-                                errorMessage += '\n' + data.errors.join('\n');
-                            }
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Registration failed!',
-                                text: errorMessage,
-                                confirmButtonText: 'Try Again'
-                            });
-                        }
-                    })
-                    .catch(error => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'An error occurred!',
-                            text: 'Please try again later.',
-                            confirmButtonText: 'Ok'
-                        });
-                    });
-            }
-        });
-    }
 
 
 </script>
@@ -299,15 +192,6 @@ function handleRegisterSubmit(event) {
         document.getElementById('login-form').classList.remove('hidden');
     }
 </script>
-<script>
-    function showRegisterDesignerForm() {
-        document.getElementById('login-form').classList.remove('visible');
-        document.getElementById('register-designer-form').classList.add('visible');
-        document.getElementById('login-form').classList.add('hidden');
-        document.getElementById('register-designer-form').classList.remove('hidden');
-    }
-</script>
-
 
 
 
