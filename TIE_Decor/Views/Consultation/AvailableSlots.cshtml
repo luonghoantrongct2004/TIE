@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DateTime>
+@{
+    ViewBag.Title = "Available Slots";
+}
+<h2>Lên lịch tư vấn</h2>
+@if (ViewBag.AvailableSlots == null || ViewBag.AvailableSlots.Count == 0)
+{
+    <p>Không còn khoảng thời gian trống cho hôm nay.</p>
+}
+else
+{
+    <form asp-action="ScheduleConsultation" method="post">
+        <label for="selectedTime">Chọn khoảng thời gian:</label>
+        <select name="selectedTime" id="selectedTime">
+            @foreach (var slot in ViewBag.AvailableSlots)
+            {
+                <option value="@slot">@slot.ToString("HH:mm")</option>
+            }
+        </select>
+        <label for="designerId">Chọn nhà thiết kế:</label>
+        <select name="designerId" id="designerId" onchange="updateDesignerInfo()">
+            <option value="">Chọn nhà thiết kế</option>
+            @foreach (var designer in ViewBag.Designers)
+            {
+                <option value="@designer.Identity.Name">@designer.FullName</option>
+            }
+        </select>
+        <!-- Display designer info based on selection -->
+        <div id="designerInfo" style="margin-top: 20px;">
+            <p id="selectedDesignerName"></p>
+        </div>
+        <button type="submit">Lên lịch</button>
+    </form>
+    <script>
+        function updateDesignerInfo() {
+            var designerSelect = document.getElementById("designerId");
+            var selectedOption = designerSelect.options[designerSelect.selectedIndex];
+            var designerName = document.getElementById("selectedDesignerName");
+            if (selectedOption.value) {
+                designerName.textContent = "Nhà thiết kế đã chọn: " + selectedOption.text;
+                    } else {
+                designerName.textContent = '';
+                    }
+                }
+    </script>
+}   
