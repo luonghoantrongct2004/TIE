@@ -39,21 +39,30 @@ namespace TIE_Decor.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Trả về lỗi nếu model không hợp lệ
-                return Json(new { success = false, message = "Invalid data", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
+                return Json(new { success = false, message = "Invalid data" });
             }
 
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
+            // Tìm người dùng dựa trên email
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user == null)
+            {
+                return Json(new { success = false, message = "Email not found" });
+            }
+
+            // Kiểm tra đăng nhập bằng email và mật khẩu
+            var result = await _signInManager.PasswordSignInAsync(user, model.Password, false, lockoutOnFailure: true);
 
             if (result.Succeeded)
             {
-                // Đăng nhập thành công
                 return Json(new { success = true, message = "Login successful" });
             }
-
-            // Nếu đăng nhập thất bại
-            return Json(new { success = false, message = "Invalid login attempt" });
+            else
+            {
+                return Json(new { success = false, message = "Invalid login attempt" });
+            }
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -86,6 +95,15 @@ namespace TIE_Decor.Controllers
 
                 return Json(new { success = false, message = "Registration failed", errors = ex.Message });
             }
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "/");
         }
 
 
