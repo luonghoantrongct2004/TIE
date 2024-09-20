@@ -69,7 +69,7 @@ namespace TIE_Decor.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(new { success = false, message = "Invalid data"});
+                return Json(new { success = false, message = "Invalid data" });
             }
 
             var user = new User
@@ -90,13 +90,46 @@ namespace TIE_Decor.Controllers
                 // Nếu đăng ký thất bại
                 return Json(new { success = false, message = "Registration failed", errors = result.Errors.Select(e => e.Description) });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
                 return Json(new { success = false, message = "Registration failed", errors = ex.Message });
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RegisterDesigner(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Invalid data" });
+            }
+
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                FullName = model.FullName
+            };
+            try
+            {
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, "Designer");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return Json(new { success = true, message = "Registration successful" });
+                }
+                // Nếu đăng ký thất bại
+                return Json(new { success = false, message = "Registration failed", errors = result.Errors.Select(e => e.Description) });
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { success = false, message = "Registration failed", errors = ex.Message });
+            }
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
