@@ -35,7 +35,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
             var consultations = await _context.Consultations
                 .Include(c => c.User)
                 .Include(c => c.Designer)
-                .Where(c => c.DesignerId == designerId) // Sử dụng DesignerId kiểu chuỗi
+                .Where(c => c.DesignerId.ToString() == designerId) // Sử dụng DesignerId kiểu chuỗi
                 .ToListAsync();
 
             return View(consultations);
