@@ -28,19 +28,18 @@ namespace TIE_Decor.Controllers
             {
                 var availableSlots = GetAvailableSlots();
 
-                var designers = await _context.InteriorDesigners
-                    .Select(d => new { Id = d.DesignerId, FullName = d.FirstName + " " + d.LastName })
-                    .ToListAsync();
+                var designers = await _userManager.GetUsersInRoleAsync("Designer");
+                var designerList = designers.Select(d => new { Id = d.Id, FullName = d.FullName }).ToList();
 
-                Console.WriteLine($"Number of designers retrieved: {designers.Count}");
+                Console.WriteLine($"Number of designers retrieved: {designerList.Count}");
 
-                if (designers.Count == 0)
+                if (designerList.Count == 0)
                 {
                     Console.WriteLine("Warning: No designers found in the database.");
                 }
 
                 ViewBag.AvailableSlots = availableSlots;
-                ViewBag.Designers = designers;
+                ViewBag.Designers = designerList;
 
                 return View();
             }
@@ -75,7 +74,7 @@ namespace TIE_Decor.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ScheduleConsultation(DateTime selectedTime, int designerId)
+        public async Task<IActionResult> ScheduleConsultation(DateTime selectedTime, string designerId)
         {
             if (!ModelState.IsValid)
             {
@@ -88,14 +87,14 @@ namespace TIE_Decor.Controllers
                 return Json(new { success = false, message = "User not found" });
             }
 
-            var designer = await _context.InteriorDesigners.FindAsync(designerId);
-            if (designer == null)
+            var designer = await _userManager.FindByIdAsync(designerId);
+            if (designer == null || !await _userManager.IsInRoleAsync(designer, "Designer"))
             {
                 return Json(new { success = false, message = "Invalid designer selected" });
             }
 
             var isTimeTaken = await _context.Consultations
-                .AnyAsync(c => c.ScheduledTime == selectedTime && c.DesignerId == designerId);
+                .AnyAsync(c => c.ScheduledTime == selectedTime && c.User.Id == designerId);
             if (isTimeTaken)
             {
                 return Json(new { success = false, message = "This time slot is already taken for the selected designer" });
@@ -105,10 +104,10 @@ namespace TIE_Decor.Controllers
             {
                 var consultation = new Consultation
                 {
-                    UserId = currentUser.Id,  // Đã thay đổi từ int.Parse(currentUser.Id) sang currentUser.Id
-                    DesignerId = designerId,
+                    User = currentUser,
                     ScheduledTime = selectedTime,
-                    Status = "Scheduled"
+                    Status = "Đã đặt lịch",
+                    Notes = $"Consultation scheduled with designer {designer.FullName}"
                 };
 
                 _context.Consultations.Add(consultation);
@@ -132,8 +131,7 @@ namespace TIE_Decor.Controllers
             }
 
             var consultations = await _context.Consultations
-                .Where(c => c.UserId == user.Id)  // Đã thay đổi từ int.Parse(user.Id) sang user.Id
-                .Include(c => c.Designer)
+                .Where(c => c.User.Id == user.Id)
                 .ToListAsync();
 
             return View(consultations);

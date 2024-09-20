@@ -11,6 +11,6 @@
     <ActiveDebugProfile>https</ActiveDebugProfile>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>https</ActiveDebugProfile>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
   </PropertyGroup>
 </Project>
