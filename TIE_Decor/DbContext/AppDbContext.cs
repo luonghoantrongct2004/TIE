@@ -25,7 +25,6 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Brand> Brands { get; set; }
-    public DbSet<InteriorDesigner> InteriorDesigners { get; set; }
     public DbSet<Consultation> Consultations { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Design> Designs { get; set; }
