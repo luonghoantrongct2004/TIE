@@ -10,5 +10,9 @@ public class Consultation
 
     // Quan hệ với ApplicationUser (người dùng)
     public virtual User? User { get; set; }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 2ba4cdaedd87a168a436e1386499f4457293d092
 }
 
