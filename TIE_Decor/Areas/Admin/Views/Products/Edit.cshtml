@@ -1,41 +1,44 @@
 ﻿@model TIE_Decor.Entities.Product
 
 <!-- Start Container Fluid -->
+<!-- Start Container Fluid -->
 <div class="container-xxl">
 
-    <form id="productForm" action="/admin/products/edit" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone">
+    <form id="productForm" action="/admin/products/edit" method="post" enctype="multipart/form-data">
         <input type="hidden" name="ProductId" value="@Model.ProductId" />
-    <div class="row">
-        <div class="col-xl-3 col-lg-4">
-            <div class="card">
-                <div class="card-body">
+        @Html.AntiForgeryToken() <!-- CSRF Token để bảo mật -->
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
                         <img src="@Model?.ImageUrl?.Split(',').FirstOrDefault()" alt="" class="img-fluid rounded bg-light">
-                    <div class="mt-3">
-                        <h4>Men Black Slim Fit T-shirt <span class="fs-14 text-muted ms-1">Year: @Model?.Year</span></h4>
-                        <h5 class="text-dark fw-medium mt-3">Price :</h5>
-                        <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
-                            @Model?.Price
-                        </h4>
                         <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Category :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
-                                @Model?.Category?.CategoryName
+                            <h4>@Model?.ProductName <span class="fs-14 text-muted ms-1">Year: @Model?.Year</span></h4>
+                            <h5 class="text-dark fw-medium mt-3">Price :</h5>
+                            <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
+                                $@Model?.Price
+                            </h4>
+                            <div class="mt-3">
+                                <h5 class="text-dark fw-medium">Category :</h5>
+                                <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                                    @Model?.Category?.CategoryName
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Brand :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
-                                @Model?.Brand?.Name
+                            <div class="mt-3">
+                                <h5 class="text-dark fw-medium">Brand :</h5>
+                                <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
+                                    @Model?.Brand?.Name
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-xl-9 col-lg-8 ">
+            <div class="col-xl-9 col-lg-8">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 ">
+                    <div class="col-xl-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Product Information</h4>
@@ -61,13 +64,13 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label asp-for="Brand" class="form-label">Brand</label>
-                                            <select class="form-control" id="Brand" name="BrandId">
+                                            <label asp-for="BrandId" class="form-label">Brand</label>
+                                            <select class="form-control" id="BrandId" name="BrandId">
                                                 @foreach (var brand in (List<Brand>)ViewData["Brands"])
                                                 {
                                                     <option value="@brand.Id">@brand.Name</option>
                                                 }
-                                                }
+                                            }
                                             </select>
                                         </div>
                                     </div>
@@ -77,6 +80,14 @@
                                             <input type="number" name="Year" value="@Model.Year" id="Year" class="form-control" placeholder="Year">
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Description</label>
+                                    <input type="text" class="form-control bg-light-subtle" id="description" name="Description" value="@Model.Description" rows="7"></input>
                                 </div>
                             </div>
                         </div>
@@ -127,32 +138,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
-
     </form>
 </div>
-<!-- End Container Fluid -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    function confirmEdit(event) {
-        event.preventDefault(); // Ngăn form submit ngay lập tức
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "Do you want to save changes to this product?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, save it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Submit form nếu xác nhận
-                document.getElementById('productForm').submit();
-            }
-        });
-    }
-</script>
-

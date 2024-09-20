@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using TIE_Decor.DbContext;
 using TIE_Decor.Models;
@@ -17,7 +18,7 @@ namespace TIE_Decor.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Products.Include(c => c.Category).Include(b => b.Brand).ToList());
         }
 
         public IActionResult Privacy()

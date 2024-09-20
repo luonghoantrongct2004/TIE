@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
 }
+@model IEnumerable<Product>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -196,38 +197,17 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/projects/1.jpg" alt=""> </div>
-                                <div class="con">
-                                    <h6><a href="cotton-house.html">Interior</a></h6>
-                                    <h5><a href="cotton-house.html">Cotton House</a></h5>
-                                    <div class="line"></div> <a href="cotton-house.html"><i class="ti-arrow-right"></i></a>
+                            @foreach (var item in Model)
+                            {
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
+                                    <div class="con">
+                                        <h6><a href="/products/details/@item.ProductId">@item.ProductName</a></h6>
+                                        <h5><a href="/products/details/@item.ProductId">@item.Price</a></h5>
+                                        <div class="line"></div> <a href="/products/details/@item.ProductId"><i class="ti-arrow-right"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/projects/2.jpg" alt=""> </div>
-                                <div class="con">
-                                    <h6><a href="armada-center.html">Exterior</a></h6>
-                                    <h5><a href="armada-center.html">Armada Center</a></h5>
-                                    <div class="line"></div> <a href="armada-center.html"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/projects/3.jpg" alt=""> </div>
-                                <div class="con">
-                                    <h6><a href="stonya-villa.html">Urban</a></h6>
-                                    <h5><a href="stonya-villa.html">Stonya Villa</a></h5>
-                                    <div class="line"></div> <a href="stonya-villa.html"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/projects/4.jpg" alt=""> </div>
-                                <div class="con">
-                                    <h6><a href="prime-hotel.html">Interior</a></h6>
-                                    <h5><a href="prime-hotel.html">Prime Hotel</a></h5>
-                                    <div class="line"></div> <a href="prime-hotel.html"><i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -289,42 +269,18 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/slider/1.jpg" alt=""> </div>
-                                <div class="con">
-                                    <span class="category">
-                                        <a href="blog.html">Architecture </a> - 20.12.2024
-                                    </span>
-                                    <h5><a href="post.html">Modern Architectural Structures</a></h5>
+                              @foreach (var item in Model)
+                            {
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
+                                    <div class="con">
+                                        <span class="category">
+                                            <a href="/products/details/@item.ProductId">@item.ProductName </a> - @item.Year
+                                        </span>
+                                        <h5><a href="/products/details/@item.ProductId">@item.Category?.CategoryName</a></h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/slider/2.jpg" alt=""> </div>
-                                <div class="con">
-                                    <span class="category">
-                                        <a href="blog.html">Interior</a> - 18.12.2024
-                                    </span>
-                                    <h5><a href="post.html">Modernism in Architecture</a></h5>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/slider/3.jpg" alt=""> </div>
-                                <div class="con">
-                                    <span class="category">
-                                        <a href="blog.html">Urban</a> - 16.12.2024
-                                    </span>
-                                    <h5><a href="post.html">Postmodern Architecture</a></h5>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="position-re o-hidden"> <img src="img/slider/4.jpg" alt=""> </div>
-                                <div class="con">
-                                    <span class="category">
-                                        <a href="blog.html">Planing</a> - 14.12.2024
-                                    </span>
-                                    <h5><a href="post.html">Modern Architecture Buildings</a></h5>
-                                </div>
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -332,7 +288,7 @@
         </section>
         <!-- Promo video - Testiominals -->
         <section class="testimonials">
-            <div class="background bg-img bg-fixed section-padding pb-0" data-background="img/banner2.jpg" data-overlay-dark="3">
+            <div class="background bg-img bg-fixed section-padding pb-0" data-background="/img/banner2.jpg" data-overlay-dark="3">
                 <div class="container">
                     <div class="row">
                         <!-- Promo video -->
@@ -366,7 +322,7 @@
                                         <span class="quote"><img src="img/quot.png" alt=""></span>
                                         <p>Architect dapibus augue metus the nec feugiat erat hendrerit nec. Duis ve ante the lemon sanleo nec feugiat erat hendrerit necuis ve ante.</p>
                                         <div class="info">
-                                            <div class="author-img"> <img src="img/team/1.jpg" alt=""> </div>
+                                            <div class="author-img"> <img src="/img/team/1.jpg" alt=""> </div>
                                             <div class="cont">
                                                 <h6>Jason Brown</h6> <span>Crowne Plaza Owner</span>
                                             </div>
