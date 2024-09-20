@@ -1,24 +1,26 @@
-﻿@model TIE_Decor.Entities.Category
+﻿@model TIE_Decor.Entities.Brand
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
+
 <!-- Start Container Fluid -->
 <div class="row p-4 justify-content-center">
     <div class="col-md-4">
         <h1 class="mb-4">
-            CATEGORY CREATE
+            BRAND CREATE
         </h1>
-        <form action="/admin/Categories/Create" method="post">
+        <form action="/admin/Brands/Create" method="post">
+            @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="CategoryName" class="control-label"></label>
-                <input asp-for="CategoryName" class="form-control mt-2" />
-                <span asp-validation-for="CategoryName" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control mt-2" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group mt-3 me-3 text-end">
                 <input type="submit" value="Save" class="btn btn-primary" />
-                <a href="/admin/Categories" class="btn btn-secondary">Cancel</a>
+                <a href="/admin/Brands" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>
