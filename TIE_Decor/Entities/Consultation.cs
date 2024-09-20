@@ -3,7 +3,7 @@
 public class Consultation
 {
     public int ConsultationId { get; set; }  // ID của buổi tư vấn
-    public int UserId { get; set; }  // ID của người dùng (chủ nhà)
+    public int UserId { get; set; }
     public int DesignerId { get; set; }  // ID của nhà thiết kế
     public DateTime ScheduledTime { get; set; }  // Thời gian diễn ra buổi tư vấn
     public string Status { get; set; } = "Đã đặt lịch";  // Trạng thái của buổi tư vấn (ví dụ: "Đã đặt lịch", "Hoàn thành", "Hủy")

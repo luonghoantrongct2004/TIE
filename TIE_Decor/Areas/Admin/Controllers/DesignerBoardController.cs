@@ -31,11 +31,17 @@ namespace TIE_Decor.Areas.Admin.Controllers
 
             string designerId = designerIdClaim.Value;
 
+            // Convert designerId to an int if necessary
+            if (!int.TryParse(designerId, out int designerIdInt))
+            {
+                return BadRequest("Invalid DesignerId.");
+            }
+
             // Lấy danh sách các buổi tư vấn có DesignerId bằng giá trị từ token
             var consultations = await _context.Consultations
                 .Include(c => c.User)
                 .Include(c => c.Designer)
-                .Where(c => c.DesignerId == designerId) // Sử dụng DesignerId kiểu chuỗi
+                .Where(c => c.DesignerId == designerIdInt) // Compare int to int
                 .ToListAsync();
 
             return View(consultations);
