@@ -35,6 +35,8 @@ namespace TIE_Decor.Areas.Admin.Controllers
             }
 
             var product = await _context.Products
+                .Include(c => c.Category)
+                .Include(b => b.Brand)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
@@ -52,7 +54,6 @@ namespace TIE_Decor.Areas.Admin.Controllers
             ViewData["Brands"] = _context.Brands.ToList();
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Create([Bind("ProductId,ProductName,Price,Description,Year")] Product product, List<IFormFile> images)
         {
@@ -63,41 +64,43 @@ namespace TIE_Decor.Areas.Admin.Controllers
                     // Danh sách để lưu đường dẫn các ảnh đã upload
                     var imageUrls = new List<string>();
 
-                // Thư mục lưu trữ ảnh
-                var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+                    // Thư mục lưu trữ ảnh
+                    var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
 
-                if (!Directory.Exists(uploadPath))
-                {
-                    Directory.CreateDirectory(uploadPath);
-                }
-
-                // Xử lý các tệp ảnh được tải lên
-                foreach (var image in images)
-                {
-                    if (image != null && image.Length > 0)
+                    // Kiểm tra và tạo thư mục nếu chưa tồn tại
+                    if (!Directory.Exists(uploadPath))
                     {
-                        // Tạo tên file duy nhất cho từng ảnh để tránh trùng lặp
-                        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-                        var filePath = Path.Combine(uploadPath, fileName);
-
-                        // Lưu ảnh vào thư mục
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await image.CopyToAsync(stream);
-                        }
-
-                        // Thêm đường dẫn ảnh vào danh sách
-                        imageUrls.Add("/uploads/" + fileName);
+                        Directory.CreateDirectory(uploadPath);
                     }
-                }
 
-                // Gán danh sách đường dẫn ảnh vào product
-                product.ImageUrl = imageUrls;
+                    // Xử lý các tệp ảnh được tải lên
+                    foreach (var image in images)
+                    {
+                        if (image != null && image.Length > 0)
+                        {
+                            // Tạo tên file duy nhất cho từng ảnh để tránh trùng lặp
+                            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                            var filePath = Path.Combine(uploadPath, fileName);
 
-                // Thêm sản phẩm vào cơ sở dữ liệu
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return Json(new { success = true, message = "Product created successfully!" });
+                            // Lưu ảnh vào thư mục
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await image.CopyToAsync(stream);
+                            }
+
+                            // Thêm đường dẫn ảnh vào danh sách
+                            imageUrls.Add("/uploads/" + fileName);
+                        }
+                    }
+
+                    // Gán danh sách đường dẫn ảnh vào product
+                    product.ImageUrl = string.Join(",", imageUrls);
+
+                    // Thêm sản phẩm vào cơ sở dữ liệu
+                    _context.Add(product);
+                    await _context.SaveChangesAsync();
+
+                    return Json(new { success = true, message = "Product created successfully!" });
                 }
                 catch (Exception ex)
                 {
@@ -183,8 +186,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
                             }
                         }
 
-                        // Gán danh sách đường dẫn ảnh mới vào sản phẩm
-                        existingProduct.ImageUrl = imageUrls;
+                        existingProduct.ImageUrl = string.Join(",", imageUrls);
                     }
 
                     // Cập nhật sản phẩm trong cơ sở dữ liệu
@@ -206,17 +208,22 @@ namespace TIE_Decor.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
+                // Remove the product from the database
                 _context.Products.Remove(product);
 
-                // Nếu cần, cũng có thể xóa các tệp ảnh đã upload:
-                if (product.ImageUrl != null)
+                // Check if there are any image URLs to delete
+                if (!string.IsNullOrEmpty(product.ImageUrl))
                 {
-                    foreach (var imageUrl in product.ImageUrl)
+                    // Split the comma-separated image URLs into a list
+                    var imageUrls = product.ImageUrl.Split(',');
+
+                    // Delete each image file
+                    foreach (var imageUrl in imageUrls)
                     {
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imageUrl.TrimStart('/'));
                         if (System.IO.File.Exists(filePath))
@@ -225,11 +232,14 @@ namespace TIE_Decor.Areas.Admin.Controllers
                         }
                     }
                 }
+
+                // Save changes to the database
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
 
         private bool ProductExists(int id)

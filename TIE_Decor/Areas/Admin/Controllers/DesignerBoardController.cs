@@ -34,8 +34,6 @@ namespace TIE_Decor.Areas.Admin.Controllers
             // Lấy danh sách các buổi tư vấn có DesignerId bằng giá trị từ token
             var consultations = await _context.Consultations
                 .Include(c => c.User)
-                .Include(c => c.Designer)
-                .Where(c => c.DesignerId == designerId) // Sử dụng DesignerId kiểu chuỗi
                 .ToListAsync();
 
             return View(consultations);

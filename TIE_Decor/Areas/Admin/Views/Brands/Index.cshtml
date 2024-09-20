@@ -1,10 +1,11 @@
-﻿@model IEnumerable<TIE_Decor.Entities.Category>
+﻿@model IEnumerable<TIE_Decor.Entities.Brand>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
                <!-- Start Container Fluid -->
     <div class="container-xxl">
@@ -12,12 +13,12 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center gap-1">
-                        <div><h4 class="card-title">All Categories List</h4></div>
+                        <div><h4 class="card-title">All Brands List</h4></div>
 
-                        <div class="flex-grow-1"><input type="text" id="searchInput" class="form-control w-50" style="margin-left: auto" placeholder="Search Categories..." onkeyup="searchCategories()"></div>
+                        <div class="flex-grow-1"><input type="text" id="searchInput" class="form-control w-50" style="margin-left: auto" placeholder="Search Brands..." onkeyup="searchBrands()"></div>
 
                         <div>
-                            <a class="btn btn-sm btn-primary" href="/admin/Categories/Create">Create New</a>
+                            <a class="btn btn-sm btn-primary" href="/admin/Brands/Create">Create New</a>
                         </div>
                     </div>
                     <div>
@@ -27,7 +28,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>
-                                                    @Html.DisplayNameFor(model => model.CategoryName)
+                                                    @Html.DisplayNameFor(model => model.Name)
                                             </th>
                                             <th>Actions</th>
                                         </tr>
@@ -37,16 +38,16 @@
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.CategoryId)
+                                                @Html.DisplayFor(modelItem => item.Id)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.CategoryName)
+                                                @Html.DisplayFor(modelItem => item.Name)
                                             </td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                <a href="/admin/Categories/Details/@item.CategoryId" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                <a href="/admin/Categories/Edit/@item.CategoryId" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                    <a href="javascript:void(0);" onclick="confirmDelete('@item.CategoryId')" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                <a href="/admin/Brands/Details/@item.Id" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                <a href="/admin/Brands/Edit/@item.Id" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                    <a href="javascript:void(0);" onclick="confirmDelete('@item.Id')" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -96,7 +97,7 @@
         var filteredRows = rows; // Khởi tạo với tất cả các hàng ban đầu
 
         // Tìm kiếm và hiển thị phân trang
-        function searchCategories() {
+        function searchBrands() {
             var input = document.getElementById("searchInput").value.toLowerCase();
             filteredRows = rows.filter(function (row) {
                 var td = row.getElementsByTagName("td")[1]; // Tìm trong cột CategoryName (cột 2)
@@ -139,7 +140,7 @@
 
             // Tạo nút "Previous"
             var prevBtn = document.createElement('button');
-            prevBtn.textContent = 'Previous';
+        prevBtn.innerHTML = '<i class="bi bi-chevron-compact-left"></i>';
             prevBtn.classList.add('btn', 'btn-primary', 'mx-1');
             prevBtn.disabled = currentPage === 1; // Vô hiệu hóa nếu đang ở trang 1
             prevBtn.addEventListener('click', function () {
@@ -212,7 +213,7 @@
 
             // Tạo nút "Next"
             var nextBtn = document.createElement('button');
-            nextBtn.textContent = 'Next';
+        nextBtn.innerHTML = '<i class="bi bi-chevron-right"></i>';
             nextBtn.classList.add('btn', 'btn-primary', 'mx-1');
             nextBtn.disabled = currentPage === totalPages; // Vô hiệu hóa nếu đang ở trang cuối
             nextBtn.addEventListener('click', function () {
@@ -254,7 +255,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Chuyển hướng đến link xóa
-                    window.location.href = '/admin/Categories/Delete/' + categoryId;
+                    window.location.href = '/admin/Brands/Delete/' + categoryId;
                 }
             })
         }

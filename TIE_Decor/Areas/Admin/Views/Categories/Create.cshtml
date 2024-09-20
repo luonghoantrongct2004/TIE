@@ -3,40 +3,22 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<div class="page-content">
-    <!-- Start Container Fluid -->
-    <div class="row p-4 justify-content-center">
-        <div class="col-md-4">
-            <h1 class="mb-4">
-                CATEGORY CREATE
-            </h1>
-            <form action="/admin/Categories/Create" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="CategoryName" class="control-label"></label>
-                    <input asp-for="CategoryName" class="form-control mt-2" />
-                    <span asp-validation-for="CategoryName" class="text-danger"></span>
-                </div>
-                <div class="form-group mt-3 me-3 text-end">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                    <a href="/admin/Categories" class="btn btn-secondary">Cancel</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- End Container Fluid -->
-    <!-- ========== Footer Start ========== -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a href="#" class="fw-bold footer-text" target="_blank">Techzaa</a>
-                </div>
+<div class="row p-4 justify-content-center">
+    <div class="col-md-4">
+        <h1 class="mb-4">
+            CATEGORY CREATE
+        </h1>
+        <form action="/admin/Categories/Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control mt-2" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
             </div>
-        </div>
-    </footer>
-    <!-- ========== Footer End ========== -->
-
+            <div class="form-group mt-3 me-3 text-end">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a href="/admin/Categories" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>
