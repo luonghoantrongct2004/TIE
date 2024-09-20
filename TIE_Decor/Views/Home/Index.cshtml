@@ -88,6 +88,10 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link " href="contact.html">Contact</a></li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                    }
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item dropdown">
