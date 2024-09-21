@@ -273,12 +273,15 @@ namespace TIE_Decor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ConsultationId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Consultations");
                 });
@@ -310,6 +313,33 @@ namespace TIE_Decor.Migrations
                     b.HasIndex("UserId1");
 
                     b.ToTable("Designs");
+                });
+
+            modelBuilder.Entity("TIE_Decor.Entities.DesignerSchedules", b =>
+                {
+                    b.Property<int>("ScheduleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScheduleId"));
+
+                    b.Property<Guid>("DesignerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ScheduledTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ScheduleId");
+
+                    b.ToTable("DesignerSchedules");
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
@@ -449,9 +479,6 @@ namespace TIE_Decor.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("WorkingHours")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("YearsOfExperience")
                         .HasColumnType("int");
 
@@ -580,7 +607,7 @@ namespace TIE_Decor.Migrations
                 {
                     b.HasOne("TIE_Decor.Entities.User", "User")
                         .WithMany("Consultations")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("User");
                 });
