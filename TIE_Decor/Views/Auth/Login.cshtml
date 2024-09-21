@@ -38,40 +38,47 @@
         <h2>Register</h2>
 <form id="register-form" action="/Auth/Register" method="post" onsubmit="handleRegisterSubmit(event)">
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- Hiển thị lỗi chung -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="RegisterModel.Username"></label>
                 <input name="Username" class="form-control" />
-                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span> <!-- Hiển thị lỗi cho Username -->
+                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span> 
             </div>
 
             <div class="form-group">
                 <label asp-for="RegisterModel.Email"></label>
                 <input name="Email" type="email" class="form-control" />
-                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> <!-- Hiển thị lỗi cho Email -->
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> 
             </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.FullName"></label>
+                <input name="FullName" class="form-control" />
+                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" />
+            </div>
+
 
             <div class="form-group form-group-inline">
                 <div class="form-inline-group">
                     <div>
                         <label asp-for="RegisterModel.Password"></label>
                         <input name="Password" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> <!-- Hiển thị lỗi cho Password -->
+                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> 
                     </div>
                     <div>
                         <label asp-for="RegisterModel.ConfirmPassword"></label>
                         <input name="ConfirmPassword" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span> <!-- Hiển thị lỗi cho Confirm Password -->
+                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span> 
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="RegisterModel.FullName"></label>
-                <input name="FullName" class="form-control" />
-                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span> <!-- Hiển thị lỗi cho Full Name -->
-            </div>
 
             <button type="submit" class="btn btn-primary">Register</button>
             <p class="text-center">
@@ -95,26 +102,33 @@
                 <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> 
             </div>
 
+            <div class="form-group">
+                <label asp-for="RegisterModel.FullName"></label>
+                <input name="FullName" class="form-control" />
+                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" />
+            </div>
+
+
             <div class="form-group form-group-inline">
                 <div class="form-inline-group">
                     <div>
                         <label asp-for="RegisterModel.Password"></label>
                         <input name="Password" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> <!-- Hiển thị lỗi cho Password -->
+                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> 
                     </div>
                     <div>
                         <label asp-for="RegisterModel.ConfirmPassword"></label>
                         <input name="ConfirmPassword" type="password" class="form-control" />
-                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span> <!-- Hiển thị lỗi cho Confirm Password -->
+                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label asp-for="RegisterModel.FullName"></label>
-                <input name="FullName" class="form-control" />
-                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span> <!-- Hiển thị lỗi cho Full Name -->
-            </div>
 
             <button type="submit" class="btn btn-primary">Register</button>
             <p class="text-center">
