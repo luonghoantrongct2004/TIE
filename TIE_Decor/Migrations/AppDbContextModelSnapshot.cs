@@ -314,7 +314,6 @@ namespace TIE_Decor.Migrations
 
                     b.ToTable("Designs");
                 });
-
             modelBuilder.Entity("TIE_Decor.Entities.DesignerSchedules", b =>
                 {
                     b.Property<int>("ScheduleId")
@@ -340,7 +339,11 @@ namespace TIE_Decor.Migrations
                     b.HasKey("ScheduleId");
 
                     b.ToTable("DesignerSchedules");
-                });
+                    modelBuilder.Entity("TIE_Decor.Entities.PageTimeSpent", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
             modelBuilder.Entity("TIE_Decor.Entities.Order", b =>
                 {
@@ -441,84 +444,88 @@ namespace TIE_Decor.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                            b.Property<string>("PageUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("BrandId")
-                        .HasColumnType("int");
+                            b.Property<int>("TimeSpent")
+                                .HasColumnType("int");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
+                            b.Property<DateTime>("VisitDate")
+                                .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.HasKey("Id");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                            b.ToTable("PageTimeSpents");
+                        });
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    modelBuilder.Entity("TIE_Decor.Entities.PageVisit", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
+                            b.Property<string>("PageUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProductId");
+                            b.Property<DateTime>("VisitDate")
+                                .HasColumnType("datetime2");
 
-                    b.HasIndex("BrandId");
+                            b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                            b.ToTable("PageVisits");
+                        });
 
-                    b.ToTable("Products");
-                });
+                    modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
+                        {
+                            b.Property<int>("ProductId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-            modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
-                {
-                    b.Property<int>("ReviewId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
+                            b.Property<int?>("BrandId")
+                                .HasColumnType("int");
 
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<int?>("CategoryId")
+                                .HasColumnType("int");
 
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
+                            b.Property<string>("Description")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
+                            b.Property<string>("ImageUrl")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                            b.Property<decimal>("Price")
+                                .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("UserId1")
-                        .HasColumnType("nvarchar(450)");
+                            b.Property<string>("ProductName")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ReviewId");
+                            b.Property<int>("Year")
+                                .HasColumnType("int");
 
-                    b.HasIndex("ProductId");
+                            b.HasKey("ProductId");
 
-                    b.HasIndex("UserId1");
+                            b.HasIndex("BrandId");
 
-                    b.ToTable("Reviews");
-                });
+                            b.HasIndex("CategoryId");
 
-            modelBuilder.Entity("TIE_Decor.Entities.User", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                            b.ToTable("Products");
+                        });
 
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                    modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
+                        {
+                            b.Property<int>("ReviewId")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
 
                     b.Property<string>("ContactPhone")
                         .HasColumnType("nvarchar(max)");
@@ -526,47 +533,49 @@ namespace TIE_Decor.Migrations
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+                            b.Property<string>("Comment")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)")
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                            b.Property<int?>("ProductId")
+                                .HasColumnType("int");
 
-                    b.Property<string>("Expertise")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<int>("Rating")
+                                .HasColumnType("int");
 
-                    b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<Guid>("UserId")
+                                .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("UserId1")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                            b.HasKey("ReviewId");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                            b.HasIndex("ProductId");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                            b.HasIndex("UserId1");
 
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                            b.ToTable("Reviews");
+                        });
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                    modelBuilder.Entity("TIE_Decor.Entities.User", b =>
+                        {
+                            b.Property<string>("Id")
+                                .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<int>("AccessFailedCount")
+                                .HasColumnType("int");
 
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                            b.Property<string>("ConcurrencyStamp")
+                                .IsConcurrencyToken()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Portfolio")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("Email")
+                                .HasMaxLength(256)
+                                .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<bool>("EmailConfirmed")
+                                .HasColumnType("bit");
 
                     b.Property<string>("ShippingAddress")
                         .HasColumnType("nvarchar(max)");
@@ -574,45 +583,47 @@ namespace TIE_Decor.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                            b.Property<string>("Expertise")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("YearsOfExperience")
-                        .HasColumnType("int");
 
-                    b.HasKey("Id");
+                            b.Property<string>("FullName")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
+                            b.Property<string>("ImageUrl")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                            b.Property<bool>("LockoutEnabled")
+                                .HasColumnType("bit");
 
-                    b.ToTable("Users", (string)null);
-                });
+                            b.Property<DateTimeOffset?>("LockoutEnd")
+                                .HasColumnType("datetimeoffset");
 
-            modelBuilder.Entity("TIE_Decor.Models.ClickTracking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                            b.Property<string>("NormalizedEmail")
+                                .HasMaxLength(256)
+                                .HasColumnType("nvarchar(256)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                            b.Property<string>("NormalizedUserName")
+                                .HasMaxLength(256)
+                                .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("ElementId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("PasswordHash")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
+                            b.Property<string>("PhoneNumber")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                            b.Property<bool>("PhoneNumberConfirmed")
+                                .HasColumnType("bit");
 
-                    b.ToTable("ClickTrackings");
-                });
+                            b.Property<string>("Portfolio")
+                                .HasColumnType("nvarchar(max)");
+
+                            b.Property<string>("SecurityStamp")
+                                .HasColumnType("nvarchar(max)");
+
+                            b.Property<bool>("TwoFactorEnabled")
+                                .HasColumnType("bit");
 
             modelBuilder.Entity("TIE_Decor.Models.PageViewTracking", b =>
                 {
@@ -753,35 +764,37 @@ namespace TIE_Decor.Migrations
                     b.HasOne("TIE_Decor.Entities.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId");
+                            b.Property<string>("UserName")
+                                .HasMaxLength(256)
+                                .HasColumnType("nvarchar(256)");
 
-                    b.HasOne("TIE_Decor.Entities.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                            b.Property<int?>("YearsOfExperience")
+                                .HasColumnType("int");
 
-                    b.Navigation("Brand");
+                            b.HasKey("Id");
 
-                    b.Navigation("Category");
-                });
+                            b.HasIndex("NormalizedEmail")
+                                .HasDatabaseName("EmailIndex");
 
-            modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
-                {
-                    b.HasOne("TIE_Decor.Entities.Product", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ProductId");
+                            b.HasIndex("NormalizedUserName")
+                                .IsUnique()
+                                .HasDatabaseName("UserNameIndex")
+                                .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasOne("TIE_Decor.Entities.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId1");
+                            b.ToTable("Users", (string)null);
+                        });
 
-                    b.Navigation("Product");
+                    modelBuilder.Entity("TIE_Decor.Models.ClickTracking", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Navigation("User");
-                });
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-            modelBuilder.Entity("TIE_Decor.Entities.Brand", b =>
-                {
-                    b.Navigation("Products");
-                });
+                            b.Property<string>("ElementId")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
             modelBuilder.Entity("TIE_Decor.Entities.Category", b =>
                 {
@@ -797,16 +810,175 @@ namespace TIE_Decor.Migrations
                 {
                     b.Navigation("Reviews");
                 });
+                            b.Property<DateTime>("TimeStamp")
+                                .HasColumnType("datetime2");
 
-            modelBuilder.Entity("TIE_Decor.Entities.User", b =>
-                {
-                    b.Navigation("Consultations");
+                            b.HasKey("Id");
 
-                    b.Navigation("Designs");
+                            b.ToTable("ClickTrackings");
+                        });
 
-                    b.Navigation("Reviews");
-                });
+                    modelBuilder.Entity("TIE_Decor.Models.PageViewTracking", b =>
+                        {
+                            b.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                            b.Property<string>("PageUrl")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b.Property<DateTime>("ViewedAt")
+                                .HasColumnType("datetime2");
+
+                            b.HasKey("Id");
+
+                            b.ToTable("PageViewTrackings");
+                        });
+
+                    modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                        {
+                            b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                                .WithMany()
+                                .HasForeignKey("RoleId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+                        });
+
+                    modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.User", null)
+                                .WithMany()
+                                .HasForeignKey("UserId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+                        });
+
+                    modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.User", null)
+                                .WithMany()
+                                .HasForeignKey("UserId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+                        });
+
+                    modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                        {
+                            b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                                .WithMany()
+                                .HasForeignKey("RoleId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+
+                            b.HasOne("TIE_Decor.Entities.User", null)
+                                .WithMany()
+                                .HasForeignKey("UserId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+                        });
+
+                    modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.User", null)
+                                .WithMany()
+                                .HasForeignKey("UserId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Cart", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.Product", "Product")
+                                .WithMany()
+                                .HasForeignKey("ProductId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+
+                            b.HasOne("TIE_Decor.Entities.User", "User")
+                                .WithMany()
+                                .HasForeignKey("UserId1");
+
+                            b.Navigation("Product");
+
+                            b.Navigation("User");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Consultation", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.User", "User")
+                                .WithMany("Consultations")
+                                .HasForeignKey("UserId1");
+
+                            b.Navigation("User");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Design", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.User", "User")
+                                .WithMany("Designs")
+                                .HasForeignKey("UserId1");
+
+                            b.Navigation("User");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.Brand", "Brand")
+                                .WithMany("Products")
+                                .HasForeignKey("BrandId");
+
+                            b.HasOne("TIE_Decor.Entities.Category", "Category")
+                                .WithMany("Products")
+                                .HasForeignKey("CategoryId");
+
+                            b.Navigation("Brand");
+
+                            b.Navigation("Category");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
+                        {
+                            b.HasOne("TIE_Decor.Entities.Product", "Product")
+                                .WithMany("Reviews")
+                                .HasForeignKey("ProductId");
+
+                            b.HasOne("TIE_Decor.Entities.User", "User")
+                                .WithMany("Reviews")
+                                .HasForeignKey("UserId1");
+
+                            b.Navigation("Product");
+
+                            b.Navigation("User");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Brand", b =>
+                        {
+                            b.Navigation("Products");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Category", b =>
+                        {
+                            b.Navigation("Products");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
+                        {
+                            b.Navigation("Reviews");
+                        });
+
+                    modelBuilder.Entity("TIE_Decor.Entities.User", b =>
+                        {
+                            b.Navigation("Consultations");
+
+                            b.Navigation("Designs");
+
+                            b.Navigation("Reviews");
+                        });
 #pragma warning restore 612, 618
+                });
         }
     }
 }

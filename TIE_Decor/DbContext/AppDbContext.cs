@@ -43,4 +43,5 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Order> Orders { get; set; }
     public DbSet<Orderdetail> Orderdetails { get; set; }
 
+
 }

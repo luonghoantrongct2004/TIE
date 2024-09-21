@@ -44,6 +44,7 @@
                                         <th>@Html.DisplayNameFor(model => model.UserName)</th>
                                         <th>@Html.DisplayNameFor(model => model.Email)</th>
                                         <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                                        <th>Avatar</th>
 										<th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,6 +64,7 @@
                                             </td>
                                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                             <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                                        <td><img src="/img/clients/@Html.DisplayFor(modelItem => item.ImageUrl)" width="50" height="50" /></td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <!--<a href="#!" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
