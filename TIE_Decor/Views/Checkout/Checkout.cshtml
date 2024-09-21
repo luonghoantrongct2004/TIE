@@ -1,0 +1,71 @@
+﻿@model TIE_Decor.Entities.CheckoutViewModel
+
+<section class="h-100">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-8">
+                <div class="card p-4">
+                    <h3 class="fw-normal mb-4 text-center">Checkout</h3>
+
+                    <form action="/checkout/ProcessPayment" method="post">
+                    <div class="card-body">
+                        <!-- Thông tin người dùng -->
+                        <h4>User Information</h4>
+                        <p><strong>Name:</strong> @Model.User.FullName</p>
+                        <p><strong>Email:</strong> @Model.User.Email</p>
+
+                        <!-- Nhập địa chỉ giao hàng -->
+                        <div class="mb-3">
+                            <label for="shippingAddress" class="form-label"><strong>Shipping Address:</strong></label>
+                            <input type="text" id="shippingAddress" name="ShippingAddress" class="form-control"
+                                   value="@Model.ShippingAddress" placeholder="Enter your shipping address" required />
+                            <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                        </div>
+
+                        <!-- Nhập số điện thoại liên hệ -->
+                        <div class="mb-3">
+                            <label for="contactPhone" class="form-label"><strong>Contact Phone:</strong></label>
+                            <input type="text" id="contactPhone" name="ContactPhone" class="form-control"
+                                   value="@Model.ContactPhone" placeholder="Enter your contact phone" required />
+                            <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                        </div>
+
+                        <hr>
+
+                        <!-- Thông tin sản phẩm trong giỏ hàng -->
+                        <h4>Order Summary</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td>@item.Product.ProductName</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Product.Price.ToString("C")</td>
+                                        <td>@(item.Product.Price * item.Quantity)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <hr>
+
+                        <h5>Total Price: @Model.TotalPrice.ToString("C")</h5>
+
+                            <button type="submit" class="btn btn-success btn-lg btn-block">Proceed to Pay</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

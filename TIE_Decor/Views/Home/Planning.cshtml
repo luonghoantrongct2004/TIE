@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Planning";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Services Page -->
+<section class="section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title2">Planning</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>This service focuses on comprehensive project planning that lays the groundwork for successful design execution. It involves detailed analysis of client needs, site conditions, and regulatory requirements to create a strategic roadmap.</p>
+                <p>By coordinating timelines, resources, and budgets, the planning process ensures that projects proceed smoothly and efficiently, aligning all stakeholders toward a common goal. The emphasis is on anticipating challenges and developing solutions that maximize both creativity and functionality.</p>
+                <div class="row mb-30">
+                    <div class="col-md-12 gallery-item">
+                        <a href="img/services/7.jpg" title="Planning" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="img/services/7.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 sidebar-side">
+                <aside class="sidebar blog-sidebar">
+                    <div class="sidebar-widget services">
+                        <div class="widget-inner">
+                            <div class="sidebar-title">
+                                <h4>All Services</h4>
+                            </div>
+                            <ul>
+                                <li><a href="@Url.Action("Architecture", "Home")">Achitecture</a></li>
+                                <li><a href="@Url.Action("InteriorDesign", "Home")">Interior Design</a></li>
+                                <li><a href="@Url.Action("UrbanDesign", "Home")">Urban Design</a></li>
+                                <li class="active"><a href="@Url.Action("Planning", "Home")">Planning</a></li>
+                                <li><a href="@Url.Action("Modelling", "Home")">3D Modelling</a></li>
+                                <li><a href="@Url.Action("DecorPlan", "Home")">Decor Plan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+

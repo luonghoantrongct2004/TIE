@@ -6,6 +6,8 @@ public class User : IdentityUser
 {
     public string? FullName { get; set; }
     public string? ImageUrl { get; set; }
+    public string? ShippingAddress { get; set; }
+    public string? ContactPhone { get; set; }
     // Quan hệ 1-nhiều với Consultation (Tư vấn)
     public virtual ICollection<Consultation>? Consultations { get; set; }
 

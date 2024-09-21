@@ -40,4 +40,8 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<ClickTracking> ClickTrackings { get; set; }
     public DbSet<DesignerSchedules> DesignerSchedules { get; set; }
 
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Orderdetail> Orderdetails { get; set; }
+
+
 }
