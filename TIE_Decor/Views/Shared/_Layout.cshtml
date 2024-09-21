@@ -25,107 +25,43 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
-<<<<<<< Updated upstream
-                <a class="logo" href="/"><img id="logo" src="~/img/logo.png" class="logo-img" /></a>
-=======
-                <a href="@Url.Action("Index", "Home")"> <img src="~/img/logo12.png" width="70% !important" class="logo-img" alt="imglogoDecorVista"> </a>
+                <a href="/Home/Index"> <img src="~/img/logo12.png" width="70% !important" class="logo-img" alt="imglogoDecorVista"> </a>
                 <!-- <a class="logo" href="index.html"> <h2>BAUEN</h2> </a> -->
->>>>>>> Stashed changes
             </div>
             <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-<<<<<<< Updated upstream
-                    <li class="nav-item"><a class="nav-link nav-color" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
-=======
-                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("About", "Home")">About</a></li>
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
->>>>>>> Stashed changes
-                        <ul class="dropdown-menu">
-                            <li><a href="/Consultation/AvailableSlots" class="dropdown-item"><span>Services 1</span></a></li>
-                             <li><a href="services2.html" class="dropdown-item"><span>Services 2</span></a></li>
-                            <li><a href="services3.html" class="dropdown-item"><span>Services 3</span></a></li>
-                            <li><a href="services4.html" class="dropdown-item"><span>Services 4</span></a></li>
-                        </ul>
-                    </li>-->
-                    <li class="nav-item dropdown">
-<<<<<<< Updated upstream
-                        <a class="nav-link nav-color dropdown-toggle track-click"  data-element-id="button-1" href="/Products/" aria-expanded="false">Products</i></a>
-=======
                         <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
->>>>>>> Stashed changes
                     </li>
-                    <!--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="kenburns-slider.html" class="dropdown-item"><span>Kenburns Slider</span></a></li>
-                            <li><a href="grid-background.html" class="dropdown-item"><span>Grid Background</span></a></li>
-                            <li><a href="video.html" class="dropdown-item"><span>Video Background</span></a></li>
-                            <li><a href="before-after.html" class="dropdown-item"><span>Before After</span></a></li>
-                            <li><a href="pricing.html" class="dropdown-item"><span>Pricing</span></a></li>
-                            <li><a href="team.html" class="dropdown-item"><span>Team</span></a></li>
-                            <li><a href="careers.html" class="dropdown-item"><span>Careers</span></a></li>
-                            <li><a href="gallery.html" class="dropdown-item"><span>Gallery</span></a></li>
-                            <li><a href="video-gallery.html" class="dropdown-item"><span>Video Gallery</span></a></li>
-                            <li><a href="process.html" class="dropdown-item"><span>Process</span></a></li>
-                            <li><a href="parallax-home.html" class="dropdown-item"><span>Parallax Home</span></a></li>
-                            <li class="dropdown-submenu dropdown">
-                                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" href="#"><span>Other Pages <i class="ti-angle-right"></i></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="testimonials.html" class="dropdown-item"><span>Testimonials</span></a></li>
-                                    <li><a href="faqs.html" class="dropdown-item"><span>Faqs</span></a></li>
-                                    <li><a href="not-found-404.html" class="dropdown-item"><span>404 Page</span></a></li>
-                                    <li><a href="coming-soon.html" class="dropdown-item"><span>Coming Soon</span></a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>-->
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="ti-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="blog.html" class="dropdown-item"><span>Blog 1</span></a></li>
-                            <li><a href="blog2.html" class="dropdown-item"><span>Blog 2</span></a></li>
-                            <li><a href="blog3.html" class="dropdown-item"><span>Blog 3</span></a></li>
-                            <li><a href="blog4.html" class="dropdown-item"><span>Blog 4</span></a></li>
-                        </ul>
+                        
                     </li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
-                        <li class="nav-item"><a class="nav-link nav-color" href="/admin/">Admin</a></li>
+                        <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-<<<<<<< Updated upstream
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Home/Profile">Hello, @User.Identity.Name</a>
-                        </li>
-                        <li class="nav-item">
-                            <form id="logoutForm" action="/Account/Logout" method="post">
-                                <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
-                            </form>
-=======
                         <li class="nav-item dropdown">
                             <a class="nav-link nav-color dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Hello, @User.Identity.Name
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item nav-color" href="/Auth/Profile">Profile</a></li>
+                                <li><a class="dropdown-item nav-color" href="/Home/Profile">Profile</a></li>
                                 <li>
                                     <form id="logoutForm" action="/Auth/Logout" method="post">
                                         @Html.AntiForgeryToken()
-                                        <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
+                                        <button type="submit" class="dropdown-item nav-color" style="cursor:pointer;">Logout</button>
                                     </form>
                                 </li>
                             </ul>
->>>>>>> Stashed changes
                         </li>
                     }
                     else
@@ -149,11 +85,7 @@
         </section>
         <!-- Header Banner -->
         <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
-        <!--<section class="section-padding2">
-            <div class="container">-->
                 @RenderBody()
-                <!--</div>
-		</section>-->
         <!-- Footer -->
         <footer class="main-footer dark">
             <div class="container">
@@ -193,7 +125,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 abot">
-                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-twitter"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-instagram"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-pinterest"></i></a> </div>
+                                <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="/Home/Index"><i class="ti-twitter"></i></a> <a href="/Home/Index"><i class="ti-instagram"></i></a> <a href="/Home/Index"><i class="ti-pinterest"></i></a> </div>
                         </div>
                         <div class="col-md-4">
                             <p class="right"><a href="#">Terms &amp; Conditions</a></p>

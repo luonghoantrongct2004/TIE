@@ -34,15 +34,9 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Consultation> Consultations { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Design> Designs { get; set; }
-<<<<<<< Updated upstream
     public DbSet<Cart> Carts { get; set; }
     public DbSet<TIE_Decor.Entities.Blog> Blog { get; set; }
     public DbSet<PageViewTracking> PageViewTrackings { get; set; }
     public DbSet<ClickTracking> ClickTrackings { get; set; }
     public DbSet<DesignerSchedules> DesignerSchedules { get; set; }
-
-=======
-    public DbSet<PageVisit> PageVisits { get; set; }
-    public DbSet<PageTimeSpent> PageTimeSpents { get; set; }
->>>>>>> Stashed changes
 }
