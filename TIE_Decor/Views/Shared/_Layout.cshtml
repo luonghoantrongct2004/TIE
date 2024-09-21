@@ -45,6 +45,11 @@
                     <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
+                        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
                         <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
@@ -54,6 +59,7 @@
                                 Hello, @User.Identity.Name
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                                 <li><a class="dropdown-item nav-color" href="/Home/Profile">Profile</a></li>
                                 <li>
                                     <form id="logoutForm" action="/Auth/Logout" method="post">
@@ -63,11 +69,15 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
                     }
                     else
                     {
                         <li class="nav-item dropdown">
+
                             <a class="nav-link nav-color dropdown-toggle" href="/Auth/Login">Login</a>
+
                         </li>
                     }
 
