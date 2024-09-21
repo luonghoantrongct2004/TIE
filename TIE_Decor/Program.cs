@@ -1,9 +1,11 @@
 using EduCourse.SeedDataMigration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
 using TIE_Decor.MiddleWare;
+using TIE_Decor.Models;
 using TIE_Decor.Service;
 
 public class Program
@@ -45,7 +47,9 @@ public class Program
         });
         builder.Services.AddControllersWithViews();
 
+        builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
         var app = builder.Build();
+        StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe")["SecretKey"];
 
         if (!app.Environment.IsDevelopment())
         {
