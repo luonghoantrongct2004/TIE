@@ -11,11 +11,11 @@ using TIE_Decor.Entities;
 namespace TIE_Decor.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ConsultationController : Controller
+    public class ConsultationManageController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ConsultationController(AppDbContext context)
+        public ConsultationManageController(AppDbContext context)
         {
             _context = context;
         }
@@ -40,7 +40,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
 
        
         [HttpPost]
-        [Route("Admin/Consultation/Confirm/{id:int}")]
+        [Route("Admin/ConsultationManage/Confirm/{id:int}")]
         public async Task<IActionResult> Confirm(int id)
         {
            
@@ -55,11 +55,11 @@ namespace TIE_Decor.Areas.Admin.Controllers
             await _context.SaveChangesAsync();
 
          
-            return Redirect("/admin/consultation");
+            return Redirect("/admin/consultationmanage");
         }
         
         [HttpPost]
-        [Route("Admin/Consultation/Decline/{id:int}")]
+        [Route("Admin/ConsultationManage/Decline/{id:int}")]
         public async Task<IActionResult> Decline(int id)
         {
             var consultation = await _context.Consultations.FindAsync(id);
@@ -71,7 +71,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
          
             consultation.Status = "Declined";
             await _context.SaveChangesAsync();
-            return Redirect("/admin/consultation");
+            return Redirect("/admin/consultationmanage");
         }
 
        
@@ -87,7 +87,7 @@ namespace TIE_Decor.Areas.Admin.Controllers
             _context.Consultations.Remove(consultation);
             await _context.SaveChangesAsync();
 
-            return Redirect("/admin/consultation");
+            return Redirect("/admin/consultationmanage");
         }
 
         
