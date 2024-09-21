@@ -163,6 +163,14 @@ public class RoleController : Controller
 			return Redirect("/admin/role");
 		}
 
+		// Kiểm tra xem có người dùng nào đang giữ role này không
+		var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+		if (usersInRole.Any())
+		{
+			TempData["ErrorMessage"] = "Cannot delete role because there are users assigned to it.";
+			return Redirect("/admin/role");
+		}
+
 		var result = await _roleManager.DeleteAsync(role);
 		if (result.Succeeded)
 		{
@@ -175,4 +183,5 @@ public class RoleController : Controller
 
 		return Redirect("/admin/role");
 	}
+
 }
