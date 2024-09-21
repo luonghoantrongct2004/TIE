@@ -20,7 +20,38 @@ namespace TIE_Decor.Controllers
         {
             return View(_context.Products.Include(c => c.Category).Include(b => b.Brand).ToList());
         }
-
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Architecture()
+        {
+            return View();
+        }
+        public IActionResult InteriorDesign()
+        {
+            return View();
+        }
+        public IActionResult UrbanDesign()
+        {
+            return View();
+        }
+        public IActionResult Planning()
+        {
+            return View();
+        }
+        public IActionResult Modelling()
+        {
+            return View();
+        }
+        public IActionResult DecorPlan()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

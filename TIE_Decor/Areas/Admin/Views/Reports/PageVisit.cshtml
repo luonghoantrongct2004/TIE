@@ -1,0 +1,90 @@
+﻿@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="visitsChart" width="400" height="200"></canvas>
+    <canvas id="timeSpentChart" width="400" height="200"></canvas>
+
+    <script>
+        // Gọi dữ liệu cho biểu đồ
+        fetch('/Admin/Reports/GetChartData')
+            .then(response => response.json())
+            .then(data => {
+                const pageUrls = data.Visits.map(v => v.PageUrl);
+                const visitCounts = data.Visits.map(v => v.VisitCount);
+                const totalTimeSpent = data.TimeSpent.map(t => t.TotalTimeSpent);
+
+                // Biểu đồ Số lần truy cập
+                const ctxVisits = document.getElementById('visitsChart').getContext('2d');
+                const visitsChart = new Chart(ctxVisits, {
+                    type: 'bar',
+                    data: {
+                        labels: pageUrls,
+                        datasets: [{
+                            label: 'Number of Visits',
+                            data: visitCounts,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+
+                // Biểu đồ Thời gian dành trên mỗi trang
+                const ctxTimeSpent = document.getElementById('timeSpentChart').getContext('2d');
+                const timeSpentChart = new Chart(ctxTimeSpent, {
+                    type: 'bar',
+                    data: {
+                        labels: pageUrls,
+                        datasets: [{
+                            label: 'Total Time Spent (seconds)',
+                            data: totalTimeSpent,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+
+        // Gọi khi người dùng truy cập trang
+        fetch('/admin/reports/trackpagevisit?pageUrl=' + encodeURIComponent(window.location.pathname))
+            .then(response => {
+                if (response.ok) {
+                    console.log("Page visit recorded.");
+                } else {
+                    console.error("Failed to record page visit:", response.statusText);
+                }
+            });
+
+        // Gọi khi người dùng rời khỏi trang
+        window.addEventListener('beforeunload', function() {
+            var timeSpent = calculateTimeSpent(); // Hàm bạn định nghĩa để tính thời gian dành trên trang
+            fetch('/Tracking/TrackTimeSpent?pageUrl=' + window.location.pathname + '&timeSpent=' + timeSpent, { method: 'POST' });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+﻿@{
+	Layout = null;
+}
+<h1>Time Spent Report</h1>
+<canvas id="timeSpentChart"></canvas>
+
+<script>
+    // Gọi API để lấy dữ liệu thời gian người dùng trên trang từ server
+    fetch('/Reports/TimeSpentReport')
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.PageUrl); // Lấy tên các trang
+            const totalTimeSpent = data.map(item => item.TotalTimeSpent); // Lấy tổng thời gian
+            const avgTimeSpent = data.map(item => item.AverageTimeSpent); // Lấy thời gian trung bình
+
+            // Cấu hình biểu đồ Chart.js
+            var ctx = document.getElementById('timeSpentChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels, // Nhãn các trang
+                    datasets: [{
+                        label: 'Total Time Spent (seconds)',
+                        data: totalTimeSpent, // Dữ liệu tổng thời gian
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                    },
+                    {
+                        label: 'Average Time Spent (seconds)',
+                        data: avgTimeSpent, // Dữ liệu thời gian trung bình
+                        backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                        borderColor: 'rgba(255, 159, 64, 1)',
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+</script>
+
