@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="product-categories" class="form-label">Product Categories</label>
-                                <select class="form-control" id="product-categories" name="CategoryId">
+                                <select class="form-control" id="product-categories" asp-for="CategoryId">
                                     @foreach (var category in (List<Category>)ViewData["Categories"])
                                     {
                                         <option value="@category.CategoryId">@category.CategoryName</option>
@@ -30,7 +30,7 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-brand" class="form-label">Brand</label>
-                                    <select class="form-control" id="product-brand" name="BrandId">
+                                    <select class="form-control" id="product-brand" asp-for="BrandId">
                                         @foreach (var brand in (List<Brand>)ViewData["Brands"])
                                         {
                                             <option value="@brand.Id">@brand.Name</option>
@@ -93,8 +93,6 @@
     <script>
         document.getElementById('productForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            var submitButton = document.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
             var formData = new FormData(this);
 
             fetch(this.action, {

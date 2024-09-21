@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,18 +23,16 @@ namespace TIE_Decor.Areas.Admin.Controllers
         // GET: Admin/DesignerBoard
         public async Task<IActionResult> Index()
         {
-            // Lấy DesignerId từ token đăng nhập
-            var designerIdClaim = HttpContext.User.FindFirst("DesignerId"); // "DesignerId" là tên của claim trong token
-            if (designerIdClaim == null)
+
+            var designerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (!Guid.TryParse(designerIdClaim, out Guid designerIdGuid))
             {
-                return Unauthorized("Không tìm thấy DesignerId trong token.");
+                return BadRequest("Invalid DesignerId.");
             }
-
-            string designerId = designerIdClaim.Value;
-
             // Lấy danh sách các buổi tư vấn có DesignerId bằng giá trị từ token
             var consultations = await _context.Consultations
                 .Include(c => c.User)
+                .Where(c => c.UserId == designerIdGuid) 
                 .ToListAsync();
 
             return View(consultations);

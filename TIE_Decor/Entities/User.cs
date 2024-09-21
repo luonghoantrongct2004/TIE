@@ -13,4 +13,10 @@ public class User : IdentityUser
 
     // Quan hệ 1-nhiều với Design (Thiết kế)
     public virtual ICollection<Design> Designs { get; set; }
+    public int? YearsOfExperience { get; set; }
+    public string? Expertise { get; set; }
+
+    public string? Portfolio { get; set; }
+
+
 }

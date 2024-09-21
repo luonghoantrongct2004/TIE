@@ -1,0 +1,91 @@
+﻿@model TIE_Decor.Entities.Blog
+
+<div class="container-xxl">
+    <form id="blogForm" action="/admin/blogs/edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        @Html.AntiForgeryToken() <!-- CSRF Token để bảo mật -->
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="@Model?.ImageUrl" alt="Blog Image" class="img-fluid rounded bg-light">
+                        <div class="mt-3">
+                            <h4>@Model?.Title</h4>
+                            <p class="text-muted">Author: @Model?.Author</p>
+                            <p class="text-muted">Created Date: @Model?.CreatedDate.ToString("dd/MM/yyyy")</p>
+                            <p class="text-muted">Updated Date: @Model?.UpdatedDate?.ToString("dd/MM/yyyy") ?? "Not updated yet"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-9 col-lg-8">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Blog Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="Title" class="form-label">Blog Title</label>
+                                            <input type="text" id="Title" value="@Model.Title" class="form-control" name="Title" placeholder="Blog Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="Author" class="form-label">Author</label>
+                                            <input type="text" id="Author" value="@Model.Author" class="form-control" name="Author" placeholder="Author Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label for="Content" class="form-label">Content</label>
+                                            <textarea class="form-control bg-light-subtle" id="Content" name="Content" rows="7">@Model.Content</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-light mb-3 rounded">
+                            <div class="row justify-content-end g-2">
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-outline-secondary w-100">Save</button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <a href="/admin/blog" class="btn btn-primary w-100">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Upload Blog Cover Photo</h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- File Upload cho ảnh -->
+                                <div class="fallback">
+                                    <input name="image" type="file" />
+                                </div>
+                                <div class="dz-message needsclick">
+                                    <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                                    <h3 class="mt-4">Drop your image here, or <span class="text-primary">click to browse</span></h3>
+                                    <span class="text-muted fs-13">
+                                        PNG, JPG files are allowed.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

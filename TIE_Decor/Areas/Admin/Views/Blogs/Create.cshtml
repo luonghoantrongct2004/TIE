@@ -1,0 +1,102 @@
+﻿@model TIE_Decor.Entities.Blog
+
+<div class="container-xxl">
+    <form id="blogForm" action="/admin/blogs/create" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 ">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Blog Information</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="blog-title" class="form-label">Blog Title</label>
+                                    <input type="text" id="blog-title" class="form-control" name="Title" placeholder="Blog Title" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="blog-author" class="form-label">Author</label>
+                                    <input type="text" id="blog-author" class="form-control" name="Author" value="@User.Identity?.Name" readonly required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="blog-content" class="form-label">Content</label>
+                                    <textarea class="form-control bg-light-subtle" id="blog-content" name="Content" rows="7" placeholder="Write your blog content here" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Add Blog Cover Photo</h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- File Upload cho ảnh -->
+                                <div class="fallback">
+                                    <input name="image" type="file" required />
+                                </div>
+                            </div>
+                            <div class="p-3 bg-light mb-3 rounded">
+                                <div class="row justify-content-end g-2">
+                                    <div class="col-lg-2">
+                                        <button type="submit" class="btn btn-outline-secondary w-100">Create</button>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <a href="/admin/blog" class="btn btn-primary w-100">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('blogForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: data.message,
+                        confirmButtonText: 'Ok'
+                    }).then(() => {
+                        window.location.href = '/admin/blogs';
+                    });
+                } else {
+                    handleFormError(data.message);
+                }
+            })
+            .catch(error => {
+                handleFormError('An unexpected error occurred. Please try again later.');
+            });
+    });
+    function handleFormError(errorMessage) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: errorMessage,
+            confirmButtonText: 'Try Again'
+        });
+    }
+
+</script>

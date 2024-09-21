@@ -1,4 +1,21 @@
 ﻿@model TIE_Decor.Entities.Product
+@{
+    var imageUrls = Model.ImageUrl?.Split(',') ?? new string[0]; // Split the ImageUrl string into an array
+}
+<style>
+    .fixed-size-img {
+        width: 546px; /* Chiều rộng cố định */
+        height: 320px; /* Chiều cao cố định */
+        object-fit: cover; /* 'cover' để cắt xén hình ảnh phù hợp với kích thước, hoặc 'contain' để hiển thị toàn bộ hình ảnh */
+    }
+
+    /* Đảm bảo hình ảnh không bị giãn nở ngoài kích thước định nghĩa */
+    .fixed-size-img-container {
+        width: 546px; /* Chiều rộng cố định */
+        height: 320px; /* Chiều cao cố định */
+        overflow: hidden;
+    }
+</style>
 <!-- Project Page -->
 <section class="section-padding2">
     <div class="container">
@@ -14,16 +31,17 @@
             <div class="col-md-4">
                 <p><b>Category : </b> @Model.Category?.CategoryName</p>
                 <p><b>Project Name : </b> @Model.ProductName</p>
-                <p><b>Location : </b> Toronto, Canada</p>
+                <p><b>Category : </b> @Model.Category?.CategoryName</p>
+                <p><b>Brand : </b> @Model.Brand?.Name</p>
             </div>
         </div>
         <div class="row mt-30">
-            @foreach (var item in Model.ImageUrl)
+            @foreach (var item in imageUrls)
             {
                 <div class="col-md-6 gallery-item">
                     <a href="@item" title="Architecture" class="img-zoom">
-                    <div class="gallery-box">
-                        <div class="gallery-img"> <img src="@item" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                        <div class="gallery-box fixed-size-img-container mx-auto d-block">
+                            <div class="gallery-img"> <img src="@item" class="img-fluid mx-auto d-block fixed-size-img" alt="work-img"> </div>
                     </div>
                 </a>
             </div>

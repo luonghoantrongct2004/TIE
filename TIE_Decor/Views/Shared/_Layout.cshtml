@@ -25,7 +25,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="index.html"><img id="logo" src="~/img/logo.png" class="logo-img" /></a>
+                <a class="logo" href="/"><img id="logo" src="~/img/logo.png" class="logo-img" /></a>
                 <!-- <a class="logo" href="index.html"> <h2>BAUEN</h2> </a> -->
             </div>
             <!-- Button -->
@@ -33,7 +33,7 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link nav-color" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-color" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
@@ -45,7 +45,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link nav-color dropdown-toggle" href="/Products/" aria-expanded="false">Products</i></a>
+                        <a class="nav-link nav-color dropdown-toggle track-click"  data-element-id="button-1" href="/Products/" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
@@ -189,5 +189,47 @@
     <script src="~/js/before-after.js"></script>
     <script src="~/js/vegas.slider.min.js"></script>
     <script src="~/js/custom.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theo dõi lượt xem trang khi người dùng truy cập trang
+            trackPageView();
+
+            // Theo dõi nhấp chuột trên các phần tử có class track-click
+            document.querySelectorAll('.track-click').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var clickedElement = this.getAttribute('data-element-id'); // Lấy id hoặc thông tin của phần tử được click
+
+                    // Gửi thông tin nhấp chuột về server thông qua API
+                    fetch('/api/clicks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            elementId: clickedElement,
+                            timeStamp: new Date().toISOString()
+                        })
+                    });
+                });
+            });
+        });
+
+        // Hàm gửi thông tin lượt xem trang về server
+        function trackPageView() {
+            var path = window.location.pathname; // Lấy đường dẫn hiện tại
+
+            fetch('/api/page-views', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pageUrl: path,
+                    timeStamp: new Date().toISOString()
+                })
+            });
+        }
+    </script>
+
 </body>
 </html>
