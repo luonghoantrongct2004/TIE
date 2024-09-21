@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "DecorPlan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Services Page -->
+<section class="section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title2">Decor Plan</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>This service provides clients with a comprehensive decor plan that details every aspect of their interior design project. It includes furniture selection, color schemes, materials, and decorative elements, ensuring a cohesive and harmonious aesthetic. </p>
+                <p>The decor plan is tailored to reflect the client's personal style while also considering functionality and comfort. By presenting a clear vision and actionable steps, this service helps clients confidently navigate the decor process, transforming their spaces into beautiful, inviting environments.</p>
+                <div class="row mb-30">
+                    <div class="col-md-6 gallery-item">
+                        <a href="img/services/11.jpg" title="Decor Plan" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="img/services/12.jpg" class="img-fluid mx-auto d-block" alt="Decor Plan"> </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 gallery-item">
+                        <a href="img/services/12.jpg" title="Decor Plan" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="img/services/13.jpg" class="img-fluid mx-auto d-block" alt="Decor Plan"> </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 sidebar-side">
+                <aside class="sidebar blog-sidebar">
+                    <div class="sidebar-widget services">
+                        <div class="widget-inner">
+                            <div class="sidebar-title">
+                                <h4>All Services</h4>
+                            </div>
+                            <ul>
+                                <li><a href="@Url.Action("Architecture", "Home")">Achitecture</a></li>
+                                <li><a href="@Url.Action("InteriorDesign", "Home")">Interior Design</a></li>
+                                <li><a href="@Url.Action("UrbanDesign", "Home")">Urban Design</a></li>
+                                <li><a href="@Url.Action("Planning", "Home")">Planning</a></li>
+                                <li><a href="@Url.Action("Modelling", "Home")">3D Modelling</a></li>
+                                <li class="active"><a href="@Url.Action("DecorPlan", "Home")">Decor Plan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
