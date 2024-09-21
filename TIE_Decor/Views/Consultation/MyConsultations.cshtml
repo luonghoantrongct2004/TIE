@@ -2,27 +2,35 @@
 
 <h2>Danh sách buổi tư vấn của bạn</h2>
 
-@if (Model.Count == 0)
+@if (!Model.Any())
 {
     <p>Bạn chưa có buổi tư vấn nào.</p>
 }
 else
 {
-    <table>
+    <table style="width: 100%; border-collapse: collapse; text-align: center; margin: 0 auto;">
         <thead>
-            <tr>
-                <th>Thời gian</th>
-                <th>Trạng thái</th>
-                <th>Ghi chú</th>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 8px; width: 30%;">Thời gian</th>
+                <th style="padding: 8px; width: 30%;">Trạng thái</th>
+                <th style="padding: 8px; width: 40%;">Ghi chú</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var consultation in Model)
             {
+                var statusText = consultation.Status switch
+                {
+                    "Pending" => "<span style='color: orange;'>⏳ Đang chờ</span>",
+                    "Booked" => "<span style='color: red;'>❌ Đã đặt</span>",
+                    "Completed" => "<span style='color: green;'>✅ Hoàn thành</span>",
+                    _ => "<span style='color: gray;'>Không xác định</span>"
+                };
+
                 <tr>
-                    <td>@consultation.ScheduledTime.ToString("dd/MM/yyyy HH:mm")</td>
-                    <td>@consultation.Status</td>
-                    <td>@consultation.Notes</td>
+                    <td style="padding: 8px;">@consultation.ScheduledTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td style="padding: 8px;">@Html.Raw(statusText)</td>
+                    <td style="padding: 8px;">@consultation.Notes</td>
                 </tr>
             }
         </tbody>
