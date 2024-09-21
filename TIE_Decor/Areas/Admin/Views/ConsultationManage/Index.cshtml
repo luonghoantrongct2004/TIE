@@ -1,0 +1,248 @@
+﻿@model IEnumerable<TIE_Decor.Entities.Consultation>
+
+@{
+    ViewData["Title"] = "Consultation Management";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Consultation List</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 table-hover table-centered">
+                        <thead class="bg-light-subtle">
+                            <tr>
+                                <th>Consultation ID</th>
+                                <th>User</th>
+                                <th>Scheduled Time</th>
+                                <th>Status</th>
+                                <th>Notes</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.ConsultationId</td>
+                                    <td>@item.User?.FullName</td>
+                                    <td>@item.ScheduledTime.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@item.Status</td>
+                                    <td>@item.Notes</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            @if (item.Status == "Pending")
+                                            {
+                                                <form asp-action="Confirm" asp-route-id="@item.ConsultationId" method="post">
+                                                    <button type="submit" class="btn btn-soft-success btn-sm">Confirm</button>
+                                                </form>
+                                                <form asp-action="Decline" asp-route-id="@item.ConsultationId" method="post">
+                                                    <button type="submit" class="btn btn-soft-warning btn-sm">Decline</button>
+                                                </form>
+                                                <a href="javascript:void(0);" onclick="confirmDelete('@item.ConsultationId')" class="btn btn-soft-danger btn-sm">
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            }
+                                            else if (item.Status == "Confirmed")
+                                            {
+                                                <form asp-action="Decline" asp-route-id="@item.ConsultationId" method="post">
+                                                    <button type="submit" class="btn btn-soft-warning btn-sm">Decline</button>
+                                                </form>
+                                                <a href="javascript:void(0);" onclick="confirmDelete('@item.ConsultationId')" class="btn btn-soft-danger btn-sm">
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            }
+                                            else if (item.Status == "Declined")
+                                            {
+                                                <a href="javascript:void(0);" onclick="confirmDelete('@item.ConsultationId')" class="btn btn-soft-danger btn-sm">
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="pagination" class="mt-3 text-center"></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script>
+    var currentPage = 1;
+    var rowsPerPage = 5; // Số lượng hàng trên mỗi trang
+    var table = document.querySelector(".table tbody");
+    var rows = Array.from(table.getElementsByTagName("tr")); // Lấy tất cả các hàng vào mảng
+    var filteredRows = rows; // Khởi tạo với tất cả các hàng ban đầu
+
+    // Tìm kiếm và hiển thị phân trang
+    function searchCategories() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        filteredRows = rows.filter(function (row) {
+            var td = row.getElementsByTagName("td")[1]; // Tìm trong cột CategoryName (cột 2)
+            if (td) {
+                var txtValue = td.textContent || td.innerText;
+                return txtValue.toLowerCase().indexOf(input) > -1;
+            }
+            return false;
+        });
+
+        // Sau khi lọc, cập nhật phân trang
+        totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+        currentPage = 1; // Đặt lại trang về 1 khi có tìm kiếm mới
+        displayRows(filteredRows);
+        setupPagination(filteredRows);
+    }
+
+    // Hiển thị các hàng dựa trên trang hiện tại
+    function displayRows(filteredRows) {
+        // Ẩn tất cả các hàng
+        rows.forEach(function (row) {
+            row.style.display = 'none'; // Ẩn tất cả các hàng
+        });
+
+        // Hiển thị các hàng phù hợp với trang hiện tại
+        var start = (currentPage - 1) * rowsPerPage;
+        var end = start + rowsPerPage;
+
+        for (var i = start; i < end && i < filteredRows.length; i++) {
+            filteredRows[i].style.display = ''; // Hiển thị các hàng từ start đến end
+        }
+    }
+
+    // Tạo các nút phân trang
+    function setupPagination(filteredRows) {
+        var pagination = document.getElementById('pagination');
+        pagination.innerHTML = '';
+
+        var totalPages = Math.ceil(filteredRows.length / rowsPerPage);
+
+        // Tạo nút "Previous"
+        var prevBtn = document.createElement('button');
+        prevBtn.textContent = 'Previous';
+        prevBtn.classList.add('btn', 'btn-primary', 'mx-1');
+        prevBtn.disabled = currentPage === 1; // Vô hiệu hóa nếu đang ở trang 1
+        prevBtn.addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                displayRows(filteredRows);
+                setupPagination(filteredRows);
+            }
+        });
+        pagination.appendChild(prevBtn);
+
+        // Hiển thị tối đa 3 trang, thêm "..." nếu cần
+        var startPage = Math.max(currentPage - 1, 1); // Hiển thị tối đa 3 trang, bắt đầu từ trang hiện tại
+        var endPage = Math.min(startPage + 2, totalPages); // Chỉ hiển thị 3 trang
+
+        if (startPage > 1) {
+            var firstPage = document.createElement('button');
+            firstPage.textContent = '1';
+            firstPage.classList.add('btn', 'btn-primary', 'mx-1');
+            firstPage.addEventListener('click', function () {
+                currentPage = 1;
+                displayRows(filteredRows);
+                setupPagination(filteredRows);
+            });
+            pagination.appendChild(firstPage);
+
+            if (startPage > 2) {
+                var dots = document.createElement('span');
+                dots.textContent = '...';
+                pagination.appendChild(dots);
+            }
+        }
+
+        for (var i = startPage; i <= endPage; i++) {
+            var pageBtn = document.createElement('button');
+            pageBtn.textContent = i;
+            pageBtn.classList.add('btn', 'btn-primary', 'mx-1');
+            pageBtn.setAttribute('data-page', i);
+
+            pageBtn.addEventListener('click', function () {
+                currentPage = parseInt(this.getAttribute('data-page'));
+                displayRows(filteredRows);
+                setupPagination(filteredRows); // Cập nhật lại nút phân trang
+            });
+
+            if (i === currentPage) {
+                pageBtn.classList.add('active');
+            }
+
+            pagination.appendChild(pageBtn);
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                var dots = document.createElement('span');
+                dots.textContent = '...';
+                pagination.appendChild(dots);
+            }
+
+            var lastPage = document.createElement('button');
+            lastPage.textContent = totalPages;
+            lastPage.classList.add('btn', 'btn-primary', 'mx-1');
+            lastPage.addEventListener('click', function () {
+                currentPage = totalPages;
+                displayRows(filteredRows);
+                setupPagination(filteredRows);
+            });
+            pagination.appendChild(lastPage);
+        }
+
+        // Tạo nút "Next"
+        var nextBtn = document.createElement('button');
+        nextBtn.textContent = 'Next';
+        nextBtn.classList.add('btn', 'btn-primary', 'mx-1');
+        nextBtn.disabled = currentPage === totalPages; // Vô hiệu hóa nếu đang ở trang cuối
+        nextBtn.addEventListener('click', function () {
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayRows(filteredRows);
+                setupPagination(filteredRows);
+            }
+        });
+        pagination.appendChild(nextBtn);
+    }
+
+    // Khởi tạo hiển thị mặc định
+    function initializePagination() {
+        filteredRows = Array.from(rows); // Lấy toàn bộ các hàng ban đầu
+        totalRows = filteredRows.length;
+        totalPages = Math.ceil(totalRows / rowsPerPage);
+        displayRows(filteredRows);
+        setupPagination(filteredRows);
+    }
+
+    // Khởi chạy khi load trang
+    document.addEventListener('DOMContentLoaded', function () {
+        initializePagination(); // Phân trang ban đầu khi không có tìm kiếm
+    });
+</script>
+
+<script>
+    function confirmDelete(ConsultationId) {
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            text: "This action cannot be undo!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Chuyển hướng đến link xóa
+                window.location.href = '/admin/ConsultationManage/Delete/' + ConsultationId;
+            }
+        })
+    }
+</script>

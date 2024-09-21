@@ -58,6 +58,7 @@ namespace TIE_Decor.Controllers
             if (result.Succeeded)
             {
                 await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, user.FullName));
 
                 return Json(new { success = true, message = "Login successful" });
             }
@@ -89,6 +90,7 @@ namespace TIE_Decor.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                    await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, user.FullName));
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return Json(new { success = true, message = "Registration successful" });
@@ -124,6 +126,7 @@ namespace TIE_Decor.Controllers
                 if (result.Succeeded)
                 {
                     await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+                    await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, user.FullName));
 
                     await _userManager.AddToRoleAsync(user, "Designer");
                     await _signInManager.SignInAsync(user, isPersistent: false);
