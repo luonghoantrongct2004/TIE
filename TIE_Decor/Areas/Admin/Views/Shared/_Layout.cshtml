@@ -23,6 +23,8 @@
      <!-- App css (Require in all Page) -->
      <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
      <!-- Theme Config js (Require in all Page) -->
      <script src="~/assets/js/config.js"></script>
 </head>
@@ -490,7 +492,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/">
                             <span class="nav-icon">
-                                <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
+                                <iconify-icon icon="mdi:home"></iconify-icon>
                             </span>
                             <span class="nav-text"> Home </span>
                         </a>
@@ -508,7 +510,7 @@
                          <li class="nav-item">
                               <a class="nav-link" href="/admin/categories"  role="button" aria-expanded="false" aria-controls="sidebarCategory">
                                    <span class="nav-icon">
-                                        <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                                <i class="bi bi-list-columns"></i>
                                    </span>
                                    <span class="nav-text"> Category </span>
                               </a>
@@ -517,15 +519,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/brands" role="button" aria-expanded="false" aria-controls="sidebarBrand">
                             <span class="nav-icon">
-                                <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                                <i class="bi bi-tag"></i>
                             </span>
                             <span class="nav-text"> Brand </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/blogs" role="button" aria-expanded="false" aria-controls="sidebarBrand">
+                        <a class="nav-link" href="/admin/orders" role="button" aria-expanded="false" aria-controls="sidebarBrand">
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
+                            </span>
+                            <span class="nav-text"> Order </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/blogs" role="button" aria-expanded="false" aria-controls="sidebarBrand">
+                            <span class="nav-icon">
+                                <i class="bi bi-newspaper"></i>
                             </span>
                             <span class="nav-text"> Blog </span>
                         </a>
