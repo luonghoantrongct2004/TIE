@@ -1,31 +1,4 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
-//using TIE_Decor.DbContext;
-//using TIE_Decor.Entities;
-
-//namespace TIE_Decor.Controllers
-//{
-//    public class CartController : Controller
-//    {
-//        private readonly AppDbContext _db;
-
-//        public CartController(AppDbContext db)
-//        {
-//            _db = db;
-//        }
-
-//        public async Task<IActionResult> Index()
-//        {
-//            return View(await _db.Carts.ToListAsync());
-//        }
-
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public async Task<IActionResult> Create([Bind("")])
-//        {
-
-//        }
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -48,9 +21,14 @@ public class CartController : Controller
     }
 
     // Add product to cart
-    [HttpPost]
-    public async Task<IActionResult> AddToCart(int productId, Guid userId)
+    public async Task<IActionResult> AddToCart(int productId)
     {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Redirect("/Auth/Login");
+        }
+
+        Guid userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
         var cartItem = await _context.Carts.FirstOrDefaultAsync(c => c.ProductId == productId && c.UserId == userId);
         if (cartItem != null)
         {
