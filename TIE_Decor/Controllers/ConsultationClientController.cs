@@ -132,7 +132,7 @@ namespace TIE_Decor.Controllers
             }
 
             var isTimeTaken = await _context.Consultations
-                .AnyAsync(c => c.ScheduledTime == selectedTime && (c.DesignerId == designerGuid || c.UserId == Guid.Parse(currentUser.Id)));
+                .AnyAsync(c => c.ScheduledTime == selectedTime && (c.DesignerID == designerGuid || c.UserId == Guid.Parse(currentUser.Id)));
             if (isTimeTaken)
             {
                 return Json(new { success = false, message = "This time slot is already taken" });
@@ -143,7 +143,7 @@ namespace TIE_Decor.Controllers
                 var consultation = new Consultation
                 {
                     UserId = Guid.Parse(currentUser.Id),
-                    DesignerId = designerGuid,
+                    DesignerID = designerGuid,
                     ScheduledTime = selectedTime,
                     Status = "Pending",  // Set status as "Pending"
                     Notes = $"Consultation scheduled with designer {designer.FullName}"

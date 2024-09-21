@@ -38,4 +38,6 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<TIE_Decor.Entities.Blog> Blog { get; set; }
     public DbSet<PageViewTracking> PageViewTrackings { get; set; }
     public DbSet<ClickTracking> ClickTrackings { get; set; }
+    public DbSet<DesignerSchedules> DesignerSchedules { get; set; }
+
 }
