@@ -43,6 +43,7 @@ public class Program
         {
             options.LoginPath = "/Auth/Login";
             options.LogoutPath = "/Auth/Logout";
+            options.AccessDeniedPath = "/Auth/AccessDenied";
         });
 
         // Cấu hình DbContext
@@ -51,6 +52,13 @@ public class Program
             opts.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
         });
         builder.Services.AddControllersWithViews();
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("Admin", policy =>
+                policy.RequireRole("Admin"));
+            options.AddPolicy("Designer", policy =>
+                policy.RequireRole("Designer"));
+        });
 
         builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
         var app = builder.Build();

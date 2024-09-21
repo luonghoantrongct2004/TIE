@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -81,7 +81,8 @@ namespace TIE_Decor.Controllers
             {
                 UserName = model.Username,
                 Email = model.Email,
-                FullName = model.FullName
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
             };
             try
             {
@@ -117,7 +118,8 @@ namespace TIE_Decor.Controllers
             {
                 UserName = model.Username,
                 Email = model.Email,
-                FullName = model.FullName
+                FullName = model.FullName,
+                PhoneNumber = model.PhoneNumber
             };
             try
             {
@@ -149,7 +151,29 @@ namespace TIE_Decor.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "/");
         }
-     
+        [HttpGet]
+        public async Task<IActionResult> UpdateProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null || !await _userManager.IsInRoleAsync(user, "Designer"))
+            {
+                return Forbid(); // or redirect to an appropriate page
+            }
 
+            var model = new DesignerProfileViewModel
+            {
+                FullName = user.FullName,
+                ImageUrl = user.ImageUrl,
+                YearsOfExperience = user.YearsOfExperience,
+                Expertise = user.Expertise,
+                Portfolio = user.Portfolio,
+            };
+
+            return View(model);
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
