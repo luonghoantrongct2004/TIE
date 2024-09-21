@@ -1,4 +1,4 @@
-﻿namespace TIE_Decor.Entities;
+﻿        namespace TIE_Decor.Entities;
 
 public class Consultation
 {
