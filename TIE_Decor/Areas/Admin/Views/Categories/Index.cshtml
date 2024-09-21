@@ -5,7 +5,6 @@
 }
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-<div class="page-content">
 
                <!-- Start Container Fluid -->
     <div class="container-xxl">
@@ -45,8 +44,7 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                <a href="/admin/Categories/Details/@item.CategoryId" class="btn btn-light btn-sm"><iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon></a>
-                                                <a href="/admin/Categories/Edit/@item.CategoryId" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
+                                                    <a href="/admin/Categories/Edit/@item.CategoryId" class="btn btn-soft-primary btn-sm"><iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                     <a href="javascript:void(0);" onclick="confirmDelete('@item.CategoryId')" class="btn btn-soft-danger btn-sm"><iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon></a>
                                                 </div>
                                             </td>
@@ -260,5 +258,3 @@
             })
         }
     </script>
-
-</div>

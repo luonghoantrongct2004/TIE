@@ -1,5 +1,7 @@
 ﻿@model TIE_Decor.Entities.Product
-
+@{
+    var imageUrls = Model.ImageUrl?.Split(',') ?? new string[0]; // Split the ImageUrl string into an array
+}
 <!-- Start Container Fluid -->
 <div class="container-xxl">
 
@@ -7,38 +9,86 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <!-- Crossfade -->
+                    <!-- Crossfade Carousel -->
                     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            @foreach (var item in Model?.ImageUrl.Take(4))
-                            {
-                                <div class="carousel-item">
-                                    <img src="@item" alt="" class="img-fluid bg-light rounded">
-                                </div>
-                            }
-                        </div>
-                        <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100">
-                             @foreach (var item in Model?.ImageUrl.Take(4))
-                            {
-                            <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" aria-current="true" aria-label="Slide 1" class="w-auto h-auto rounded bg-light active">
-                                    <img src="item" class="d-block avatar-xl" alt="swiper-indicator-img">
-                            </button>
-                            }
-                        </div>
+                        @if (imageUrls.Length > 0)
+                        {
+                            <div class="carousel-inner" role="listbox">
+                                @for (int i = 0; i < imageUrls.Length; i++)
+                                {
+                                    var imageUrl = imageUrls[i];
+                                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                                        <img src="@imageUrl" alt="Product Image" class="img-fluid bg-light rounded">
+                                    </div>
+                                }
+                            </div>
+
+                            <div class="carousel-indicators m-0 mt-2 d-lg-flex d-none position-static h-100">
+                                @for (int i = 0; i < imageUrls.Length; i++)
+                                {
+                                    var imageUrl = imageUrls[i];
+                                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="@i" aria-label="Slide @i"
+                                            class="w-auto h-auto rounded bg-light @(i == 0 ? "active" : "")">
+                                        <img src="@imageUrl" class="d-block avatar-xl" alt="swiper-indicator-img">
+                                    </button>
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <p>No images available</p>
+                        }
                     </div>
                 </div>
                 <div class="card-footer border-top">
                     <div class="row g-2">
                         <div class="col-lg-12">
-                            <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center gap-2 w-100" onclick="confirmDelete(@Model.ProductId)">
-                                <i class="bx bx-cart fs-18"></i> Delete
-                            </button>
+                            <form id="deleteForm" action="/admin/products/delete" method="post">
+                                <input name="id" type="hidden" value="@Model.ProductId" />
+                                @Html.AntiForgeryToken() <!-- Thêm CSRF token nếu cần -->
+                                <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center gap-2 w-100" onclick="confirmDelete()">
+                                    <i class="bx bx-remove fs-18"></i> Delete
+                                </button>
+                            </form>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function confirmDelete() {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Nếu người dùng xác nhận, submit form
+                        Swal.fire(
+                            'Deleted!',
+                            'Your product has been deleted.',
+                            'success'
+                        );
+                        document.getElementById('deleteForm').submit();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        // Nếu người dùng chọn hủy, có thể hiện một thông báo khác
+                        Swal.fire(
+                            'Cancelled',
+                            'Your product is safe :)',
+                            'error'
+                        );
+                    }
+                });
+            }
+        </script>
+
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body">
@@ -72,7 +122,7 @@
                             <div class="">
                                 <h5 class="text-dark fw-medium">Category</h5>
                                 <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
-                               @Model.Category.CategoryName
+                               @Model.Category?.CategoryName
                                 </div>
                             </div>
                         </div>
@@ -80,7 +130,7 @@
                             <div class="">
                                 <h5 class="text-dark fw-medium">Brand</h5>
                                 <div class="d-flex flex-wrap gap-2" role="group" aria-label="Basic checkbox toggle button group">
-                                    @Model.Brand.Name
+                                    @Model.Brand?.Name
                                 </div>
                             </div>
                         </div>
@@ -104,104 +154,52 @@
                     <h4 class="card-title">Top Review From World</h4>
                 </div>
                 <div class="card-body">
-                    @foreach (var item in Model?.Reviews.Take(4))
+                    @if(Model.Reviews != null && Model.Reviews.Any())
                     {
-                        <div class="d-flex align-items-center gap-2">
-                            <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-md rounded-circle">
-                            <div>
-                                <h5 class="mb-0">Henny K. Mark</h5>
+
+                        @foreach (var item in Model?.Reviews)
+                        {
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="assets/images/users/avatar-6.jpg" alt="" class="avatar-md rounded-circle">
+                                <div>
+                                    <h5 class="mb-0">Henny K. Mark</h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 mt-3 mb-1">
-                            <ul class="d-flex text-warning m-0 fs-20 list-unstyled">
-                                <li>
-                                    <i class="bx bxs-star"></i>
-                                </li>
-                                <li>
-                                    <i class="bx bxs-star"></i>
-                                </li>
-                                <li>
-                                    <i class="bx bxs-star"></i>
-                                </li>
-                                <li>
-                                    <i class="bx bxs-star"></i>
-                                </li>
-                                <li>
-                                    <i class="bx bxs-star-half"></i>
-                                </li>
-                            </ul>
-                            <p class="fw-medium mb-0 text-dark fs-15">Excellent Quality</p>
-                        </div>
+                            <div class="d-flex align-items-center gap-2 mt-3 mb-1">
+                                <ul class="d-flex text-warning m-0 fs-20 list-unstyled">
+                                    <li>
+                                        <i class="bx bxs-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="bx bxs-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="bx bxs-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="bx bxs-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="bx bxs-star-half"></i>
+                                    </li>
+                                </ul>
+                                <p class="fw-medium mb-0 text-dark fs-15">Excellent Quality</p>
+                            </div>
 
-                        <p class="mb-0 text-dark fw-medium fs-15">Reviewed in Canada on 16 November 2023</p>
-                        <p class="text-muted">Medium thickness. Did not shrink after wash. Good elasticity . XL size Perfectly fit for 5.10 height and heavy body. Did not fade after wash. Only for maroon colour t-shirt colour lightly gone in first wash but not faded. I bought 5 tshirt of different colours. Highly recommended in so low price.</p>
-                        <div class="mt-2">
-                            <a href="#!" class="fs-14 me-3 text-muted"><i class='bx bx-like'></i> Helpful</a>
-                            <a href="#!" class="fs-14 text-muted">Report</a>
-                        </div>
+                            <p class="mb-0 text-dark fw-medium fs-15">Reviewed in Canada on 16 November 2023</p>
+                            <p class="text-muted">Medium thickness. Did not shrink after wash. Good elasticity . XL size Perfectly fit for 5.10 height and heavy body. Did not fade after wash. Only for maroon colour t-shirt colour lightly gone in first wash but not faded. I bought 5 tshirt of different colours. Highly recommended in so low price.</p>
+                            <div class="mt-2">
+                                <a href="#!" class="fs-14 me-3 text-muted"><i class='bx bx-like'></i> Helpful</a>
+                                <a href="#!" class="fs-14 text-muted">Report</a>
+                            </div>
 
-                        <hr class="my-3">
+                            <hr class="my-3">
+                        }
                     }
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-        function confirmDelete(productId) {
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you want to delete this product? This action cannot be undone!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Gửi yêu cầu POST đến phương thức DeleteConfirmed để xóa sản phẩm
-                    deleteProduct(productId);
-                }
-            });
-        }
-
-        function deleteProduct(productId) {
-            fetch(`/admin/products/delete/${productId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        Swal.fire(
-                            'Deleted!',
-                            'The product has been deleted.',
-                            'success'
-                        ).then(() => {
-                            // Reload lại trang sau khi xóa thành công
-                            window.location.reload();
-                        });
-                    } else {
-                        Swal.fire(
-                            'Error!',
-                            'An error occurred while deleting the product.',
-                            'error'
-                        );
-                    }
-                })
-                .catch(error => {
-                    Swal.fire(
-                        'Error!',
-                        'An error occurred while deleting the product.',
-                        'error'
-                    );
-                });
-        }
-    </script>
-
+   
 </div>
 <!-- End Container Fluid -->

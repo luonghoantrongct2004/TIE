@@ -12,8 +12,8 @@ using TIE_Decor.DbContext;
 namespace TIE_Decor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240918081029_Add-ProductCategory")]
-    partial class AddProductCategory
+    [Migration("20240920081421_Alter-Database-by-trong")]
+    partial class AlterDatabasebytrong
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,6 +158,23 @@ namespace TIE_Decor.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TIE_Decor.Entities.Brand", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brands");
+                });
+
             modelBuilder.Entity("TIE_Decor.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -183,11 +200,7 @@ namespace TIE_Decor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConsultationId"));
 
-                    b.Property<int>("DesignerId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Notes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ScheduledTime")
@@ -197,15 +210,13 @@ namespace TIE_Decor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ConsultationId");
-
-                    b.HasIndex("DesignerId");
 
                     b.HasIndex("UserId1");
 
@@ -241,46 +252,6 @@ namespace TIE_Decor.Migrations
                     b.ToTable("Designs");
                 });
 
-            modelBuilder.Entity("TIE_Decor.Entities.InteriorDesigner", b =>
-                {
-                    b.Property<int>("DesignerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DesignerId"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Expertise")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Portfolio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("YearsOfExperience")
-                        .HasColumnType("int");
-
-                    b.HasKey("DesignerId");
-
-                    b.ToTable("InteriorDesigners");
-                });
-
             modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -289,13 +260,8 @@ namespace TIE_Decor.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
-                    b.Property<string>("Brand")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("BrandId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
@@ -305,7 +271,6 @@ namespace TIE_Decor.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
@@ -315,38 +280,16 @@ namespace TIE_Decor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
                     b.HasKey("ProductId");
+
+                    b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("TIE_Decor.Entities.ProductCategory", b =>
-                {
-                    b.Property<int>("ProductCategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductCategoryId"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductCategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
@@ -361,24 +304,19 @@ namespace TIE_Decor.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DesignerId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ReviewId");
-
-                    b.HasIndex("DesignerId");
 
                     b.HasIndex("ProductId");
 
@@ -406,6 +344,13 @@ namespace TIE_Decor.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Expertise")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -429,6 +374,9 @@ namespace TIE_Decor.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Portfolio")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -438,6 +386,9 @@ namespace TIE_Decor.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<int?>("YearsOfExperience")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -505,17 +456,9 @@ namespace TIE_Decor.Migrations
 
             modelBuilder.Entity("TIE_Decor.Entities.Consultation", b =>
                 {
-                    b.HasOne("TIE_Decor.Entities.InteriorDesigner", "Designer")
-                        .WithMany("Consultations")
-                        .HasForeignKey("DesignerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("TIE_Decor.Entities.User", "User")
                         .WithMany("Consultations")
                         .HasForeignKey("UserId1");
-
-                    b.Navigation("Designer");
 
                     b.Navigation("User");
                 });
@@ -531,36 +474,21 @@ namespace TIE_Decor.Migrations
 
             modelBuilder.Entity("TIE_Decor.Entities.Product", b =>
                 {
-                    b.HasOne("TIE_Decor.Entities.Category", null)
+                    b.HasOne("TIE_Decor.Entities.Brand", "Brand")
+                        .WithMany("Products")
+                        .HasForeignKey("BrandId");
+
+                    b.HasOne("TIE_Decor.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId");
-                });
 
-            modelBuilder.Entity("TIE_Decor.Entities.ProductCategory", b =>
-                {
-                    b.HasOne("TIE_Decor.Entities.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TIE_Decor.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Brand");
 
                     b.Navigation("Category");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Review", b =>
                 {
-                    b.HasOne("TIE_Decor.Entities.InteriorDesigner", "Designer")
-                        .WithMany("Reviews")
-                        .HasForeignKey("DesignerId");
-
                     b.HasOne("TIE_Decor.Entities.Product", "Product")
                         .WithMany("Reviews")
                         .HasForeignKey("ProductId");
@@ -569,23 +497,19 @@ namespace TIE_Decor.Migrations
                         .WithMany("Reviews")
                         .HasForeignKey("UserId1");
 
-                    b.Navigation("Designer");
-
                     b.Navigation("Product");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("TIE_Decor.Entities.Category", b =>
+            modelBuilder.Entity("TIE_Decor.Entities.Brand", b =>
                 {
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("TIE_Decor.Entities.InteriorDesigner", b =>
+            modelBuilder.Entity("TIE_Decor.Entities.Category", b =>
                 {
-                    b.Navigation("Consultations");
-
-                    b.Navigation("Reviews");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Product", b =>

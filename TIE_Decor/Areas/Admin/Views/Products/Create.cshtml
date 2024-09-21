@@ -1,7 +1,7 @@
 ﻿@model TIE_Decor.Entities.Product
 
 <div class="container-xxl">
-    <form id="productForm" action="/admin/products/create" method="post" enctype="multipart/form-data" class="dropzone" id="myAwesomeDropzone">
+    <form id="productForm" action="/admin/products/create" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xl-12 col-lg-12 ">
                 <div class="card">
@@ -18,7 +18,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="product-categories" class="form-label">Product Categories</label>
-                                <select class="form-control" id="product-categories" name="CategoryId">
+                                <select class="form-control" id="product-categories" asp-for="CategoryId">
                                     @foreach (var category in (List<Category>)ViewData["Categories"])
                                     {
                                         <option value="@category.CategoryId">@category.CategoryName</option>
@@ -30,7 +30,7 @@
                             <div class="col-lg-4">
                                 <div class="mb-3">
                                     <label for="product-brand" class="form-label">Brand</label>
-                                    <select class="form-control" id="product-brand" name="BrandId">
+                                    <select class="form-control" id="product-brand" asp-for="BrandId">
                                         @foreach (var brand in (List<Brand>)ViewData["Brands"])
                                         {
                                             <option value="@brand.Id">@brand.Name</option>
@@ -48,21 +48,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Pricing Details</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="product-price" class="form-label">Price</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
-                                    <input type="number" id="product-price" name="Price" class="form-control" placeholder="000">
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="product-price" class="form-label">Price</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text fs-20"><i class='bx bx-dollar'></i></span>
+                            <input type="number" id="product-price" name="Price" class="form-control" placeholder="000">
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control bg-light-subtle" id="description" name="Description" rows="7" placeholder="Short description about the product"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Add Product Photos</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- File Upload cho nhiều ảnh -->
+                        <div class="fallback">
+                            <input name="images" type="file" multiple />
+                        </div>
                 </div>
                 <div class="p-3 bg-light mb-3 rounded">
                     <div class="row justify-content-end g-2">
@@ -76,31 +87,12 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Add Product Photos</h4>
-                </div>
-                <div class="card-body">
-                    <!-- File Upload cho nhiều ảnh -->
-                    <div class="fallback">
-                        <input name="images" type="file" multiple />
-                    </div>
-                    <div class="dz-message needsclick">
-                        <i class="bx bx-cloud-upload fs-48 text-primary"></i>
-                        <h3 class="mt-4">Drop your images here, or <span class="text-primary">click to browse</span></h3>
-                        <span class="text-muted fs-13">
-                            PNG, JPG files are allowed.
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.getElementById('productForm').addEventListener('submit', function (e) {
             e.preventDefault();
-
             var formData = new FormData(this);
 
             fetch(this.action, {

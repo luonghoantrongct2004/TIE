@@ -1,33 +1,115 @@
-﻿@model Cart
+﻿@model IEnumerable<Cart>
 
-  <!-- Services 3 -->
-<section class="services section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
-                <h2 class="section-title">Our <span>Cart</span></h2>
-            </div>
-        </div>
-        <div class="row">
-            @if (Model.Products != null && Model.Products.Any()){
-                @foreach (var item in Model.Products)
-                {
-                    <div class="col-md-4">
-                        <div class="services2 mb-60">
-                        <div class="services2-img"><img src="@item.ImageUrl?.First()" alt="" class="w-100"></div>
-                        <div class="services2-content">
-                            <div class="icon"><img src="img/icons/icon-1.png" alt=""></div>
-                            <h3 class="services2-title">@item.ProductName</h3>
-                            <p class="services2-text">@item.Description</p>
-                            <div class="butn-dark mt-20"> <a href="/Products/Details?id=@item.ProductId"><span>Make An Appointment</span></a> </div>
-                        </div>
-                        <div class="title-box">
-                                <h3 class="mb-0">@item.ProductName</h3>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<style>
+    .banner-header {
+        height: 135px;
+    }
+</style>
+<section class="h-100">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="fw-normal mb-0">Shopping Cart</h3>
+                    <div>
+                        @* <p class="mb-0">
+                            <span class="text-muted">Sort by:</span> <a href="#!" class="text-body">
+                                price <i class="fas fa-angle-down mt-1"></i>
+                            </a>
+                        </p> *@
+                        <input class="fs-5 m-0 p-4 pb-2" type="text" id="search-box" placeholder="Search product..." onkeyup="filterCart()" />
+                    </div>
+                </div>
+
+                <div class="card rounded-3 border-0 fw-bolder text-black-50 mb-2">
+                    <div class="card-body px-4 py-1">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="col-md-5 col-lg-5 col-xl-5">
+                                <h4 class="mb-0 ps-3">Products</h4>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <h4 class="mb-0">Price</h4>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+                                <h4 class="mb-0">Quantity</h4>
+                            </div>
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <h4 class="mb-0">Total</h4>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                <h4 class="mb-0"></h4>
+                            </div>
                         </div>
                     </div>
                 </div>
+                @foreach (var item in Model)
+                {
+                    <div class="card rounded-3 mb-4 product-card">
+                        <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    @if (item.Product != null && item.Product.ImageUrl != null && item.Product.ImageUrl.Length > 0)
+                                    {
+                                        <img src="@item.Product.ImageUrl.Split(',').FirstOrDefault()" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                    }
+                                    else
+                                    {
+                                        <p>Image not available</p>
+                                    }
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3 product-name">
+                                    <p class="lead fw-normal mb-2">@item.Product.ProductName</p>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <h5 class="mb-0">@item.Product.Price.ToString("C")</h5>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+                                    <a href="/Cart/DecreaseQuantity?cartId=@item.Id" class="btn btn-link px-2 text-danger"><i class="fas fa-minus"></i></a>
+
+                                    <span class="fs-5" style="padding: 6px 8px;">@item.Quantity</span>
+
+                                    <a href="/Cart/IncreaseQuantity?cartId=@item.Id" class="btn btn-link ps-2 text-danger"><i class="fas fa-plus"></i></a>
+                                </div>
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <h5 class="mb-0">@((item.Product.Price * item.Quantity).ToString("C"))</h5>
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <a href="/Cart/Delete?cartId=@item.Id" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
-            }
+
+                <div class="card border-0">
+                    <div class="card-body text-end">
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
+
+<script>
+    function filterCart() {
+        var input = document.getElementById('search-box');
+        var filter = input.value.toLowerCase(); 
+        var productCards = document.getElementsByClassName('product-card');
+
+        for (var i = 0; i < productCards.length; i++) {
+            var productNameElement = productCards[i].getElementsByClassName('product-name')[0];
+            var productName = productNameElement.textContent || productNameElement.innerText;
+
+            if (productName.toLowerCase().indexOf(filter) > -1) {
+                productCards[i].style.display = "";
+            } else {
+                productCards[i].style.display = "none";
+            }
+        }
+    }
+</script>
