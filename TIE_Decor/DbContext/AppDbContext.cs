@@ -22,6 +22,11 @@ public class AppDbContext : IdentityDbContext<User>
                 entityType.SetTableName(tableName.Substring(6));
             }
         }
+
+        modelBuilder.Entity<Cart>()
+        .HasOne(p => p.Product)
+        .WithMany()
+        .HasForeignKey(p => p.ProductId);
     }
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
@@ -29,8 +34,8 @@ public class AppDbContext : IdentityDbContext<User>
     public DbSet<Consultation> Consultations { get; set; }
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Design> Designs { get; set; }
+    public DbSet<Cart> Carts { get; set; }
     public DbSet<TIE_Decor.Entities.Blog> Blog { get; set; }
     public DbSet<PageViewTracking> PageViewTrackings { get; set; }
-
     public DbSet<ClickTracking> ClickTrackings { get; set; }
 }
