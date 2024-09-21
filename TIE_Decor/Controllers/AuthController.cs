@@ -152,7 +152,6 @@ namespace TIE_Decor.Controllers
             return RedirectToAction("Index", "/");
         }
         [HttpGet]
-        [Authorize(Roles = "Designer")]
         public async Task<IActionResult> UpdateProfile()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -171,32 +170,6 @@ namespace TIE_Decor.Controllers
             };
 
             return View(model);
-        }
-        [HttpPost]
-        [Authorize(Roles = "Designer")]
-        public async Task<IActionResult> UpdateProfile(DesignerProfileViewModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Json(new { success = false, message = "Invalid data" });
-            }
-
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Json(new { success = false, message = "User not found" });
-            }
-
-            user.FullName = model.FullName;
-  
-
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
-            {
-                return Json(new { success = true, message = "Profile updated successfully" });
-            }
-
-            return Json(new { success = false, message = "Update failed", errors = result.Errors.Select(e => e.Description) });
         }
         public IActionResult AccessDenied()
         {

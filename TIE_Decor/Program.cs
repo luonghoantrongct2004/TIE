@@ -1,9 +1,11 @@
 using EduCourse.SeedDataMigration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
 using TIE_Decor.MiddleWare;
+using TIE_Decor.Models;
 using TIE_Decor.Service;
 
 public class Program
@@ -30,7 +32,12 @@ public class Program
         })
         .AddEntityFrameworkStores<AppDbContext>()
         .AddDefaultTokenProviders();
-
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromHours(24); // Thời gian hết hạn của Session
+            options.Cookie.HttpOnly = true; // Chỉ cho phép truy cập qua HTTP
+            options.Cookie.IsEssential = true; // Đảm bảo cookie luôn được gửi đi
+        });
         // Cấu hình Cookie
         builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -52,7 +59,10 @@ public class Program
             options.AddPolicy("Designer", policy =>
                 policy.RequireRole("Designer"));
         });
+
+        builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
         var app = builder.Build();
+        StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe")["SecretKey"];
 
         if (!app.Environment.IsDevelopment())
         {
@@ -65,6 +75,9 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+
+        app.UseSession();
+
         app.UseAuthentication();
         app.UseAuthorization();
 

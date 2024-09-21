@@ -24,15 +24,15 @@
         <p class="text-center">
             Don't have an account? <a href="#" class="register-link" onclick="showRegisterForm()">Register</a>
                 You want to Designer? <a href="#" class="register-link" onclick="showRegisterDesignerForm()">Register Designer</a>
-        </p>
-        
-    </form>
-</div>
+            </p>
+
+        </form>
+    </div>
 
     <!-- Register Form -->
     <div id="register-form" class="auth-form hidden">
         <h2>Register</h2>
-<form id="register-form" action="/Auth/Register" method="post" onsubmit="handleRegisterSubmit(event)">
+        <form id="register-form" action="/Auth/Register" method="post" onsubmit="handleRegisterSubmit(event)">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -89,13 +89,13 @@
             <div class="form-group">
                 <label asp-for="RegisterModel.Username"></label>
                 <input name="Username" class="form-control" />
-                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span> 
+                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="RegisterModel.Email"></label>
                 <input name="Email" type="email" class="form-control" />
-                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> 
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -152,8 +152,8 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                   
-                        window.location.href = '/'; 
+
+                    window.location.href = '/';
                 } else {
                     let errorMessage = data.message;
                     if (data.errors && data.errors.length > 0) {
@@ -177,60 +177,60 @@
             });
     }
 
-// Xử lý submit form register
-function handleRegisterSubmit(event) {
-    event.preventDefault(); // Ngăn form submit ngay lập tức
+    // Xử lý submit form register
+    function handleRegisterSubmit(event) {
+        event.preventDefault(); // Ngăn form submit ngay lập tức
 
-    Swal.fire({
-        title: 'Are you sure?',
-        text: 'Do you want to register this account?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, register!',
-        cancelButtonText: 'Cancel'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            var form = document.querySelector('#register-form form');
-            var formData = new FormData(form);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to register this account?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, register!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.querySelector('#register-form form');
+                var formData = new FormData(form);
 
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: data.message,
-                        confirmButtonText: 'Ok'
-                    }).then(() => {
-                        window.location.href = '/'; // Redirect after successful registration
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: data.message,
+                                confirmButtonText: 'Ok'
+                            }).then(() => {
+                                window.location.href = '/'; // Redirect after successful registration
+                            });
+                        } else {
+                            let errorMessage = data.message;
+                            if (data.errors && data.errors.length > 0) {
+                                errorMessage += '\n' + data.errors.join('\n');
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Registration failed!',
+                                text: errorMessage,
+                                confirmButtonText: 'Try Again'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error occurred!',
+                            text: 'Please try again later.',
+                            confirmButtonText: 'Ok'
+                        });
                     });
-                } else {
-                    let errorMessage = data.message;
-                    if (data.errors && data.errors.length > 0) {
-                        errorMessage += '\n' + data.errors.join('\n');
-                    }
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Registration failed!',
-                        text: errorMessage,
-                        confirmButtonText: 'Try Again'
-                    });
-                }
-            })
-            .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'An error occurred!',
-                    text: 'Please try again later.',
-                    confirmButtonText: 'Ok'
-                });
-            });
-        }
-    });
-}
+            }
+        });
+    }
     function handleRegisterSubmit(event) {
         event.preventDefault(); // Ngăn form submit ngay lập tức
 

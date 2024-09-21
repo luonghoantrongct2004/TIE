@@ -1,0 +1,182 @@
+﻿<style>
+    body {
+        margin-top: -210px;
+    }
+
+    .designer-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 8px;
+        width: 150px;
+        cursor: pointer;
+        text-align: center;
+        transition: border-color 0.3s;
+    }
+
+    .designer-card:hover {
+        border-color: #007bff;
+    }
+
+    #designerInfo, #availableSlotsContainer, #scheduledAppointmentsContainer {
+        margin-top: 20px;
+        display: none;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h2>Select a Designer</h2>
+<div id="designersContainer" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    @foreach (var designer in ViewBag.Designers)
+    {
+        <div class="designer-card" onclick="selectDesigner(this)"
+             data-id="@designer.Id"
+             data-img="@designer.ImageUrl"
+             data-experience="@designer.YearsOfExperience"
+             data-expertise="@designer.Expertise"
+             data-portfolio="@designer.Portfolio">
+            <img src="@designer.ImageUrl" alt="@designer.FullName" style="width: 100%; border-radius: 8px;" />
+            <h4 style="font-size: 14px;">@designer.FullName</h4>
+            <p style="font-size: 12px;">Experience: @designer.YearsOfExperience years</p>
+        </div>
+    }
+</div>
+
+<div id="designerInfo">
+    <h4 id="selectedDesignerName" style="margin-bottom: 10px; font-weight: bold;"></h4>
+    <div id="selectedImageUrl" style="margin-bottom: 10px; text-align: center;">
+        <img src="" alt="Designer Image" style="max-width: 50%; border-radius: 8px;" id="designerImage" />
+    </div>
+    <p id="designerExperience" style="margin: 5px 0;"></p>
+    <p id="designerExpertise" style="margin: 5px 0;"></p>
+    <p id="designerPortfolio" style="margin: 5px 0;"></p>
+</div>
+
+
+
+<div id="scheduledAppointmentsContainer">
+    <h3>Scheduled Appointments</h3>
+    <table id="appointmentsTable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Notes</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="appointmentsBody"></tbody>
+    </table>
+</div>
+
+<input type="hidden" name="designerId" id="designerId" value="" />
+
+<script>
+     function selectDesigner(card) {
+            const designerId = card.getAttribute("data-id");
+            document.getElementById("designerId").value = designerId;
+            document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
+            document.getElementById("designerImage").src = card.getAttribute("data-img");
+            document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
+            document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
+            document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
+            document.getElementById("designerInfo").style.display = 'block'; 
+
+            fetchScheduledAppointments(designerId);
+        }
+    function fetchScheduledAppointments(designerId) {
+        fetch(`/Consultation/GetScheduledAppointments?designerId=${designerId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Fetched Appointments:", data);  // Log dữ liệu trả về để kiểm tra
+                renderScheduledAppointments(data);
+            })
+            .catch(error => {
+                console.error('Error fetching scheduled appointments:', error);
+            });
+    }
+
+    function renderScheduledAppointments(appointments) {
+        const appointmentsBody = document.getElementById("appointmentsBody");
+        appointmentsBody.innerHTML = '';
+
+        if (appointments.length === 0) {
+            appointmentsBody.innerHTML = '<tr><td colspan="5">No scheduled appointments.</td></tr>';
+            return;
+        }
+
+        appointments.forEach(appointment => {
+            const formattedTime = appointment.scheduledTime.replace(' ', 'T');
+            const scheduledDate = new Date(formattedTime);
+            const validDate = !isNaN(scheduledDate) ? scheduledDate : null;
+
+            // Truyền đúng appointment.scheduleId vào confirmAppointment
+            const row = `<tr>
+                <td>${validDate ? validDate.toLocaleDateString() : 'Invalid Date'}</td>
+                <td>${validDate ? validDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Invalid Time'}</td>
+                <td>${appointment.status || 'N/A'}</td>
+                <td>${appointment.notes || 'N/A'}</td>
+                <td>
+                    <button onclick="confirmAppointment('${appointment.scheduleId}')" class="btn btn-primary btn-sm" ${appointment.status !== 'Available' ? 'disabled' : ''}>
+                        Appointment
+                    </button>
+                </td>
+            </tr>`;
+
+            appointmentsBody.innerHTML += row;
+        });
+
+        document.getElementById("scheduledAppointmentsContainer").style.display = 'block';
+    }
+
+    function confirmAppointment(appointmentId) {
+        console.log("Appointment ID:", appointmentId);  // Verify the value
+        console.log("Type of Appointment ID:", typeof appointmentId); // Should be string representing a GUID
+
+        if (confirm('Are you sure you want to confirm this appointment?')) {
+            fetch(`/Consultation/ConfirmConsultation/${appointmentId}`, {
+                method: 'GET'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Appointment confirmed successfully!');
+                        const designerId = document.getElementById("designerId").value;
+                        fetchScheduledAppointments(designerId);
+                    } else {
+                        alert('Failed to confirm appointment: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while confirming the appointment.');
+                });
+        }
+    }
+
+
+</script>
