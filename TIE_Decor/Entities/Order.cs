@@ -24,8 +24,7 @@ namespace TIE_Decor.Entities
         public int? ShipperId { get; set; }
         public User User { get; set; }
         public string Status { get; set; }
-        [Required(ErrorMessage = "Vui lòng chọn phương thức thanh toán")]
-        [Display(Name = "Phương thức thanh toán")]
+        [Required(ErrorMessage = "Please choise your payment method")]
         public string PaymentMethod { get; set; }
         public string ShippingAddress { get; set; }
         public string ContactPhone { get; set; }
