@@ -315,6 +315,7 @@ namespace TIE_Decor.Migrations
                     b.ToTable("Designs");
                 });
 
+<<<<<<< Updated upstream
             modelBuilder.Entity("TIE_Decor.Entities.DesignerSchedules", b =>
                 {
                     b.Property<int>("ScheduleId")
@@ -340,6 +341,49 @@ namespace TIE_Decor.Migrations
                     b.HasKey("ScheduleId");
 
                     b.ToTable("DesignerSchedules");
+=======
+            modelBuilder.Entity("TIE_Decor.Entities.PageTimeSpent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TimeSpent")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("VisitDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PageTimeSpents");
+                });
+
+            modelBuilder.Entity("TIE_Decor.Entities.PageVisit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("VisitDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PageVisits");
+>>>>>>> Stashed changes
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Product", b =>

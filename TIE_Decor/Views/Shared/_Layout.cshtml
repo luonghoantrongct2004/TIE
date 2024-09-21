@@ -25,29 +25,45 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
+<<<<<<< Updated upstream
                 <a class="logo" href="/"><img id="logo" src="~/img/logo.png" class="logo-img" /></a>
+=======
+                <a href="@Url.Action("Index", "Home")"> <img src="~/img/logo12.png" width="70% !important" class="logo-img" alt="imglogoDecorVista"> </a>
+                <!-- <a class="logo" href="index.html"> <h2>BAUEN</h2> </a> -->
+>>>>>>> Stashed changes
             </div>
             <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
+<<<<<<< Updated upstream
                     <li class="nav-item"><a class="nav-link nav-color" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-color" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
+=======
+                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("About", "Home")">About</a></li>
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
+>>>>>>> Stashed changes
                         <ul class="dropdown-menu">
-                            <li><a href="services.html" class="dropdown-item"><span>Services 1</span></a></li>
-                            <li><a href="services2.html" class="dropdown-item"><span>Services 2</span></a></li>
+                            <li><a href="/Consultation/AvailableSlots" class="dropdown-item"><span>Services 1</span></a></li>
+                             <li><a href="services2.html" class="dropdown-item"><span>Services 2</span></a></li>
                             <li><a href="services3.html" class="dropdown-item"><span>Services 3</span></a></li>
                             <li><a href="services4.html" class="dropdown-item"><span>Services 4</span></a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="nav-item dropdown">
+<<<<<<< Updated upstream
                         <a class="nav-link nav-color dropdown-toggle track-click"  data-element-id="button-1" href="/Products/" aria-expanded="false">Products</i></a>
+=======
+                        <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
+>>>>>>> Stashed changes
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
+                    <!--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages <i class="ti-angle-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="kenburns-slider.html" class="dropdown-item"><span>Kenburns Slider</span></a></li>
                             <li><a href="grid-background.html" class="dropdown-item"><span>Grid Background</span></a></li>
@@ -70,23 +86,24 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="ti-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Home/Privacy" class="dropdown-item"><span>Blog 1</span></a></li>
+                            <li><a href="blog.html" class="dropdown-item"><span>Blog 1</span></a></li>
                             <li><a href="blog2.html" class="dropdown-item"><span>Blog 2</span></a></li>
                             <li><a href="blog3.html" class="dropdown-item"><span>Blog 3</span></a></li>
                             <li><a href="blog4.html" class="dropdown-item"><span>Blog 4</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
                         <li class="nav-item"><a class="nav-link nav-color" href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+<<<<<<< Updated upstream
                         <li class="nav-item">
                             <a class="nav-link" href="/Home/Profile">Hello, @User.Identity.Name</a>
                         </li>
@@ -94,14 +111,30 @@
                             <form id="logoutForm" action="/Account/Logout" method="post">
                                 <button type="submit" class="btn btn-link nav-link" style="cursor:pointer;">Logout</button>
                             </form>
+=======
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-color dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item nav-color" href="/Auth/Profile">Profile</a></li>
+                                <li>
+                                    <form id="logoutForm" action="/Auth/Logout" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+>>>>>>> Stashed changes
                         </li>
                     }
                     else
                     {
-                        <li class="nav-item">
+                        <li class="nav-item dropdown">
                             <a class="nav-link nav-color dropdown-toggle" href="/Auth/Login">Login</a>
                         </li>
                     }
+
                 </ul>
             </div>
         </div>
@@ -116,11 +149,11 @@
         </section>
         <!-- Header Banner -->
         <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
-        <section class="section-padding2">
-            <div class="container">
+        <!--<section class="section-padding2">
+            <div class="container">-->
                 @RenderBody()
-                </div>
-                </section>
+                <!--</div>
+		</section>-->
         <!-- Footer -->
         <footer class="main-footer dark">
             <div class="container">
@@ -130,7 +163,7 @@
                             <div class="fothead">
                                 <h6>Phone</h6>
                             </div>
-                            <p>+1 203-123-0606</p>
+                            <p>+84 292-655-0998</p>
                         </div>
                     </div>
                     <div class="col-md-4 mb-30">
@@ -138,7 +171,7 @@
                             <div class="fothead">
                                 <h6>Email</h6>
                             </div>
-                            <p>architecture@bauen.com</p>
+                            <p>architecture@decorvista.com</p>
                         </div>
                     </div>
                     <div class="col-md-4 mb-30">
@@ -146,7 +179,7 @@
                             <div class="fothead">
                                 <h6>Our Address</h6>
                             </div>
-                            <p>24 King St, Charleston, SC 29401 USA</p>
+                            <p>1 Ly Tu Trong Street, An Phu, Ninh Kieu, Can Tho, Vietnam</p>
                         </div>
                     </div>
                 </div>
@@ -156,11 +189,11 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="text-left">
-                                <p>© 2024 Bauen. All right reserved.</p>
+                                <p>© 2024 DecorVista. All right reserved.</p>
                             </div>
                         </div>
                         <div class="col-md-4 abot">
-                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="index.html"><i class="ti-twitter"></i></a> <a href="index.html"><i class="ti-instagram"></i></a> <a href="index.html"><i class="ti-pinterest"></i></a> </div>
+                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-twitter"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-instagram"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-pinterest"></i></a> </div>
                         </div>
                         <div class="col-md-4">
                             <p class="right"><a href="#">Terms &amp; Conditions</a></p>
