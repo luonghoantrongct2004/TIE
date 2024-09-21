@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TIE_Decor.Areas.Admin.Models;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
 
 namespace TIE_Decor.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class ProductsController : Controller
     {
@@ -21,13 +24,30 @@ namespace TIE_Decor.Areas.Admin.Controllers
         }
 
         // GET: Admin/Products
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 5)
         {
-            return View(await _context.Products
+            // Tổng số lượng sản phẩm
+            var totalProducts = await _context.Products.CountAsync();
+
+            // Lấy danh sách sản phẩm cho trang hiện tại
+            var products = await _context.Products
                 .Include(c => c.Category)
                 .Include(b => b.Brand)
                 .Include(r => r.Reviews)
-                .ToListAsync());
+                .OrderBy(p => p.ProductName)  // Bạn có thể thay đổi theo tiêu chí sắp xếp bạn muốn
+                .Skip((page - 1) * pageSize)  // Bỏ qua các sản phẩm của các trang trước
+                .Take(pageSize)  // Lấy số lượng sản phẩm cho trang hiện tại
+                .ToListAsync();
+
+            // Tạo một ViewModel để truyền dữ liệu vào view
+            var model = new ProductViewModel
+            {
+                Products = products,
+                CurrentPage = page,
+                TotalPages = (int)Math.Ceiling((double)totalProducts / pageSize)
+            };
+
+            return View(model);
         }
 
         // GET: Admin/Products/Details/5

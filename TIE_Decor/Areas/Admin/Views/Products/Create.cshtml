@@ -93,8 +93,6 @@
     <script>
         document.getElementById('productForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            var submitButton = document.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
             var formData = new FormData(this);
 
             fetch(this.action, {
