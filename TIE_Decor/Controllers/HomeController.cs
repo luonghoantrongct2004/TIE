@@ -18,6 +18,14 @@ namespace TIE_Decor.Controllers
 		}
         public IActionResult Index()
         {
+            var designers = (from user in _context.Users
+                             join userRole in _context.UserRoles on user.Id equals userRole.UserId
+                             join role in _context.Roles on userRole.RoleId equals role.Id
+                             where role.Name == "Designer"
+                             select user).ToList();
+
+            // Gán danh sách người dùng vào ViewData
+            ViewData["Designer"] = designers;
             return View(_context.Products.Include(c => c.Category).Include(b => b.Brand).ToList());
         }
         public IActionResult About()

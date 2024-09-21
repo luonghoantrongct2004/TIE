@@ -35,14 +35,14 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link nav-color track-click" data-element-id="button-1" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-color" href="/Home/About">About</a></li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
                         <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link nav-color dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="ti-angle-down"></i></a>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color " href="/home/blog" >Blog</a>
                         
                     </li>
-                    <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
                         <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
