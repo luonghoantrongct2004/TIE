@@ -196,6 +196,9 @@ namespace TIE_Decor.Controllers
 
             return Json(new { success = false, message = "Update failed", errors = result.Errors.Select(e => e.Description) });
         }
-
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
