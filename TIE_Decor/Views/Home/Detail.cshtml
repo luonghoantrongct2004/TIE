@@ -1,0 +1,15 @@
+﻿@model Blog
+<section class="section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="@Model.ImageUrl" class="mb-30" alt="">
+                <blockquote>
+                    <p>@Model.UpdatedDate</p> <cite>@Model.Author</cite>
+                </blockquote>
+                <h2 class="section-title2">@Model.Title</h2>
+                <p>@Model.Content</p>
+            </div>
+        </div>
+    </div>
+</section>
