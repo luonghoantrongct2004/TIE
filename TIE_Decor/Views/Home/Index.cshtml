@@ -40,7 +40,7 @@
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link track-click" data-element-id="button-1" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Services <i class="ti-angle-down"></i></a>
@@ -202,8 +202,8 @@
                                 <div class="item">
                                     <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
                                     <div class="con">
-                                        <h6><a href="/products/details/@item.ProductId">@item.ProductName</a></h6>
-                                        <h5><a href="/products/details/@item.ProductId">@item.Price</a></h5>
+                                        <h6><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.ProductName</a></h6>
+                                        <h5><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.Price</a></h5>
                                         <div class="line"></div> <a href="/products/details/@item.ProductId"><i class="ti-arrow-right"></i></a>
                                     </div>
                                 </div>
@@ -275,9 +275,9 @@
                                     <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
                                     <div class="con">
                                         <span class="category">
-                                            <a href="/products/details/@item.ProductId">@item.ProductName </a> - @item.Year
+                                            <a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.ProductName </a> - @item.Year
                                         </span>
-                                        <h5><a href="/products/details/@item.ProductId">@item.Category?.CategoryName</a></h5>
+                                        <h5><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.Category?.CategoryName</a></h5>
                                     </div>
                                 </div>
                             }
@@ -455,8 +455,46 @@
     <script src="~/js/before-after.js"></script>
     <script src="~/js/vegas.slider.min.js"></script>
     <script src="~/js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theo dõi lượt xem trang khi người dùng truy cập trang
+            trackPageView();
+
+            // Theo dõi nhấp chuột trên các phần tử có class track-click
+            document.querySelectorAll('.track-click').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var clickedElement = this.getAttribute('data-element-id'); // Lấy id hoặc thông tin của phần tử được click
+
+                    // Gửi thông tin nhấp chuột về server thông qua API
+                    fetch('/api/clicks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            elementId: clickedElement,
+                            timeStamp: new Date().toISOString()
+                        })
+                    });
+                });
+            });
+        });
+
+        // Hàm gửi thông tin lượt xem trang về server
+        function trackPageView() {
+            var path = window.location.pathname; // Lấy đường dẫn hiện tại
+
+            fetch('/api/page-views', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pageUrl: path,
+                    timeStamp: new Date().toISOString()
+                })
+            });
+        }
+    </script>
 </body>
-
-
-<!-- Mirrored from duruthemes.com/demo/html/bauen/fullscreen-multipage-light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 Sep 2024 05:12:57 GMT -->
 </html>

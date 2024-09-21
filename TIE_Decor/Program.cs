@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
+using TIE_Decor.MiddleWare;
+using TIE_Decor.Service;
 
 public class Program
 {
     public static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        builder.Services.AddScoped<ITrackingService, TrackingService>();
         // Cấu hình Identity
         builder.Services.AddIdentity<User, IdentityRole>(options =>
         {
@@ -48,9 +50,11 @@ public class Program
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
+            app.UseDeveloperExceptionPage();
             app.UseHsts();
         }
-
+        app.UseDeveloperExceptionPage();
+        app.UseMiddleware<PageViewTrackingMiddleware>();
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
