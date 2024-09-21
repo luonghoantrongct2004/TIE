@@ -34,27 +34,22 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link nav-color track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/Consultation/ScheduledAppointments">Designer</a></li>
                     <li class="nav-item"><a class="nav-link nav-color" href="/Home/About">About</a></li>
                     <li class="nav-item">
                         <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-color " href="/home/blog" >Blog</a>
-                        
                     </li>
                     <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
-                        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                        <li class="nav-item nav-color"><a class="nav-link nav-color" href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
-                        <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item dropdown">
+                        <li class="nav-item nav-color dropdown">
                             <a class="nav-link nav-color dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Hello, @User.Identity.Name
                             </a>
@@ -67,10 +62,10 @@
                                         <button type="submit" class="dropdown-item nav-color" style="cursor:pointer;">Logout</button>
                                     </form>
                                 </li>
+                                <li><a class="dropdown-item" href="/cart">Cart</a></li>
                             </ul>
                         </li>
 
-                        <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
                     }
                     else
                     {
@@ -87,12 +82,6 @@
     </nav>
     <!-- Content -->
     <div class="content-wrapper">
-        <!-- Lines -->
-        <section class="content-lines-wrapper">
-            <div class="content-lines-inner">
-                <div class="content-lines"></div>
-            </div>
-        </section>
         <!-- Header Banner -->
         <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
                 @RenderBody()

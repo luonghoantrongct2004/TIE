@@ -37,13 +37,14 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Consultation/ScheduledAppointments">Designer</a></li>
+                  
                     <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="ti-angle-down"></i></a>
-                        
+                        <a class="nav-link" href="/home/blog">Blog</a>
                     </li>
                     <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
@@ -64,9 +65,9 @@
                                         <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
                                     </form>
                                 </li>
+                                <li><a class="dropdown-item" href="/cart">Cart</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
                     }
                     else
                     {
@@ -320,51 +321,7 @@
                 </div>
             </div>
         </section>
-        <!-- Work Process -->
-        <section class="process section-padding2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
-                        <h2 class="section-title">Our <span>Designer</span></h2>
-                    </div>
-                </div>
-
-                <!-- Bootstrap Carousel -->
-                <div id="designerCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach (var item in ViewData["Designer"] as List<User>)
-                        {
-                            <div class="carousel-item">
-                                <div class="row text-center">
-                                    <div class="col-md-3">
-                                        <div class="item first">
-                                            <img src="@item.ImageUrl" class="tobotm" alt="">
-                                            <div class="cont">
-                                                <h6>@item.FullName</h6>
-                                                <div class="line"></div>
-                                                <p>@item.Email</p>
-                                                <h3>@item.ContactPhone</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-
-                    <!-- Carousel controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#designerCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#designerCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
+       
         <!-- Blog -->
         <section class="bauen-blog section-padding">
             <div class="container">
@@ -376,15 +333,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
-                              @foreach (var item in Model)
+                            @foreach (var item in ViewData["Blog"] as List<Blog>)
                             {
                                 <div class="item">
                                     <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
                                     <div class="con">
                                         <span class="category">
-                                            <a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.ProductName </a> - @item.Year
+                                            <a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Title </a> - @item.Author
                                         </span>
-                                        <h5><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.Category?.CategoryName</a></h5>
+                                        <h5><a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Content</a></h5>
                                     </div>
                                 </div>
                             }
