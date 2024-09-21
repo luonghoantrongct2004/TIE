@@ -38,13 +38,13 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/Consultation/ScheduledAppointments">Designer</a></li>
+                  
                     <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog <i class="ti-angle-down"></i></a>
-                        
+                        <a class="nav-link" href="/home/blog">Blog</a>
                     </li>
                     <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
@@ -59,13 +59,14 @@
                                 Hello, @User.Identity.Name <i class="bi bi-caret-down-fill"></i>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/Home/Profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="/Profile/UpdateProfile">Profile</a></li>
                                 <li>
                                     <form id="logoutForm" action="/Auth/Logout" method="post">
                                         @Html.AntiForgeryToken()
                                         <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
                                     </form>
                                 </li>
+                                <li><a class="dropdown-item" href="/cart">Cart</a></li>
                             </ul>
                         </li>
                     }
@@ -321,62 +322,7 @@
                 </div>
             </div>
         </section>
-        <!-- Work Process -->
-        <section class="process section-padding2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
-                        <h2 class="section-title">Work <span>Process</span></h2>
-                    </div>
-                </div>
-                <div class="row text-center mt-60 mb-60">
-                    <div class="col-md-3">
-                        <div class="item first">
-                            <img src="img/arrow.png" class="tobotm" alt=""> <span class="icon ti-thought"></span>
-                            <div class="cont">
-                                <h6>Client Needs</h6>
-                                <div class="line"></div>
-                                <p>The designer starts by understanding the client’s requirements through detailed discussions and site assessments. This helps identify the client’s lifestyle, preferences, and any specific functional or aesthetic needs for the space.</p>
-                                <h3>01</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="item odd mb-md50">
-                            <img src="img/arrow.png" alt=""> <span class="icon ti-direction-alt"></span>
-                            <div class="cont">
-                                <h3>02</h3>
-                                <h6>Direction</h6>
-                                <div class="line"></div>
-                                <p>Based on the insights gathered, the designer sets a clear direction for the project. They propose initial concepts, ensuring alignment with the client’s vision, budget, and overall goals before moving forward with the design.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="item">
-                            <img src="img/arrow.png" class="tobotm" alt=""> <span class="icon ti-ruler-pencil"></span>
-                            <div class="cont">
-                                <h3>03</h3>
-                                <h6>Design</h6>
-                                <div class="line"></div>
-                                <p>The designer creates detailed plans, sketches, or 3D models, selecting appropriate materials, colors, and furnishings. Throughout this process, they collaborate with the client to ensure the design reflects their vision.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="item odd">
-                            <span class="icon ti-tag"></span>
-                            <div class="cont">
-                                <h3>05</h3>
-                                <h6>Value</h6>
-                                <div class="line"></div>
-                                <p>The designer refines the final design to balance aesthetics and functionality, ensuring the solution is both practical and visually appealing. The goal is to provide lasting value that enhances the space for years to come.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       
         <!-- Blog -->
         <section class="bauen-blog section-padding">
             <div class="container">
@@ -388,15 +334,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="owl-carousel owl-theme">
-                              @foreach (var item in Model)
+                            @foreach (var item in ViewData["Blog"] as List<Blog>)
                             {
                                 <div class="item">
                                     <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
                                     <div class="con">
                                         <span class="category">
-                                            <a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.ProductName </a> - @item.Year
+                                            <a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Title </a> - @item.Author
                                         </span>
-                                        <h5><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.Category?.CategoryName</a></h5>
+                                        <h5><a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Content</a></h5>
                                     </div>
                                 </div>
                             }

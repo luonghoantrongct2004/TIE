@@ -32,7 +32,12 @@ public class Program
         })
         .AddEntityFrameworkStores<AppDbContext>()
         .AddDefaultTokenProviders();
-
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromHours(24); // Thời gian hết hạn của Session
+            options.Cookie.HttpOnly = true; // Chỉ cho phép truy cập qua HTTP
+            options.Cookie.IsEssential = true; // Đảm bảo cookie luôn được gửi đi
+        });
         // Cấu hình Cookie
         builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -62,6 +67,9 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+
+        app.UseSession();
+
         app.UseAuthentication();
         app.UseAuthorization();
 

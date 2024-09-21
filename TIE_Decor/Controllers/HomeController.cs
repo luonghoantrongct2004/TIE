@@ -18,6 +18,7 @@ namespace TIE_Decor.Controllers
 		}
         public IActionResult Index()
         {
+            ViewData["Blog"] = _context.Blog.ToList();
             return View(_context.Products.Include(c => c.Category).Include(b => b.Brand).ToList());
         }
         public IActionResult About()

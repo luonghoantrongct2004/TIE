@@ -20,6 +20,18 @@
 <section class="section-padding2">
     <div class="container">
         <div class="row">
+            @foreach (var item in imageUrls)
+            {
+                <div class="col-md-6 gallery-item">
+                    <a href="@item" title="Architecture" class="img-zoom">
+                        <div class="gallery-box fixed-size-img-container mx-auto d-block">
+                            <div class="gallery-img"> <img src="@item" class="img-fluid mx-auto d-block fixed-size-img" alt="work-img"> </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <h2 class="section-title2">@Model.ProductName</h2>
             </div>
@@ -34,18 +46,6 @@
                 <p><b>Category : </b> @Model.Category?.CategoryName</p>
                 <p><b>Brand : </b> @Model.Brand?.Name</p>
             </div>
-        </div>
-        <div class="row mt-30">
-            @foreach (var item in imageUrls)
-            {
-                <div class="col-md-6 gallery-item">
-                    <a href="@item" title="Architecture" class="img-zoom">
-                        <div class="gallery-box fixed-size-img-container mx-auto d-block">
-                            <div class="gallery-img"> <img src="@item" class="img-fluid mx-auto d-block fixed-size-img" alt="work-img"> </div>
-                    </div>
-                </a>
-            </div>
-            }
         </div>
         <div>
             <div class="card border-0">
