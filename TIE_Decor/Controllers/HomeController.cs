@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using TIE_Decor.DbContext;
+using TIE_Decor.Entities;
 using TIE_Decor.Models;
 
 namespace TIE_Decor.Controllers
@@ -8,14 +10,14 @@ namespace TIE_Decor.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
+        
 
+		public HomeController(AppDbContext context)
+		{
+			_context = context;
+		}
 
-        public HomeController(AppDbContext context)
-        {
-            _context = context;
-        }
-
-        public IActionResult Index()
+		public IActionResult Index()
         {
             return View();
         }
@@ -30,5 +32,7 @@ namespace TIE_Decor.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }
