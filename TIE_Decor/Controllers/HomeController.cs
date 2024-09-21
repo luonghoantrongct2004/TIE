@@ -9,7 +9,6 @@ namespace TIE_Decor.Controllers
     {
         private readonly AppDbContext _context;
 
-
         public HomeController(AppDbContext context)
         {
             _context = context;
