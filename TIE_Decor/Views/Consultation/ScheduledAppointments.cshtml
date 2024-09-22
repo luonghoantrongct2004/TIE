@@ -1,64 +1,200 @@
-﻿<style>
-    body {
-        margin-top: -210px;
-    }
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .designer-card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 8px;
-        width: 150px;
-        cursor: pointer;
-        text-align: center;
-        transition: border-color 0.3s;
-    }
+        .header-title {
+            font-size: 28px; 
+            font-weight: 700;
+            color: #b19777; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 15px;
+            transition: color 0.3s; 
+        }
 
-    .designer-card:hover {
-        border-color: #007bff;
-    }
+            .header-title:hover {
+                color: #a98165; 
+            }
+        h2 {
+            color: #333;
+            font-weight: 700;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #b19777;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #a98165;
+        }
+        .designer-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .designer-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .designer-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-color: #007bff;
+        }
+        #designerInfo, #scheduledAppointmentsContainer {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn-primary {
+            background-color: #b19777;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #a98165;
+        }
+        .btn-primary:disabled {
+            background-color: #b19777;
+            opacity: 0.6; 
+            cursor: not-allowed; 
+        }
+        .status-available {
+            color: green;
+        }
+        .status-booked {
+            color: red;
+        }
+        .status-cancelled {
+            color: orange;
+        }
 
-    #designerInfo, #availableSlotsContainer, #scheduledAppointmentsContainer {
-        margin-top: 20px;
-        display: none;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-    }
+        .designer-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: center;
-        margin: 0 auto;
-    }
+        .designer-card {
+            border: 2px solid #b19777; /* Khung bao quanh */
+            border-radius: 10px;
+            padding: 15px;
+            width: 220px;
+            cursor: pointer;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-    th, td {
-        padding: 8px;
-        border: 1px solid #ddd;
-    }
+        .designer-card-content {
+            padding: 10px;
+        }
 
-    th {
-        background-color: #f2f2f2;
-    }
-</style>
+        .designer-image {
+            width: 100%;
+            border-radius: 8px;
+        }
 
-<h2>Select a Designer</h2>
-<div id="designersContainer" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-    @foreach (var designer in ViewBag.Designers)
-    {
-        <div class="designer-card" onclick="selectDesigner(this)"
-             data-id="@designer.Id"
-             data-img="@designer.ImageUrl"
-             data-experience="@designer.YearsOfExperience"
-             data-expertise="@designer.Expertise"
-             data-portfolio="@designer.Portfolio">
-            <img src="@designer.ImageUrl" alt="@designer.FullName" style="width: 100%; border-radius: 8px;" />
-            <h4 style="font-size: 14px;">@designer.FullName</h4>
-            <p style="font-size: 12px;">Experience: @designer.YearsOfExperience years</p>
-        </div>
-    }
-</div>
+        .designer-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .designer-experience {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .designer-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-color: #a98165; /* Đổi màu khung khi hover */
+        }
+        @@media (max-width: 600px) {
+            .designer-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+        <h2 class="header-title">Designer</h2>
+        <a href="/Consultation/History" class="button">View Appointment History</a>
+</header>
+
+    <div class="designer-card-container" id="designersContainer">
+        @foreach (var designer in ViewBag.Designers)
+        {
+            <div class="designer-card" onclick="selectDesigner(this)"
+                 data-id="@designer.Id"
+                 data-img="@designer.ImageUrl"
+                 data-experience="@designer.YearsOfExperience"
+                 data-expertise="@designer.Expertise"
+                 data-portfolio="@designer.Portfolio">
+                <div class="designer-card-content">
+                    <img src="@designer.ImageUrl" alt="@designer.FullName" class="designer-image" />
+                    <h4 class="designer-name">@designer.FullName</h4>
+                    <p class="designer-experience">Experience: @designer.YearsOfExperience years</p>
+                </div>
+            </div>
+        }
+    </div>  
 
 <div id="designerInfo">
     <h4 id="selectedDesignerName" style="margin-bottom: 10px; font-weight: bold;"></h4>
@@ -69,8 +205,6 @@
     <p id="designerExpertise" style="margin: 5px 0;"></p>
     <p id="designerPortfolio" style="margin: 5px 0;"></p>
 </div>
-
-
 
 <div id="scheduledAppointmentsContainer">
     <h3>Scheduled Appointments</h3>
@@ -91,18 +225,19 @@
 <input type="hidden" name="designerId" id="designerId" value="" />
 
 <script>
-     function selectDesigner(card) {
-            const designerId = card.getAttribute("data-id");
-            document.getElementById("designerId").value = designerId;
-            document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
-            document.getElementById("designerImage").src = card.getAttribute("data-img");
-            document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
-            document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
-            document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
-            document.getElementById("designerInfo").style.display = 'block'; 
+    function selectDesigner(card) {
+        const designerId = card.getAttribute("data-id");
+        document.getElementById("designerId").value = designerId;
+        document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
+        document.getElementById("designerImage").src = card.getAttribute("data-img");
+        document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
+        document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
+        document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
+        document.getElementById("designerInfo").style.display = 'block';
 
-            fetchScheduledAppointments(designerId);
-        }
+        fetchScheduledAppointments(designerId);
+    }
+
     function fetchScheduledAppointments(designerId) {
         fetch(`/Consultation/GetScheduledAppointments?designerId=${designerId}`)
             .then(response => {
@@ -112,7 +247,7 @@
                 return response.json();
             })
             .then(data => {
-                console.log("Fetched Appointments:", data);  // Log dữ liệu trả về để kiểm tra
+                console.log("Fetched Appointments:", data);
                 renderScheduledAppointments(data);
             })
             .catch(error => {
@@ -134,15 +269,37 @@
             const scheduledDate = new Date(formattedTime);
             const validDate = !isNaN(scheduledDate) ? scheduledDate : null;
 
-            // Truyền đúng appointment.scheduleId vào confirmAppointment
+            let status = appointment.status || 'N/A';
+            let buttonText = 'Book Appointment';
+            let buttonDisabled = false;
+            let statusClass = 'status-available';
+
+            switch (status.toLowerCase()) {
+                case 'declined':
+                case 'canceled by designer':
+                    status = 'Canceled by Designer';
+                    buttonText = 'Not Available';
+                    buttonDisabled = true;
+                    statusClass = 'status-cancelled';
+                    break;
+                case 'booked':
+                case 'pending':
+                    buttonText = 'Not Available';
+                    buttonDisabled = true;
+                    statusClass = 'status-booked';
+                    break;  
+            }
+
             const row = `<tr>
                 <td>${validDate ? validDate.toLocaleDateString() : 'Invalid Date'}</td>
                 <td>${validDate ? validDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Invalid Time'}</td>
-                <td>${appointment.status || 'N/A'}</td>
+                <td class="${statusClass}">${status}</td>
                 <td>${appointment.notes || 'N/A'}</td>
                 <td>
-                    <button onclick="confirmAppointment('${appointment.scheduleId}')" class="btn btn-primary btn-sm" ${appointment.status !== 'Available' ? 'disabled' : ''}>
-                        Appointment
+                    <button onclick="confirmAppointment('${appointment.scheduleId}')" 
+                            class="btn btn-primary btn-sm" 
+                            ${buttonDisabled ? 'disabled' : ''}>
+                        ${buttonText}
                     </button>
                 </td>
             </tr>`;
@@ -152,31 +309,69 @@
 
         document.getElementById("scheduledAppointmentsContainer").style.display = 'block';
     }
+        function confirmAppointment(scheduleId) {
+            swal({
+                title: "Are you sure?",
+                text: "Do you want to confirm this appointment?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#b19777",
+                confirmButtonText: "Yes, confirm it!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        updateAppointmentStatus(scheduleId, 'Pending');
 
-    function confirmAppointment(appointmentId) {
-        console.log("Appointment ID:", appointmentId);  // Verify the value
-        console.log("Type of Appointment ID:", typeof appointmentId); // Should be string representing a GUID
-
-        if (confirm('Are you sure you want to confirm this appointment?')) {
-            fetch(`/Consultation/ConfirmConsultation/${appointmentId}`, {
-                method: 'GET'
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Appointment confirmed successfully!');
-                        const designerId = document.getElementById("designerId").value;
-                        fetchScheduledAppointments(designerId);
+                        fetch(`/Consultation/ConfirmConsultation/${scheduleId}`, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            credentials: 'include'
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.success) {
+                                    swal("Confirmed!", "Appointment is now pending and waiting for admin confirmation.", "success");
+                                    location.reload(); // Reload the page after confirmation
+                                } else {
+                                    swal("Error!", "Failed to confirm appointment: " + data.message, "error");
+                                    updateAppointmentStatus(scheduleId, 'Available');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                swal("Error!", "An error occurred while confirming the appointment.", "error");
+                            });
                     } else {
-                        alert('Failed to confirm appointment: ' + data.message);
+                        swal("Cancelled", "Your appointment confirmation has been cancelled.", "error");
                     }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred while confirming the appointment.');
                 });
         }
+
+
+    function updateAppointmentStatus(scheduleId, newStatus) {
+        const appointmentsBody = document.getElementById("appointmentsBody");
+        const rows = appointmentsBody.getElementsByTagName('tr');
+
+        for (let row of rows) {
+            const statusCell = row.cells[2];
+            const idCell = row.cells[0];
+            if (idCell && idCell.innerText === scheduleId) {
+                statusCell.innerText = newStatus;
+                break;
+            }
+        }
     }
-
-
 </script>
+</body>
+</html>

@@ -27,57 +27,86 @@
                 {
                     return BadRequest("Invalid DesignerId.");
                 }
+          
 
-                var consultations = await _context.Consultations
+            var consultations = await _context.Consultations
                     .Include(c => c.User)
                     .Where(c => c.DesignerID == designerIdGuid)
                     .ToListAsync();
+            foreach (var consultation in consultations)
+            {
+                Console.WriteLine($"Consultation ID: {consultation.ConsultationId}, User: {consultation.User?.FullName ?? "N/A"}");
+            }
 
-                var schedules = await _context.DesignerSchedules
+            var schedules = await _context.DesignerSchedules
                     .Where(s => s.DesignerId == designerIdGuid)
                     .ToListAsync();
 
                 var viewModel = (Consultations: consultations.AsEnumerable(), Schedules: schedules.AsEnumerable());
                 return View(viewModel);
             }
-            [HttpPost]
-            [Route("admin/consultationmanage/Confirm/{id:int}")]
-            public async Task<IActionResult> Confirm(int id)
+        [HttpPost]
+        [Route("admin/consultationmanage/Confirm/{id:int}")]
+        public async Task<IActionResult> Confirm(int id)
+        {
+            var consultation = await _context.Consultations
+                .FirstOrDefaultAsync(c => c.ConsultationId == id);
+
+            if (consultation == null)
+            {
+                return NotFound("Buổi tư vấn không tồn tại.");
+            }
+
+            consultation.Status = "Confirmed";
+
+            var designerSchedule = await _context.DesignerSchedules
+                .FirstOrDefaultAsync(ds => ds.DesignerId == consultation.DesignerID
+                                        && ds.ScheduledTime == consultation.ScheduledTime);
+
+            if (designerSchedule != null)
+            {
+                designerSchedule.Status = "Confirmed";
+            }
+            else
             {
            
-                var consultation = await _context.Consultations.FindAsync(id);
-                if (consultation == null)
-                {
-                    return NotFound("Buổi tư vấn không tồn tại.");
-                }
-
-         
-                consultation.Status = "Confirmed";
-                await _context.SaveChangesAsync();
-
-         
-                return Redirect("/admin/consultationmanage");
             }
-        
-            [HttpPost]
-            [Route("admin/consultationmanage/Decline/{id:int}")]
-            public async Task<IActionResult> Decline(int id)
+
+            await _context.SaveChangesAsync();
+
+            return Redirect("/admin/consultationmanage");
+        }
+        [HttpPost]
+        [Route("admin/consultationmanage/Decline/{id:int}")]
+        public async Task<IActionResult> Decline(int id)
+        {
+            var consultation = await _context.Consultations.FindAsync(id);
+            if (consultation == null)
             {
-                var consultation = await _context.Consultations.FindAsync(id);
-                if (consultation == null)
-                {
-                    return NotFound("Buổi tư vấn không tồn tại.");
-                }
-
-         
-                consultation.Status = "Declined";
-                await _context.SaveChangesAsync();
-                return Redirect("/admin/consultationmanage");
+                return NotFound("Buổi tư vấn không tồn tại.");
             }
 
-       
+            // Set the consultation status to "Declined"
+            consultation.Status = "Declined";
 
-            public async Task<IActionResult> Delete(int id)
+            // Find the associated designer schedule
+            var designerSchedule = await _context.DesignerSchedules
+                .FirstOrDefaultAsync(ds => ds.DesignerId == consultation.DesignerID
+                                            && ds.ScheduledTime == consultation.ScheduledTime);
+
+            // If the schedule exists, update its status
+            if (designerSchedule != null)
+            {
+                designerSchedule.Status = "Canceled by Designer";
+            }
+
+            await _context.SaveChangesAsync();
+            return Redirect("/admin/consultationmanage");
+        }
+
+
+
+        public async Task<IActionResult> Delete(int id)
             {
                 var consultation = await _context.Consultations.FindAsync(id);
                 if (consultation == null)
@@ -87,7 +116,7 @@
 
                 _context.Consultations.Remove(consultation);
                 await _context.SaveChangesAsync();
-
+            
                 return Redirect("/admin/consultationmanage");
             }
 
@@ -130,24 +159,88 @@
                     .ToListAsync();
                 return View(schedules);
             }
-            [HttpPost]
-            public async Task<IActionResult> CancelSchedule(int id)
+        [HttpPost]
+        public async Task<IActionResult> CancelSchedule(int id)
+        {
+            var schedule = await _context.DesignerSchedules.FindAsync(id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+            _context.DesignerSchedules.Remove(schedule);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpPost]
+        public IActionResult ConfirmSchedule(int consultationId)
+        {
+            var consultation = _context.Consultations
+                                       .FirstOrDefault(c => c.ConsultationId == consultationId);
+
+            if (consultation == null)
+            {
+                return NotFound();  
+            }
+
+            var designerSchedule = _context.DesignerSchedules
+                                           .FirstOrDefault(ds => ds.DesignerId == consultation.DesignerID
+                                                                 && ds.ScheduledTime == consultation.ScheduledTime);
+
+            if (designerSchedule == null)
+            {
+                return NotFound(); 
+            }
+
+            if (designerSchedule.Status == "Pending")
+            {
+                designerSchedule.Status = "Confirmed";
+
+                consultation.Status = "Booked";
+
+                _context.SaveChanges();
+
+                return Ok(new { message = "Consultation and Designer Schedule confirmed successfully." });
+            }
+
+            return BadRequest(new { message = "The schedule is not in a Pending state." });
+        }
+        [HttpPost]
+        [Route("admin/consultationmanage/DeleteSchedule/{id:int}")]
+        public async Task<IActionResult> DeleteSchedule(int id)
+        {
+            try
             {
                 var schedule = await _context.DesignerSchedules.FindAsync(id);
                 if (schedule == null)
                 {
-                    return NotFound("Lịch không tồn tại.");
+                    return Json(new { success = false, message = "Schedule not found." });
                 }
 
-                var designerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                if (!Guid.TryParse(designerIdClaim, out Guid designerIdGuid) || schedule.DesignerId != designerIdGuid)
+                var associatedConsultation = await _context.Consultations
+                    .FirstOrDefaultAsync(c => c.DesignerID == schedule.DesignerId && c.ScheduledTime == schedule.ScheduledTime);
+
+                if (associatedConsultation != null)
                 {
-                    return Unauthorized("Bạn không có quyền hủy lịch này.");
+                    return Json(new
+                    {
+                        success = false,
+                        errorCode = "SCHEDULE_HAS_CONSULTATION",
+                        message = "Cannot delete this schedule because it has an associated consultation."
+                    });
                 }
 
                 _context.DesignerSchedules.Remove(schedule);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(ViewSchedule));
+
+                return Json(new { success = true, message = "Schedule has been successfully deleted." });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception here
+                return Json(new { success = false, message = "An unexpected error occurred while deleting the schedule." });
             }
         }
     }
+}
