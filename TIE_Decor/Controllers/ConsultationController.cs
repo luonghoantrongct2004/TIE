@@ -29,7 +29,7 @@ namespace TIE_Decor.Controllers
             var designers = await _userManager.GetUsersInRoleAsync("Designer");
             var designerList = designers.Select(d => new
             {
-                Id = d.Id,
+                Id = d.Id.ToString(),
                 FullName = d.FullName,
                 ImageUrl = d.ImageUrl,
                 YearsOfExperience = d.YearsOfExperience,
@@ -37,10 +37,27 @@ namespace TIE_Decor.Controllers
                 Portfolio = d.Portfolio
             }).ToList();
 
+            // Lấy danh sách ID của các designer
+            var designerIds = designerList.Select(d => d.Id).ToList();
             ViewBag.Designers = designerList;
+
+            // Lấy đánh giá cho từng designer
+            var reviews = await _context.Reviews
+                .Where(r => designerIds.Contains(r.UserId1.ToString()))
+                .Select(r => new
+                {
+                    r.ReviewId,
+                    r.Rating,
+                    r.Comment,
+                    UserId = r.UserId1.ToString(), // Lưu ID của designer
+                    Username = _context.Users.FirstOrDefault(u => u.Id == r.UserId.ToString()).FullName
+                }).ToListAsync();
+
+            ViewBag.Reviews = reviews; // Kiểm tra kỹ rằng dữ liệu reviews có thực sự đúng
 
             return View();
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetScheduledAppointments(Guid designerId)
@@ -50,8 +67,20 @@ namespace TIE_Decor.Controllers
                 var scheduledAppointments = await _context.DesignerSchedules
                     .Where(s => s.DesignerId == designerId)
                     .ToListAsync();
+                var reviews = await _context.Reviews
+                    .Where(r => designerId == r.UserId1)
+                    .Select(r => new
+                    {
+                        r.ReviewId,
+                        r.Rating,
+                        r.Comment,
+                        UserId = r.UserId1.ToString(), // Lưu ID của designer
+                        Username = _context.Users.FirstOrDefault(u => u.Id == r.UserId.ToString()).FullName // Lấy tên người dùng
+                    }).ToListAsync();
 
-                return Json(scheduledAppointments);
+                // Trả về cả danh sách scheduledAppointments và reviews
+                return Json(new { success = true, scheduledAppointments, reviews });
+
             }
             catch (Exception ex)
             {
@@ -59,6 +88,7 @@ namespace TIE_Decor.Controllers
                 return BadRequest(new { success = false, message = "Error fetching scheduled appointments." });
             }
         }
+
 
 
         [HttpPost]
@@ -218,6 +248,37 @@ namespace TIE_Decor.Controllers
             await _context.SaveChangesAsync();
 
             return Json(new { success = true, message = "Appointment cancelled successfully." });
+        }
+        [HttpGet]
+        [Route("Consultation/GetDesignerReviews/{designerId}")]
+        public async Task<IActionResult> GetDesignerReviews(Guid designerId)
+        {
+            try
+            {
+                // Truy vấn các đánh giá từ bảng Review dựa trên UserId1 (designerId)
+                var reviews = await _context.Reviews
+                    .Where(r => r.UserId1 == designerId)
+                    .Select(r => new
+                    {
+                        r.ReviewId,
+                        r.Rating,
+                        r.Comment,
+                        Username = _context.Users.FirstOrDefault(u => u.Id == r.UserId.ToString()).FullName 
+                    })
+                    .ToListAsync();
+
+                if (!reviews.Any())
+                {
+                    return Json(new { success = true, message = "No reviews found for this designer." });
+                }
+
+                return Json(new { success = true, reviews });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error fetching reviews: {ex.Message}");
+                return BadRequest(new { success = false, message = "Error fetching reviews.", error = ex.Message });
+            }
         }
 
     }

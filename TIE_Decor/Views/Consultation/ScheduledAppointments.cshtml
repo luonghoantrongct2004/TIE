@@ -191,10 +191,12 @@
                     <img src="@designer.ImageUrl" alt="@designer.FullName" class="designer-image" />
                     <h4 class="designer-name">@designer.FullName</h4>
                     <p class="designer-experience">Experience: @designer.YearsOfExperience years</p>
+
+                   
                 </div>
             </div>
         }
-    </div>  
+    </div>
 
 <div id="designerInfo">
     <h4 id="selectedDesignerName" style="margin-bottom: 10px; font-weight: bold;"></h4>
@@ -222,38 +224,115 @@
     </table>
 </div>
 
+   <div id="designerReviewsContainer" style="margin-top: 20px;">
+    <h3>Designer Reviews</h3>
+    <table id="reviewsTable">
+        <thead>
+            <tr>
+                <th>Review ID</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Reviewer</th>
+            </tr>
+        </thead>
+        <tbody id="reviewsBody">
+            @if (ViewBag.Reviews as Review != null)
+            {
+                foreach (var review in ViewBag.Reviews)
+                {
+                    <tr>
+                        <td>@review.ReviewId</td>
+                        <td>@review.Rating stars</td>
+                        <td>@review.Comment</td>
+                        <td>@review.Username</td>
+                    </tr>
+                }
+                }@if (ViewBag.Review as Review != null)
+                {
+                    foreach (var review in ViewBag.Reviews)
+                    {
+                        <tr>
+                            <td>@review.ReviewId</td>
+                            <td>@review.Rating stars</td>
+                            <td>@review.Comment</td>
+                            <td>@review.Username</td>
+                        </tr>
+                    }
+                }
+            else
+            {
+                <tr>
+                    <td colspan="4">No reviews available.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
 <input type="hidden" name="designerId" id="designerId" value="" />
 
 <script>
-    function selectDesigner(card) {
-        const designerId = card.getAttribute("data-id");
-        document.getElementById("designerId").value = designerId;
-        document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
-        document.getElementById("designerImage").src = card.getAttribute("data-img");
-        document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
-        document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
-        document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
-        document.getElementById("designerInfo").style.display = 'block';
+        function selectDesigner(card) {
+            const designerId = card.getAttribute("data-id");
+            document.getElementById("designerId").value = designerId;
+            document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
+            document.getElementById("designerImage").src = card.getAttribute("data-img");
+            document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
+            document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
+            document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
+            document.getElementById("designerInfo").style.display = 'block';
 
-        fetchScheduledAppointments(designerId);
-    }
+            // Gọi hàm để lấy lịch hẹn đã lên cho designer
+            fetchScheduledAppointments(designerId);
 
-    function fetchScheduledAppointments(designerId) {
-        fetch(`/Consultation/GetScheduledAppointments?designerId=${designerId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log("Fetched Appointments:", data);
-                renderScheduledAppointments(data);
-            })
-            .catch(error => {
-                console.error('Error fetching scheduled appointments:', error);
-            });
-    }
+            // Hiển thị review cho designer được chọn
+            displayDesignerReviews(designerId);
+        }
+
+        function fetchScheduledAppointments(designerId) {
+            fetch(`/Consultation/GetScheduledAppointments?designerId=${designerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+
+                        // Chỉ gọi hàm nếu có dữ liệu scheduledAppointments
+                        if (data.scheduledAppointments) {
+                            renderScheduledAppointments(data.scheduledAppointments);
+                        }
+
+                        // Luôn gọi hàm hiển thị reviews
+                        displayDesignerReviews(data.reviews);
+                    } else {
+                        console.error("Error:", data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching scheduled appointments:', error);
+                });
+        }
+        function displayDesignerReviews(reviews) {
+            const reviewsBody = document.getElementById("reviewsBody");
+            reviewsBody.innerHTML = ""; // Clear previous content
+
+            if (reviews.length > 0) {
+                reviews.forEach(review => {
+                    const row = `<tr>
+                                    <td>${review.reviewId || 'N/A'}</td>
+                                    <td>${review.rating || 'N/A'} stars</td>
+                                    <td>${review.comment || 'No comment'}</td>
+                                    <td>${review.username || 'Anonymous'}</td>
+                                 </tr>`;
+                    reviewsBody.innerHTML += row;
+                });
+            } else {
+                reviewsBody.innerHTML = `<tr><td colspan="4">No reviews available for this designer.</td></tr>`;
+            }
+
+            // Show the reviews container
+            document.getElementById("designerReviewsContainer").style.display = 'block';
+        }
+
+
 
     function renderScheduledAppointments(appointments) {
         const appointmentsBody = document.getElementById("appointmentsBody");
