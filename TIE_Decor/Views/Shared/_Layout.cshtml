@@ -7,7 +7,7 @@
     <title>DecorVista</title>
     <link rel="shortcut icon" href="~/img/favicon.png" />
     <link rel="stylesheet" href="~/css/plugins.css" />
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                         <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color " href="/home/blog" >Blog</a>
+                        <a class="nav-link nav-color " href="/home/blog">Blog</a>
                     </li>
                     <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
@@ -55,7 +55,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                                <li><a class="dropdown-item nav-color" href="/Home/Profile">Profile</a></li>
+                                <li><a class="dropdown-item nav-color" href="/Profile/UpdateProfile">Profile</a></li>
                                 <li>
                                     <form id="logoutForm" action="/Auth/Logout" method="post">
                                         @Html.AntiForgeryToken()
@@ -84,7 +84,7 @@
     <div class="content-wrapper">
         <!-- Header Banner -->
         <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
-                @RenderBody()
+        @RenderBody()
         <!-- Footer -->
         <footer class="main-footer dark">
             <div class="container">
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 abot">
-                                <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="/Home/Index"><i class="ti-twitter"></i></a> <a href="/Home/Index"><i class="ti-instagram"></i></a> <a href="/Home/Index"><i class="ti-pinterest"></i></a> </div>
+                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="/Home/Index"><i class="ti-twitter"></i></a> <a href="/Home/Index"><i class="ti-instagram"></i></a> <a href="/Home/Index"><i class="ti-pinterest"></i></a> </div>
                         </div>
                         <div class="col-md-4">
                             <p class="right"><a href="#">Terms &amp; Conditions</a></p>

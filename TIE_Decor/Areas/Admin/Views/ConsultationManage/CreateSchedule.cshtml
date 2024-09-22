@@ -1,21 +1,110 @@
 ﻿@model TIE_Decor.Entities.DesignerSchedules
+<h2 class="text-center mb-4">Create Schedule</h2>
 
+<div class="container">
+    <form id="createScheduleForm" action="/admin/consultationmanage/CreateSchedule" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="ScheduledTime" class="form-label">Schedule Time</label>
+            <input id="scheduledTimeField" asp-for="ScheduledTime" class="form-control" type="datetime-local" />
+            <span asp-validation-for="ScheduledTime" class="text-danger"></span>
+        </div>
 
+        <div class="form-group mb-3">
+            <label asp-for="Notes" class="form-label">Notes</label>
+            <textarea id="notesField" asp-for="Notes" class="form-control" rows="4" placeholder="Add any additional notes..."></textarea>
+            <span asp-validation-for="Notes" class="text-danger"></span>
+        </div>
 
-<h2>Create Schedule</h2>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
 
-<form action="/admin/consultationmanage/CreateSchedule" method="post">
-    <div class="form-group">
-        <label asp-for="ScheduledTime" class="control-label"></label>
-        <input asp-for="ScheduledTime" class="form-control" type="datetime-local" required />
-        <span asp-validation-for="ScheduledTime" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Notes" class="control-label"></label>
-        <textarea asp-for="Notes" class="form-control"></textarea>
-        <span asp-validation-for="Notes" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+<!-- SweetAlert Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Custom Script for Form Validation -->
+<script>
+    document.getElementById('createScheduleForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn form tự động submit
+
+        const scheduledTimeField = document.getElementById('scheduledTimeField').value;
+        const notesField = document.getElementById('notesField').value.trim();
+
+        // Kiểm tra nếu trường ScheduledTime rỗng
+        if (!scheduledTimeField) {
+            Swal.fire({
+                title: 'Warning!',
+                text: 'Please select a schedule time.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+            return; // Ngừng tiến trình submit nếu ScheduledTime rỗng
+        }
+
+        // Lấy thời gian hiện tại
+        const currentTime = new Date();
+        const scheduledTime = new Date(scheduledTimeField); // Chuyển datetime-local thành Date object
+
+        // Kiểm tra nếu thời gian đã chọn là trước thời gian hiện tại
+        if (scheduledTime <= currentTime) {
+            Swal.fire({
+                title: 'Warning!',
+                text: 'Please select a time that is after the current time.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+            return; // Ngừng tiến trình submit nếu thời gian không hợp lệ
+        }
+
+        // Kiểm tra nếu trường Notes rỗng
+        if (notesField === "") {
+            Swal.fire({
+                title: 'Warning!',
+                text: 'Please enter notes before submitting.',
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+            return; // Ngừng tiến trình submit nếu Notes rỗng
+        }
+
+        // AJAX request để xử lý form nếu không có lỗi
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            if (response.ok) {
+                // Hiển thị thông báo thành công
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your schedule has been created successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    // Sau khi người dùng nhấn OK, chuyển hướng về trang khác
+                    window.location.href = '/admin/consultationmanage/Index';
+                });
+            } else {
+                // Xử lý lỗi (nếu có)
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Something went wrong. Please try again.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        }).catch(error => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'An unexpected error occurred. Please try again later.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    });
+</script>

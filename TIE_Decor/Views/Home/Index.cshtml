@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="~/img/favicon.png" />
     <link rel="stylesheet" href="~/css/plugins.css" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -37,18 +38,18 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link track-click" data-element-id="button-1" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Consultation/ScheduledAppointments">Designer</a></li>
-                  
-                    <li class="nav-item"><a class="nav-link" href="/Home/About">About</a></li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item"><a class="nav-link " href="/Consultation/ScheduledAppointments">Designer</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/Home/About">About</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="/home/blog">Blog</a>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/home/blog">Blog</a>
                     </li>
                     <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
                     {
-                        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+                        <li class="nav-item "><a class="nav-link " href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -57,21 +58,25 @@
                                 Hello, @User.Identity.Name
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
                                 <li><a class="dropdown-item" href="/Profile/UpdateProfile">Profile</a></li>
                                 <li>
                                     <form id="logoutForm" action="/Auth/Logout" method="post">
                                         @Html.AntiForgeryToken()
-                                        <button type="submit" class="dropdown-item" style="cursor:pointer;">Logout</button>
+                                        <button type="submit" class="dropdown-item " style="cursor:pointer;">Logout</button>
                                     </form>
                                 </li>
                                 <li><a class="dropdown-item" href="/cart">Cart</a></li>
                             </ul>
                         </li>
+
                     }
                     else
                     {
                         <li class="nav-item dropdown">
+
                             <a class="nav-link dropdown-toggle" href="/Auth/Login">Login</a>
+
                         </li>
                     }
 
