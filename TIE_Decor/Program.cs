@@ -64,13 +64,16 @@ public class Program
         var app = builder.Build();
         StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe")["SecretKey"];
 
-        if (!app.Environment.IsDevelopment())
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
         {
             app.UseExceptionHandler("/Home/Error");
-            app.UseDeveloperExceptionPage();
             app.UseHsts();
         }
-        app.UseDeveloperExceptionPage();
+
         app.UseMiddleware<PageViewTrackingMiddleware>();
         app.UseHttpsRedirection();
         app.UseStaticFiles();

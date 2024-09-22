@@ -13,10 +13,10 @@ namespace TIE_Decor.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Phone Number is required.")]
+        [RegularExpression(@"^\d{9,15}$", ErrorMessage = "Phone Number must be between 10 and 15 digits.")]
         [Display(Name = "Phone Number")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone Number must be exactly 10 digits.")]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
+
 
 
         [Required(ErrorMessage = "Password is required.")]

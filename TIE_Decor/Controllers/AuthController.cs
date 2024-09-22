@@ -74,7 +74,11 @@ namespace TIE_Decor.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(new { success = false, message = "Invalid data" });
+                var errors = ModelState.Values
+                        .SelectMany(v => v.Errors)
+                        .Select(e => e.ErrorMessage)
+                        .ToList();
+                return Json(new { success = false, message = errors });
             }
 
             var user = new User
@@ -160,7 +164,7 @@ namespace TIE_Decor.Controllers
                 return Forbid(); // or redirect to an appropriate page
             }
 
-            var model = new DesignerProfileViewModel
+            var model = new User
             {
                 FullName = user.FullName,
                 ImageUrl = user.ImageUrl,
