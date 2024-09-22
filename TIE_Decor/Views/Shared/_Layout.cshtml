@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -34,18 +35,27 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link nav-color track-click" data-element-id="button-1" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link nav-color" href="/Consultation/ScheduledAppointments">Designer</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/Consultation/ScheduledAppointments">Designers</a></li>
                     <li class="nav-item"><a class="nav-link nav-color" href="/Home/About">About</a></li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color dropdown-toggle" href="@Url.Action("Products", "Home")" aria-expanded="false">Products</i></a>
+                        <a class="nav-link nav-color dropdown-toggle" href="/Products" aria-expanded="false">Products</i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-color " href="/home/blog">Blog</a>
+                        <a class="nav-link nav-color " href="/home/blog">Blogs</a>
                     </li>
                     <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
-                    @if (User.IsInRole("Admin") || User.IsInRole("Designer"))
+                    @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item nav-color"><a class="nav-link nav-color" href="/admin/">Admin</a></li>
+                    }
+                    else if (User.IsInRole("Designer"))
+                    {
+                        <li class="nav-item nav-color"><a class="nav-link nav-color" href="/admin/consultationmanage">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/cart"><i class="bi bi-cart3"></i></a></li>
+                        <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -63,6 +73,7 @@
                                     </form>
                                 </li>
                                 <li><a class="dropdown-item" href="/cart">Cart</a></li>
+                                <li><a class="dropdown-item" href="/Home/ViewOrder">My Orders</a></li>
                             </ul>
                         </li>
 

@@ -35,6 +35,18 @@
                     .ToListAsync();
             foreach (var consultation in consultations)
             {
+                var user = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Id == consultation.UserId.ToString());
+
+                if (user != null)
+                {
+                    // Gán thông tin User vào Consultation hoặc xử lý dữ liệu
+                    consultation.User = user;
+                }
+            }
+
+            foreach (var consultation in consultations)
+            {
                 Console.WriteLine($"Consultation ID: {consultation.ConsultationId}, User: {consultation.User?.FullName ?? "N/A"}");
             }
 
