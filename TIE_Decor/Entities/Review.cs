@@ -7,6 +7,7 @@ public class Review
     public int? ProductId { get; set; }
     public string Comment { get; set; }
     public int Rating { get; set; }
+    public Guid UserId1 { get; set; }
 
     // Quan hệ với ApplicationUser
     public virtual User User { get; set; }
