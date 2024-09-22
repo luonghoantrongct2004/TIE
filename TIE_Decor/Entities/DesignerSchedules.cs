@@ -5,12 +5,11 @@ namespace TIE_Decor.Entities
     public class DesignerSchedules
     {
         [Key]
-        public int ScheduleId { get; set; } // Khóa chính
-        public Guid DesignerId { get; set; } // ID của designer
-        public DateTime ScheduledTime { get; set; } // Thời gian đã lên lịch
+        public int ScheduleId { get; set; } 
+        public Guid DesignerId { get; set; } 
+        public DateTime ScheduledTime { get; set; } 
         public string? Status { get; set; } = "";
-        public string? Notes { get; set; } // Ghi chú thêm
+        public string? Notes { get; set; }
 
-        // Có thể thêm các thuộc tính khác tùy theo yêu cầu
     }
 }
