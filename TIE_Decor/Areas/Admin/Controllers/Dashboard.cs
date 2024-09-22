@@ -29,7 +29,10 @@ namespace TIE_Decor.Areas.Admin.Controllers
                 // Lưu trữ đối tượng user vào Session dưới dạng JSON
                 HttpContext.Session.SetObject("CurrentUser", user);
             }
-
+            ViewBag.Orders = _context.Orders.Count();
+            ViewBag.Products = _context.Products.Count();
+            ViewBag.Category = _context.Categories.Count();
+            ViewBag.Consulation = _context.Consultations.Count();
             ViewData["user"] = user;
             return View();
         }

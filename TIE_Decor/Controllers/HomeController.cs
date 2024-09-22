@@ -91,7 +91,6 @@ namespace TIE_Decor.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
         public IActionResult ViewOrder()
         {
             if (!User.Identity.IsAuthenticated)
@@ -106,7 +105,7 @@ namespace TIE_Decor.Controllers
                 .ThenInclude(od => od.Product)
                 .Where(c => c.UserId == userId)
                 .ToList();
-            
+
 
             return View(orders);
         }
