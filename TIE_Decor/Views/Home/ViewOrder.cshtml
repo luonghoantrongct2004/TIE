@@ -1,0 +1,229 @@
+﻿@model IEnumerable<TIE_Decor.Entities.Order>
+
+@{
+    ViewData["Title"] = "ViewOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h@* 1>ViewOrder</h1>
+     <p>
+     <a asp-action="Create">Create New</a>
+     </p>
+     <table class="table">
+     <thead>
+     <tr>
+     <th>
+     @Html.DisplayNameFor(model => model.UserId)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.OrderDate)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.ShipDate)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.PaymentDate)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.PaymentId)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.Note)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.CreatedAt)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.ShipperId)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.Status)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.PaymentMethod)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.ShippingAddress)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.ContactPhone)
+     </th>
+     <th>
+     @Html.DisplayNameFor(model => model.TotalPrice)
+     </th>
+     <th></th>
+     </tr>
+     </thead>
+     <tbody>
+     @foreach (var item in Model) {
+     <tr>
+     <td>
+     @Html.DisplayFor(modelItem => item.UserId)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.OrderDate)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.ShipDate)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.PaymentDate)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.PaymentId)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.Note)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.CreatedAt)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.ShipperId)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.Status)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.PaymentMethod)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.ShippingAddress)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.ContactPhone)
+     </td>
+     <td>
+     @Html.DisplayFor(modelItem => item.TotalPrice)
+     </td>
+     <td>
+     <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
+     <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
+     <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+     </td>
+     </tr>
+     }
+     </tbody>
+     </table> *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+.order-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.order-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+    .order-header .shop-name {
+        color: red;
+        font-weight: bold;
+    }
+
+    .order-header .chat-btn, .order-header .view-shop-btn {
+        margin-left: 10px;
+    }
+
+.order-product {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .order-product img {
+        width: 100px;
+    }
+
+.order-product-details {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+    .order-product-details h5 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+.price-section {
+    text-align: right;
+}
+
+    .price-section .old-price {
+        text-decoration: line-through;
+        color: #999;
+    }
+
+    .price-section .new-price {
+        color: red;
+        font-weight: bold;
+    }
+
+.btn-custom {
+    background-color: red;
+    color: #fff;
+    border: none;
+}
+
+.order-footer {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.banner-header {
+    height: 135px;
+}
+</style>
+</head>
+<body>
+    <div class="container mt-5">
+            @foreach (var item in Model)
+            {
+            <div class="order-card">
+                <div class="order-header d-flex justify-content-between align-items-center">
+                    <div>
+                                <span class="text-black">ShipDate: @item.ShipDate?.ToString("yyyy/MM/dd")</span>
+                    </div>
+                    <div>
+                        <span class="text-success">Status: @item.Status</span> | <a href="#">Rating</a>
+                    </div>
+                </div>
+                    @foreach (var od in item.OrderDetails)
+                    {
+                    <div class="order-product mt-3">
+                                <img src="@od.Product.ImageUrl" alt="Product Image">
+                        <div class="order-product-details">
+                            <h5>@od.Product.ProductName</h5>
+                            <p><span>x</span>@od.Quantity</p>
+                        </div>
+                        <div class="price-section">
+                            <p class="new-price">@od.Product.Price.ToString("C")</p>
+                        </div>
+                    </div>
+                    }
+                <div class="order-footer d-flex justify-content-end align-items-center">
+                    <div>
+                        <span>Amount: <strong class="text-danger">@item.TotalPrice.ToString("C")</strong></span>
+                    </div>
+                </div>
+            </div>
+            }
+        <div class="my-4 text-end">
+            <a href="/" class="btn btn-secondary">Back To Home</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

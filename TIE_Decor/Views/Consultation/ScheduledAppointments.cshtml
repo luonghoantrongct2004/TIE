@@ -174,13 +174,14 @@
 <body>
 
 <header>
-        <h2 class="header-title">Designer</h2>
+        <h2 class="header-title">Our Designers</h2>
         <a href="/Consultation/History" class="button">View Appointment History</a>
 </header>
 
     <div class="designer-card-container" id="designersContainer">
         @foreach (var designer in ViewBag.Designers)
         {
+            var avatar = designer.ImageUrl != null ? designer.ImageUrl : "/img/logo12.png";
             <div class="designer-card" onclick="selectDesigner(this)"
                  data-id="@designer.Id"
                  data-img="@designer.ImageUrl"
@@ -188,7 +189,7 @@
                  data-expertise="@designer.Expertise"
                  data-portfolio="@designer.Portfolio">
                 <div class="designer-card-content">
-                    <img src="@designer.ImageUrl" alt="@designer.FullName" class="designer-image" />
+                    <img src="@avatar" alt="@designer.FullName" class="designer-image" />
                     <h4 class="designer-name">@designer.FullName</h4>
                     <p class="designer-experience">Experience: @designer.YearsOfExperience years</p>
                 </div>

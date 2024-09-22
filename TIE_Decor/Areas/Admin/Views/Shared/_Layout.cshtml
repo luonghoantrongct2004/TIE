@@ -78,7 +78,7 @@
                                    <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="d-flex align-items-center">
                                     @{
-                                        var avatar = user.ImageUrl != null ? user.ImageUrl : "~/assets/images/users/avatar-1.jpg";
+                                        var avatar = user.ImageUrl != null ? user.ImageUrl : "/assets/images/users/avatar-1.jpg";
                                     }
                                              <img class="rounded-circle" width="32" src="@avatar" alt="avatar-3">
                                         </span>
@@ -226,14 +226,17 @@
           <div class="main-nav">
                <!-- Sidebar Logo -->
                <div class="logo-box">
-                    <a href="index-2.html" class="logo-dark">
-                         <img src="~/assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
-                         <img src="~/assets/images/logo-dark.png" class="logo-lg" alt="logo dark">
+                <a href="/admin" class="logo-dark">
+                    <img src="~/img/logo.png" class="logo-sm" asp-append-version=true alt="logo sm" style="height: 100px;
+    width: 80px;" />
+                    <img src="~/img/logo.png" asp-append-version=true class="logo-lg" style="height: 100px;
+    width: 190px;" alt="logo light">
                     </a>
-
-                    <a href="index-2.html" class="logo-light">
-                         <img src="~/assets/images/logo-sm.png" class="logo-sm" alt="logo sm">
-                         <img src="~/assets/images/logo-light.png" class="logo-lg" alt="logo light">
+                    <a href="/admin" class="logo-light">
+                    <img src="~/img/logo.png" class="logo-sm" asp-append-version=true alt="logo sm" style="height: 100px;
+    width: 80px;" />
+                    <img src="~/img/logo.png" asp-append-version=true class="logo-lg" style="height: 100px;
+    width: 190px;" alt="logo light">
                     </a>
                </div>
 
@@ -308,20 +311,12 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/admin/consultationmanage">
-                                <span class="nav-icon">
-                                    <i class="bi bi-star"></i>
-                                </span>
-                                <span class="nav-text"> Consultation </span>
-                            </a>
-                        </li>
 
 
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/role">
                                 <span class="nav-icon">
-                                    <iconify-icon icon="mdi:home"></iconify-icon>
+                                    <i class="bi bi-shield-lock"></i> <!-- Sử dụng biểu tượng role khác như "shield-lock" -->
                                 </span>
                                 <span class="nav-text"> Role </span>
                             </a>
@@ -330,11 +325,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/users">
                                 <span class="nav-icon">
-                                    <iconify-icon icon="mdi:home"></iconify-icon>
+                                    <i class="bi bi-person"></i> <!-- Sử dụng biểu tượng người dùng (user) hợp lệ -->
                                 </span>
                                 <span class="nav-text"> User </span>
                             </a>
                         </li>
+
                     }else @if (User.IsInRole("Designer"))
                     {
                         <li class="nav-item">

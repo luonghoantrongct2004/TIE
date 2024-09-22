@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Security.Claims;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
 using TIE_Decor.Models;
@@ -89,7 +90,24 @@ namespace TIE_Decor.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult ViewOrder()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Auth/Login");
+            }
 
-        
+            Guid userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var orders = _context.Orders
+                .Include(c => c.OrderDetails)
+                .ThenInclude(od => od.Product)
+                .Where(c => c.UserId == userId)
+                .ToList();
+
+
+            return View(orders);
+        }
+
     }
 }
