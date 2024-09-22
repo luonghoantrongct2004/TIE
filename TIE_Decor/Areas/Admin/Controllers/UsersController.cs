@@ -35,14 +35,22 @@ namespace TIE_Decor.Areas.Admin.Controllers
 
             return View(account);
         }
-
-        // POST: Admin/Accounts/Delete/5
         [HttpPost]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             if (id == null)
             {
                 return NotFound();
+            }
+
+            // Xóa các thực thể liên quan trước khi xóa User
+            var consultations = await _context.Consultations
+                .Where(c => c.UserId == new Guid(id))
+                .ToListAsync();
+
+            if (consultations != null && consultations.Count > 0)
+            {
+                _context.Consultations.RemoveRange(consultations);
             }
 
             var user = await _context.Users.FindAsync(id);
@@ -54,5 +62,6 @@ namespace TIE_Decor.Areas.Admin.Controllers
 
             return Redirect("/admin/users");
         }
+
     }
 }
