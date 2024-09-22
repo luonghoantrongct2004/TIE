@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+
 <html lang="zxx">
 <head>
     <meta charset="utf-8">
@@ -49,6 +50,11 @@
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li class="nav-item"><a class="nav-link" href="/cart"><i class="bi bi-cart3"></i></a></li>
+                        <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li class="nav-item nav-color dropdown">
                             <a class="nav-link nav-color dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Hello, @User.Identity.Name
@@ -63,6 +69,7 @@
                                     </form>
                                 </li>
                                 <li><a class="dropdown-item" href="/cart">Cart</a></li>
+                                <li><a class="dropdown-item" href="/Home/ViewOrder">My Orders</a></li>
                             </ul>
                         </li>
 
