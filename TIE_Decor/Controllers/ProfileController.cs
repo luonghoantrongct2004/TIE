@@ -10,12 +10,12 @@ using TIE_Decor.Models;
 
 namespace TIE_Decor.Controllers
 {
-    public class AdminProfileController : Controller
+    public class ProfileController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public AdminProfileController(UserManager<User> userManager, IWebHostEnvironment hostingEnvironment)
+        public ProfileController(UserManager<User> userManager, IWebHostEnvironment hostingEnvironment)
         {
             _userManager = userManager;
             _hostingEnvironment = hostingEnvironment;
