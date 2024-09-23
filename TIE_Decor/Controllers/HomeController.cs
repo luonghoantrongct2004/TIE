@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Stripe.Climate;
 using System.Diagnostics;
 using System.Security.Claims;
 using TIE_Decor.DbContext;
@@ -109,6 +110,5 @@ namespace TIE_Decor.Controllers
 
             return View(orders);
         }
-
     }
 }
