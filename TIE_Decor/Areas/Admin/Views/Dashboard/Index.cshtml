@@ -285,7 +285,7 @@
                                         Phone No.
                                     </th>
                                     <th>
-                                        Address
+                                    Shipping Address
                                     </th>
                                     <th>
                                         Payment Type
@@ -297,26 +297,40 @@
                             </thead>
                             <!-- end thead-->
                             <tbody>
+                            @{
+                                var orders = ViewBag.Orders as List<Order>;
+                            }
+                            @if (orders != null && orders.Any())
+                            {
+                                @foreach (var item in orders)
+                            {
                                 <tr>
                                     <td class="ps-3">
-                                        <a href="order-detail.html">#RB5625</a>
+                                        <a href="order-detail.html">@item.OrderId</a>
                                     </td>
-                                    <td>29 April 2024</td>
+                                    <td>@item.OrderDate</td>
                                     <td>
-                                        <img src="~/assets/images/products/product-1(1).png" alt="product-1(1)" class="img-fluid avatar-sm">
+                                        @foreach (var detail in item.OrderDetails)
+                                        {
+                                            <img src="@detail.Product?.ImageUrl" alt="product-1(1)" class="img-fluid avatar-sm">
+                                        }
                                     </td>
                                     <td>
-                                        <a href="#!">Anna M. Hines</a>
+                                        <a href="#!">@item.User.FullName</a>
                                     </td>
-                                    <td>anna.hines@mail.com</td>
-                                    <td>(+1)-555-1564-261</td>
-                                    <td>Burr Ridge/Illinois</td>
-                                    <td>Credit Card</td>
+                                    <td>@item.User.Email</td>
+                                    <td>@item.User.ContactPhone</td>
+                                    <td>@item.ShippingAddress</td>
                                     <td>
-                                        <i class="bx bxs-circle text-success me-1"></i>Completed
+                                       @item.PaymentMethod
+                                    </td>
+                                    <td>
+                                        <i class="bx bxs-circle text-success me-1"></i>@item.Status
                                     </td>
                                 </tr>
-                            </tbody>
+                            }
+                            }
+                        </tbody>
                             <!-- end tbody -->
                         </table>
                         <!-- end table -->

@@ -4,7 +4,8 @@ using System.Security.Claims;
 using System.Linq;
 using TIE_Decor.DbContext;
 using TIE_Decor.Entities;
-using TIE_Decor.Service; // Đảm bảo namespace đúng với dự án của bạn
+using TIE_Decor.Service;
+using Microsoft.EntityFrameworkCore; // Đảm bảo namespace đúng với dự án của bạn
 
 namespace TIE_Decor.Areas.Admin.Controllers
 {
@@ -29,7 +30,10 @@ namespace TIE_Decor.Areas.Admin.Controllers
                 // Lưu trữ đối tượng user vào Session dưới dạng JSON
                 HttpContext.Session.SetObject("CurrentUser", user);
             }
-            ViewBag.Orders = _context.Orders.Count();
+            ViewBag.Orders = _context.Orders
+                .Include(u => u.User)
+                .Include(d => d.OrderDetails).ThenInclude(p => p.Product)
+                .Count();
             ViewBag.Products = _context.Products.Count();
             ViewBag.Category = _context.Categories.Count();
             ViewBag.Consulation = _context.Consultations.Count();

@@ -7,6 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using TIE_Decor.DbContext;
     using TIE_Decor.Entities;
+using TIE_Decor.Service;
 
     namespace TIE_Decor.Areas.Admin.Controllers
     {
@@ -21,8 +22,18 @@
             }
 
             public async Task<IActionResult> Index()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user1 = _context.Users.FirstOrDefault(u => u.Id == userId);
+
+            if (user1 != null)
             {
-                var designerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                // Lưu trữ đối tượng user vào Session dưới dạng JSON
+                HttpContext.Session.SetObject("CurrentUser", user1);
+            }
+            ViewData["user"] = user1;
+
+            var designerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 if (!Guid.TryParse(designerIdClaim, out Guid designerIdGuid))
                 {
                     return BadRequest("Invalid DesignerId.");
