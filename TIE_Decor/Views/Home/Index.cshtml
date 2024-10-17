@@ -72,6 +72,7 @@
                                 </li>
                                 <li><a class="dropdown-item" href="/cart">Cart</a></li>
                                 <li><a class="dropdown-item" href="/Home/ViewOrder">My Orders</a></li>
+                                <li><a class="dropdown-item" href="/home/favorite">Mt Favorite</a></li>
                             </ul>
                         </li>
 
@@ -93,7 +94,7 @@
     <header class="header slider-fade">
         <div class="owl-carousel owl-theme">
             <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-            <div class="text-left item bg-img" data-overlay-dark="3" data-background="img/slider/1.jpg">
+            <div class="text-left item bg-img" data-overlay-dark="3" data-background="/img/slider/1.jpg">
                 <div class="v-middle caption mt-30">
                     <div class="container">
                         <div class="row">
@@ -284,35 +285,6 @@
                     </div>
                 </div>
             </section>
-        </section>
-
-
-        <!-- Projects -->
-        <section class="projects section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="section-title">Our <span>Projects</span></h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="owl-carousel owl-theme">
-                            @foreach (var item in ViewData["Products"] as List<Product>)
-                            {
-                                <div class="item">
-                                    <div class="position-re o-hidden"> <img src="@item.ImageUrl" alt=""> </div>
-                                    <div class="con">
-                                        <h6><a href="/Products/Details?id=@item.ProductId">@item.ProductName</a></h6>
-                                        <h5><a href="/Products/Details?id=@item.ProductId">@item.Description</a></h5>
-                                        <div class="line"></div> <a href="/Products/Details?id=@item.ProductId"><i class="ti-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <!-- Services -->

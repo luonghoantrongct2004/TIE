@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TIE_Decor.Entities.Favorite>
+<!-- Careers -->
+<section class="positions section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mb-30 text-center">
+                <h2 class="section-title">My <span>Favorite</span></h2>
+            </div>
+        </div>
+        <div class="row">
+             @if (Model != null && Model.Any())
+            {
+                foreach (var favorite in Model)
+                {
+                    <div class="col-md-12 mb-60">
+                        <div class="position">
+                            <a class="position-title" href="/products/details/@favorite.Product.ProductId">@favorite.Product.ProductName<span>@favorite.Product.Price</span></a>
+                            <a  href="/products/details/@favorite.Product.ProductId" class="position-location">Description<span></span> @favorite.Product.Description</a>
+                            @{
+                                // Check if the ImageUrl is not null or empty
+                                var firstImageUrl = !string.IsNullOrEmpty(favorite.Product.ImageUrl)
+                                ? favorite.Product.ImageUrl.Split(',').FirstOrDefault()
+                                : "/img/logo12"; // Default image if none available
+                            }
+                            <div class="position-time"><img src="@firstImageUrl" width="50px" height="50px" style="width:50px; height:50px;" /></div>
+                            <div class="position-icon"><a class="btn btn-danger" href="/home/remove/@favorite.Id">X</a></div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

@@ -107,48 +107,9 @@ namespace TIE_Decor.Controllers
                 .Where(c => c.UserId == userId)
                 .ToList();
 
+
             return View(orders);
         }
-
-        public IActionResult RatingOrder(int id)
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return Redirect("/Auth/Login");
-            }
-
-            Guid userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-            var order = _context.Orders
-                .Include(c => c.OrderDetails)
-                    .ThenInclude(od => od.Product)
-                        .ThenInclude(p => p.Reviews)
-                .Where(c => c.UserId == userId)
-                .Where(c => c.OrderId == id)
-                .FirstOrDefault();
-
-            //var order = _context.Orders
-            //    .Where(c => c.UserId == userId && c.OrderId == id)
-            //    .Select(o => new
-            //    {
-            //        o.OrderId,
-            //        o.UserId,
-            //        OrderDetails = o.OrderDetails.Select(od => new
-            //        {
-            //            Product = od.Product,
-            //            Review = od.Product.Reviews
-            //                .Where(r => r.UserId == userId)
-            //                .Where(r => r.ProductId == od.ProductId)
-            //                .FirstOrDefault()
-            //        }).ToList()
-            //    })
-            //    .FirstOrDefault();
-
-
-
-            return View(order);
-        }
-
 
         [HttpPost]
         public async Task<IActionResult> SubmitReviews(int productId, int orderId, IFormCollection form)
@@ -183,7 +144,59 @@ namespace TIE_Decor.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("ViewOrder", "Home");
         }
+        [HttpPost]
+        public JsonResult IsHeart(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Json(new { success = false, message = "You must be logged in to add a product to favorites!" });
+            }
+
+            var fa = _context.Favorites.ToList();
+            foreach (var item in fa)
+            {
+                if (item.ProductId == id)
+                {
+                    return Json(new { success = false, message = "Product is already in your favorites!" });
+                }
+            }
+
+            var product = _context.Products.FirstOrDefault(i => i.ProductId == id);
+            if (product == null)
+            {
+                return Json(new { success = false, message = "Product not found!" });
+            }
+
+            var favorite = new Favorite()
+            {
+                ProductId = product.ProductId,
+                UserId = userId,
+            };
+
+            _context.Favorites.Add(favorite);
+            _context.SaveChanges();
+
+            return Json(new { success = true, message = "Product added to favorites!" });
+        }
 
 
-     }
+        public IActionResult Favorite()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return View(_context.Favorites.Include(u => u.User)
+                .Include(p => p.Product)
+                .Where(u => u.UserId == userId)); 
+        }
+        public IActionResult Remove(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) { return Redirect("/Auth/Login"); }
+            var favorite = _context.Favorites.FirstOrDefault(i => i.Id == id);
+
+            _context.Favorites.Remove(favorite);
+            _context.SaveChanges();
+            return Redirect("/home/Favorite");
+        }
+    }
 }

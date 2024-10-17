@@ -60,12 +60,12 @@ namespace TIE_Decor.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetScheduledAppointments(string designerId)
+        public async Task<IActionResult> GetScheduledAppointments(Guid designerId)
         {
             try
             {
                 var scheduledAppointments = await _context.DesignerSchedules
-                    .Where(s => s.DesignerId.Equals( designerId))
+                    .Where(s => s.DesignerId == designerId)
                     .ToListAsync();
                 var reviews = await _context.Reviews
                     .Where(r => designerId == r.UserId)
@@ -251,7 +251,7 @@ namespace TIE_Decor.Controllers
         }
         [HttpGet]
         [Route("Consultation/GetDesignerReviews/{designerId}")]
-        public async Task<IActionResult> GetDesignerReviews(string designerId)
+        public async Task<IActionResult> GetDesignerReviews(Guid designerId)
         {
             try
             {

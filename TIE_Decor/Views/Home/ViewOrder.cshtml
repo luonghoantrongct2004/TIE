@@ -121,9 +121,10 @@
                     <span class="text-success fw-bolder">Status: @item.Status</span>
                 </div>
             </div>
-                    <form asp-action="SubmitReviews" method="post">
+                    
             @foreach (var od in item.OrderDetails)
             {
+                <form asp-action="SubmitReviews" method="post">
             <div class="order-product mt-3 p-3 border-bottom">
                 <img src="@od.Product.ImageUrl" alt="Product Image" style="max-height: 120px;">
                 <div class="order-product-details">
@@ -162,8 +163,9 @@
                         }
                 </div>
             </div>
+            </form>
                     }
-                </form>
+                
             <div class="order-footer d-flex justify-content-end align-items-center">
                 <div>
                     <span>Amount: <strong class="text-danger">@item.TotalPrice.ToString("C")</strong></span>
