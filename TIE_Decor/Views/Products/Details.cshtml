@@ -51,8 +51,46 @@
             <div class="card border-0">
                 <div class="card-body text-end">
                     <a href="/Cart/AddToCart?productId=@Model.ProductId" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Add Cart</a>
+
+
+                    <a href="javascript:void(0)" onclick="addToFavorites(@Model.ProductId)" class="btn btn-primary btn-block btn-lg">Add Favorite</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function addToFavorites(productId) {
+        $.ajax({
+            url: '/home/IsHeart',
+            type: 'POST',
+            data: { id: productId },
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: response.message,
+                    });
+                }
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong! Please try again.',
+                });
+            }
+        });
+    }
+</script>
+
+

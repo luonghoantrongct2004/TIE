@@ -12,8 +12,8 @@ using TIE_Decor.DbContext;
 namespace TIE_Decor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240922010733_Database-Final")]
-    partial class DatabaseFinal
+    [Migration("20241017031520_AddFavorite")]
+    partial class AddFavorite
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -341,6 +341,30 @@ namespace TIE_Decor.Migrations
                     b.HasKey("ScheduleId");
 
                     b.ToTable("DesignerSchedules");
+                });
+
+            modelBuilder.Entity("TIE_Decor.Entities.Favorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("TIE_Decor.Entities.Order", b =>
@@ -717,6 +741,25 @@ namespace TIE_Decor.Migrations
                     b.HasOne("TIE_Decor.Entities.User", "User")
                         .WithMany("Designs")
                         .HasForeignKey("UserId1");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TIE_Decor.Entities.Favorite", b =>
+                {
+                    b.HasOne("TIE_Decor.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TIE_Decor.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
 
                     b.Navigation("User");
                 });
