@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+<<<<<<< HEAD
+    <_PublishTargetUrl>C:\Users\PREDATOR\OneDrive\Tài liệu\TIE_Decor\TIE_Decor\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2024-09-21T23:31:37.3262833Z||;True|2024-09-22T05:47:08.9196167+07:00||;True|2024-09-21T17:17:27.1415953+07:00||;</History>
+=======
+    <_PublishTargetUrl>C:\Users\Acer\Desktop\source</_PublishTargetUrl>
+    <History>True|2024-09-21T12:48:37.0751627Z||;True|2024-09-21T19:44:51.3951745+07:00||;True|2024-09-21T19:43:37.8847042+07:00||;True|2024-09-21T19:42:38.5521607+07:00||;True|2024-09-21T17:17:27.1415953+07:00||;</History>
+>>>>>>> 17bee069647bab154585636c654980cb67a834c7
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="Connection">
+      <Value>Server=localhost%3bInitial Catalog=TIE-Decor%3bMultipleActiveResultSets=true%3bTrustServerCertificate=True%3bIntegrated Security=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #b19777;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+            .header-title:hover {
+                color: #a98165;
+            }
+
+        h2 {
+            color: #333;
+            font-weight: 700;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #b19777;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+            .button:hover {
+                background-color: #a98165;
+            }
+
+        .designer-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .designer-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            cursor: pointer;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+            .designer-card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                border-color: #007bff;
+            }
+
+        #designerInfo, #scheduledAppointmentsContainer {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            display: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn-primary {
+            background-color: #b19777;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #a98165;
+            }
+
+            .btn-primary:disabled {
+                background-color: #b19777;
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
+
+        .status-available {
+            color: green;
+        }
+
+        .status-booked {
+            color: red;
+        }
+
+        .status-cancelled {
+            color: orange;
+        }
+
+        .designer-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .designer-card {
+            border: 2px solid #b19777; /* Khung bao quanh */
+            border-radius: 10px;
+            padding: 15px;
+            width: 220px;
+            cursor: pointer;
+            text-align: center;
+            background-color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .designer-card-content {
+            padding: 10px;
+        }
+
+        .designer-image {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .designer-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .designer-experience {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .designer-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-color: #a98165; /* Đổi màu khung khi hover */
+        }
+
+        @@media (max-width: 600px) {
+            .designer-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2 class="header-title">Designer</h2>
+        <a href="/Consultation/History" class="button">View Appointment History</a>
+    </header>
+
+    <div class="designer-card-container" id="designersContainer">
+        @foreach (var designer in ViewBag.Designers)
+        {
+            var avatar = designer.ImageUrl != null ? designer.ImageUrl : "/img/logo12.png";
+            <div class="designer-card" onclick="selectDesigner(this)"
+                 data-id="@designer.Id"
+                 data-img="@designer.ImageUrl"
+                 data-experience="@designer.YearsOfExperience"
+                 data-expertise="@designer.Expertise"
+                 data-portfolio="@designer.Portfolio">
+                <div class="designer-card-content">
+                    <img src="@avatar" alt="@designer.FullName" class="designer-image" />
+                    <h4 class="designer-name">@designer.FullName</h4>
+                    <p class="designer-experience">Experience: @designer.YearsOfExperience years</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="designerInfo">
+        <h4 id="selectedDesignerName" style="margin-bottom: 10px; font-weight: bold;"></h4>
+        <div id="selectedImageUrl" style="margin-bottom: 10px; text-align: center;">
+            <img src="" alt="Designer Image" style="max-width: 50%; border-radius: 8px;" id="designerImage" />
+        </div>
+        <p id="designerExperience" style="margin: 5px 0;"></p>
+        <p id="designerExpertise" style="margin: 5px 0;"></p>
+        <p id="designerPortfolio" style="margin: 5px 0;"></p>
+    </div>
+
+    <div id="scheduledAppointmentsContainer">
+        <h3>Scheduled Appointments</h3>
+        <table id="appointmentsTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="appointmentsBody"></tbody>
+        </table>
+    </div>
+
+    <div id="designerReviewsContainer" style="margin-top: 20px;">
+        <h3>Designer Reviews</h3>
+        <table id="reviewsTable">
+            <thead>
+                <tr>
+                    <th>Review ID</th>
+                    <th>Rating</th>
+                    <th>Comment</th>
+                    <th>Reviewer</th>
+                </tr>
+            </thead>
+            <tbody id="reviewsBody">
+                @if (ViewBag.Reviews as Review != null)
+                {
+                    foreach (var review in ViewBag.Reviews)
+                    {
+                        <tr>
+                            <td>@review.ReviewId</td>
+                            <td>@review.Rating stars</td>
+                            <td>@review.Comment</td>
+                            <td>@review.Username</td>
+                        </tr>
+                    }
+                }@if (ViewBag.Review as Review != null)
+                {
+                    foreach (var review in ViewBag.Reviews)
+                    {
+                        <tr>
+                            <td>@review.ReviewId</td>
+                            <td>@review.Rating stars</td>
+                            <td>@review.Comment</td>
+                            <td>@review.Username</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4">No reviews available.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <input type="hidden" name="designerId" id="designerId" value="" />
+
+    <script>
+        function selectDesigner(card) {
+            const designerId = card.getAttribute("data-id");
+            document.getElementById("designerId").value = designerId;
+            document.getElementById("selectedDesignerName").innerText = card.querySelector("h4").innerText;
+            document.getElementById("designerImage").src = card.getAttribute("data-img");
+            document.getElementById("designerExperience").innerText = "Experience: " + card.getAttribute("data-experience") + " years";
+            document.getElementById("designerExpertise").innerText = "Expertise: " + card.getAttribute("data-expertise");
+            document.getElementById("designerPortfolio").innerText = "Portfolio: " + card.getAttribute("data-portfolio");
+            document.getElementById("designerInfo").style.display = 'block';
+
+            // Gọi hàm để lấy lịch hẹn đã lên cho designer
+            fetchScheduledAppointments(designerId);
+
+            // Hiển thị review cho designer được chọn
+            displayDesignerReviews(designerId);
+        }
+
+        function fetchScheduledAppointments(designerId) {
+            fetch(`/Consultation/GetScheduledAppointments?designerId=${designerId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+
+                        // Chỉ gọi hàm nếu có dữ liệu scheduledAppointments
+                        if (data.scheduledAppointments) {
+                            renderScheduledAppointments(data.scheduledAppointments);
+                        }
+
+                        // Luôn gọi hàm hiển thị reviews
+                        displayDesignerReviews(data.reviews);
+                    } else {
+                        console.error("Error:", data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching scheduled appointments:', error);
+                });
+        }
+        function displayDesignerReviews(reviews) {
+            const reviewsBody = document.getElementById("reviewsBody");
+            reviewsBody.innerHTML = ""; // Clear previous content
+
+            if (reviews.length > 0) {
+                reviews.forEach(review => {
+                    const row = `<tr>
+                                            <td>${review.reviewId || 'N/A'}</td>
+                                            <td>${review.rating || 'N/A'} stars</td>
+                                            <td>${review.comment || 'No comment'}</td>
+                                            <td>${review.username || 'Anonymous'}</td>
+                                         </tr>`;
+                    reviewsBody.innerHTML += row;
+                });
+            } else {
+                reviewsBody.innerHTML = `<tr><td colspan="4">No reviews available for this designer.</td></tr>`;
+            }
+
+            // Show the reviews container
+            document.getElementById("designerReviewsContainer").style.display = 'block';
+        }
+
+
+
+        function renderScheduledAppointments(appointments) {
+            const appointmentsBody = document.getElementById("appointmentsBody");
+            appointmentsBody.innerHTML = '';
+
+            if (appointments.length === 0) {
+                appointmentsBody.innerHTML = '<tr><td colspan="5">No scheduled appointments.</td></tr>';
+                return;
+            }
+
+            appointments.forEach(appointment => {
+                const formattedTime = appointment.scheduledTime.replace(' ', 'T');
+                const scheduledDate = new Date(formattedTime);
+                const validDate = !isNaN(scheduledDate) ? scheduledDate : null;
+
+                let status = appointment.status || 'N/A';
+                let buttonText = 'Book Appointment';
+                let buttonDisabled = false;
+                let statusClass = 'status-available';
+
+                switch (status.toLowerCase()) {
+                    case 'declined':
+                    case 'canceled by designer':
+                        status = 'Canceled by Designer';
+                        buttonText = 'Not Available';
+                        buttonDisabled = true;
+                        statusClass = 'status-cancelled';
+                        break;
+                    case 'booked':
+                    case 'pending':
+                        buttonText = 'Not Available';
+                        buttonDisabled = true;
+                        statusClass = 'status-booked';
+                        break;
+                }
+
+                const row = `<tr>
+                        <td>${validDate ? validDate.toLocaleDateString() : 'Invalid Date'}</td>
+                        <td>${validDate ? validDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Invalid Time'}</td>
+                        <td class="${statusClass}">${status}</td>
+                        <td>${appointment.notes || 'N/A'}</td>
+                        <td>
+                            <button onclick="confirmAppointment('${appointment.scheduleId}')"
+                                    class="btn btn-primary btn-sm"
+                                    ${buttonDisabled ? 'disabled' : ''}>
+                                ${buttonText}
+                            </button>
+                        </td>
+                    </tr>`;
+
+                appointmentsBody.innerHTML += row;
+            });
+
+            document.getElementById("scheduledAppointmentsContainer").style.display = 'block';
+        }
+        function confirmAppointment(scheduleId) {
+            swal({
+                title: "Are you sure?",
+                text: "Do you want to confirm this appointment?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#b19777",
+                confirmButtonText: "Yes, confirm it!",
+                cancelButtonText: "No, cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        updateAppointmentStatus(scheduleId, 'Pending');
+
+                        fetch(`/Consultation/ConfirmConsultation/${scheduleId}`, {
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            credentials: 'include'
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                if (data.success) {
+                                    swal("Confirmed!", "Appointment is now pending and waiting for admin confirmation.", "success");
+                                    location.reload(); // Reload the page after confirmation
+                                } else {
+                                    swal("Error!", "Failed to confirm appointment: " + data.message, "error");
+                                    updateAppointmentStatus(scheduleId, 'Available');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                swal("Error!", "An error occurred while confirming the appointment.", "error");
+                            });
+                    } else {
+                        swal("Cancelled", "Your appointment confirmation has been cancelled.", "error");
+                    }
+                });
+        }
+
+
+        function updateAppointmentStatus(scheduleId, newStatus) {
+            const appointmentsBody = document.getElementById("appointmentsBody");
+            const rows = appointmentsBody.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const statusCell = row.cells[2];
+                const idCell = row.cells[0];
+                if (idCell && idCell.innerText === scheduleId) {
+                    statusCell.innerText = newStatus;
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

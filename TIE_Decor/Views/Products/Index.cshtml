@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TIE_Decor.Entities.Product>
+<!-- Projects -->
+<section class="projects section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                <h2 class="section-title">Our <span>Products</span></h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <div class="item">
+                        <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
+                    <div class="con">
+                            <h6><a class="track-click" data-element-id="button-1" href="/Products/Details?id=@item.ProductId">@item.Price</a></h6>
+                            <h5><a class="track-click" data-element-id="button-1" href="/Products/Details?id=@item.ProductId">@item.ProductName</a></h5>
+                            <div class="line"></div> <a class="track-click" data-element-id="button-1" href="/Products/Details?id=@item.ProductId"><i class="ti-arrow-right"></i></a>
+                    </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

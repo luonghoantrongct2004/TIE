@@ -1,0 +1,243 @@
+﻿@using TIE_Decor.Areas.Admin.Models
+@model RoleManagementViewModel
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="container">
+	<h2>Role Management</h2>
+	<hr />
+
+	<table class="table table-striped table-hover table-bordered">
+		<thead class="table-light">
+			<tr>
+				<th>Role Name</th>
+				<th style="width: 150px;">Actions</th> <!-- Đặt chiều rộng cố định cho cột Actions -->
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var role in Model.Roles)
+			{
+				<tr>
+					<td>@role.Name</td>
+					<td class="d-flex justify-content-start">
+						<a href="javascript:void(0);" onclick="showUpdateRoleModal('@role.Id', '@role.Name')" class="btn btn-soft-primary btn-sm me-2">
+							<iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+						</a>
+						<form id="deleteRoleForm-@role.Id" action="/admin/role/Delete" method="post" style="display:inline;">
+							<input type="hidden" name="RoleId" value="@role.Id" />
+							<button type="button" class="btn btn-soft-danger btn-sm" onclick="confirmDelete('@role.Id')">
+								<iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+							</button>
+						</form>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	<!-- Button to open Create Role modal -->
+	<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#roleModal" onclick="showCreateRoleModal()">Create New Role</button>
+
+	<!-- Button to open Assign Role modal -->
+	<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#assignRoleModal" style="margin-left: 10px;">Assign Role</button>
+
+	<!--  Assigning Roles -->
+	<div class="modal fade" id="assignRoleModal" tabindex="-1" aria-labelledby="assignRoleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="assignRoleModalLabel">Assign Roles to Users</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="assignRoleForm" action="/admin/role/AssignRole" method="post">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>User Name</th>
+									<th>Email</th>
+									<th>Current Role</th>
+									<th>New Role</th>
+								</tr>
+							</thead>
+							<tbody>
+								@if (Model.UserList != null && Model.Roles != null)
+								{
+									@foreach (var user in Model.UserList)
+									{
+										<tr>
+											<td>@user.UserName</td>
+											<td>@user.Email</td>
+											<td>@user.CurrentRole</td>
+											<td>
+												<select name="roles[@user.UserId]" class="form-control">
+													<option value="">Select a role</option>
+													@foreach (var role in Model.Roles)
+													{
+														if (user.CurrentRole == role.Name)
+														{
+															<option value="@role.Name" selected="selected">@role.Name</option>
+														}
+														else
+														{
+															<option value="@role.Name">@role.Name</option>
+														}
+													}
+												</select>
+											</td>
+										</tr>
+									}
+								}
+								else
+								{
+									<tr>
+										<td colspan="4">No users or roles found.</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-soft-secondary" data-bs-dismiss="modal">
+						<iconify-icon icon="solar:close-broken" class="align-middle fs-18"></iconify-icon> Close
+					</button>
+					<button type="submit" class="btn btn-soft-primary" form="assignRoleForm">
+						<iconify-icon icon="solar:check-broken" class="align-middle fs-18"></iconify-icon> Save changes
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal for Create Role -->
+	<div class="modal fade" id="roleModal" tabindex="-1" aria-labelledby="roleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="roleModalLabel">Manage Role</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="roleForm" action="/admin/role/CreateRole" method="post">
+						<div class="mb-3">
+							<label for="RoleName" class="form-label">Role Name</label>
+							<input type="text" id="RoleName" name="RoleName" class="form-control" required />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-soft-secondary" data-bs-dismiss="modal">
+						<iconify-icon icon="solar:close-broken" class="align-middle fs-18"></iconify-icon> Close
+					</button>
+					<button type="submit" class="btn btn-soft-primary" id="modalSubmitButton" form="roleForm">
+						<iconify-icon icon="solar:plus-broken" class="align-middle fs-18"></iconify-icon> Create New
+					</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal for Update Role -->
+	<div class="modal fade" id="updateRoleModal" tabindex="-1" aria-labelledby="updateRoleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="updateRoleModalLabel">Update Role</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="updateRoleForm" action="/admin/role/UpdateRole" method="post">
+						<input type="hidden" id="UpdateRoleId" name="RoleId" />
+						<div class="mb-3">
+							<label for="UpdateRoleName" class="form-label">Role Name</label>
+							<input type="text" id="UpdateRoleName" name="RoleName" class="form-control" required />
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-soft-secondary" data-bs-dismiss="modal">
+						<iconify-icon icon="solar:close-broken" class="align-middle fs-18"></iconify-icon> Close
+					</button>
+					<button type="submit" class="btn btn-primary" form="updateRoleForm">
+						<iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon> Update
+					</button>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Scripts -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	function confirmDelete(roleId) {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "Do you really want to delete this role? This action cannot be undone!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#d33',
+			cancelButtonColor: '#3085d6',
+			confirmButtonText: 'Yes, delete it!',
+			cancelButtonText: 'Cancel'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				document.getElementById('deleteRoleForm-' + roleId).submit();
+			}
+		});
+	}
+
+	function showError(message) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: message,
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'OK'
+		});
+	}
+
+	function showSuccess(message) {
+		Swal.fire({
+			icon: 'success',
+			title: 'Success!',
+			text: message,
+			confirmButtonColor: '#3085d6',
+			confirmButtonText: 'OK'
+		});
+	}
+
+	@if (TempData["ErrorMessage"] != null)
+	{
+		<text>
+				showError('@TempData["ErrorMessage"]');
+		</text>
+	}
+
+	@if (TempData["SuccessMessage"] != null)
+	{
+		<text>
+				showSuccess('@TempData["SuccessMessage"]');
+		</text>
+	}
+
+		// Function to show Update Role modal with current role data
+		function showUpdateRoleModal(roleId, roleName) {
+			// Populate the modal with the role data
+			$('#UpdateRoleId').val(roleId);  // Gán giá trị RoleId vào input ẩn
+			$('#UpdateRoleName').val(roleName);  // Hiển thị RoleName vào input
+			$('#updateRoleModal').modal('show'); // Hiển thị modal cập nhật
+		}
+
+	// Function to show Create Role modal
+	function showCreateRoleModal() {
+		$('#RoleName').val(''); // Clear input field
+		$('#roleModal').modal('show'); // Open modal
+	}
+</script>

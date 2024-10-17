@@ -1,0 +1,162 @@
+﻿@model TIE_Decor.ViewModels.ProductDetailReviewViewModel
+@{
+    var imageUrls = Model.Product.ImageUrl?.Split(',') ?? new string[0]; // Split the ImageUrl string into an array
+}
+<style>
+    .fixed-size-img {
+        width: 546px;
+        /* Chiều rộng cố định */
+        height: 320px;
+        /* Chiều cao cố định */
+        object-fit: cover;
+        /* 'cover' để cắt xén hình ảnh phù hợp với kích thước, hoặc 'contain' để hiển thị toàn bộ hình ảnh */
+    }
+
+    /* Đảm bảo hình ảnh không bị giãn nở ngoài kích thước định nghĩa */
+    .fixed-size-img-container {
+        width: 546px;
+        /* Chiều rộng cố định */
+        height: 320px;
+        /* Chiều cao cố định */
+        overflow: hidden;
+    }
+</style>
+<!-- Project Page -->
+<section class="section-padding2">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in imageUrls)
+            {
+                <div class="col-md-6 gallery-item">
+                    <a href="@item" title="Architecture" class="img-zoom">
+                        <div class="gallery-box fixed-size-img-container mx-auto d-block">
+                            <div class="gallery-img">
+                                <img src="@item" class="img-fluid mx-auto d-block fixed-size-img"
+                                     alt="work-img">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title2">@Model.Product.ProductName</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>@Model.Product.Description</p>
+            </div>
+            <div class="col-md-4">
+                <p><b>Category : </b> @Model.Product.Category?.CategoryName</p>
+                <p><b>Project Name : </b> @Model.Product.ProductName</p>
+                <p><b>Category : </b> @Model.Product.Category?.CategoryName</p>
+                <p><b>Brand : </b> @Model.Product.Brand?.Name</p>
+            </div>
+        </div>
+        <div>
+            <div class="card border-0">
+                <div class="card-body text-end">
+                    <a href="/Cart/AddToCart?productId=@Model.Product.ProductId" data-mdb-button-init
+                       data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Add Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="fw-bold text-center py-5">REVIEWS</h2>
+        <div style="font-family: Arial, sans-serif; margin: auto;">
+            <!-- Display Average Rating and Total Reviews -->
+            <div style="font-size: 40px; font-weight: bold;">
+                    <div class="row align-items-center">
+                    <div class="col-md-6 col-12 star-rating">
+                        <div>@Math.Round(Model.AverageRating, 1)</div>
+                        @for (var i = 1; i <= 5; i++)
+                        {
+                            if (i <= Math.Floor(@Math.Round(Model.AverageRating, 1)))
+                            {
+                                <i class="fa fa-star text-warning"></i> <!-- Sao đầy đủ -->
+                            }
+                            else if (i == Math.Ceiling(@Math.Round(Model.AverageRating, 1)) &&
+                            @Math.Round(Model.AverageRating, 1) % 1 != 0)
+                            {
+                                <i class="fa fa-star-half-alt text-warning"></i> <!-- Sao nửa -->
+                            }
+                            else
+                            {
+                                <i class="fa fa-star text-muted"></i> <!-- Sao trống -->
+                            }
+                        }
+                        <div style="margin-left: 10px;">
+                            @* <span style="font-size: 18px;">★★★★★</span> <!-- Placeholder for stars --> *@
+                            <p style="margin: 0; font-size: 14px;">@Model.TotalReviews ratings</p>
+                        </div>
+                    </div>
+
+                    <!-- Display Rating Distribution -->
+                    <div class="col-md-6 col-12" style="margin-top: 20px;">
+                        @for (int i = 5; i >= 1; i--)
+                        {
+                            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                                <span style="width: 20px;">@i</span>
+                                <div style="flex-grow: 1; background-color: #e0e0e0; height: 8px; margin: 0 10px; border-radius: 4px; position: relative;">
+                                    @if (Model.TotalReviews > 0)
+                                    {
+                                        <div style="background-color: #76c7c0; height: 100%; width: @( ((double)Model.RatingDistribution[i - 1] / Model.TotalReviews) * 100 )%; border-radius: 4px;">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div style="background-color: #76c7c0; height: 100%; width: 0%; border-radius: 4px;">
+                                        </div>
+                                    }
+                                </div>
+                                @* <span style="width: 30px; text-align: right;">@Model.RatingDistribution[i - 1]</span> *@
+                            </div>
+                        }
+                    </div>
+                    </div>
+
+                    <!-- Display Individual Reviews -->
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="review" style="border-bottom: 1px solid #e0e0e0; padding: 15px 0;">
+                            <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <div style="border-radius: 50%; width: 40px; height: 40px; overflow: hidden; margin-right: 10px;">
+                                    <img src="@review.User.ImageUrl" alt="User Avatar"
+                                         style="width: 100%; height: 100%; object-fit: cover;" />
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0; font-size: 16px;">@review.User.FullName</h5>
+                                    <p style="margin: 0; color: #999; font-size: 12px;">@review.Date</p>
+                                </div>
+                            </div>
+                            @if (review.Rating == 1)
+                            {
+                                <p style="margin: 0; font-size: 14px; color: #666;"><span style="color: gold">★</span>★★★★</p>
+                            }
+                            else if (review.Rating == 2)
+                            {
+                                <p style="margin: 0; font-size: 14px; color: #666;"><span style="color: gold">★★</span>★★★</p>
+                            }
+                            else if (review.Rating == 3)
+                            {
+                                <p style="margin: 0; font-size: 14px; color: #666;"><span style="color: gold">★★★</span>★★</p>
+                            }
+                            else if (review.Rating == 4)
+                            {
+                                <p style="margin: 0; font-size: 14px; color: #666;"><span style="color: gold">★★★★</span>★</p>
+                            }
+                            else if (review.Rating == 5)
+                            {
+                                <p style="margin: 0; font-size: 14px; color: gold;">★★★★★</p>
+                            }
+                            <p style="margin-top: 5px; font-size: 14px;">@review.Comment</p>
+                        </div>
+                    }
+            </div>
+
+        </div>
+</section>

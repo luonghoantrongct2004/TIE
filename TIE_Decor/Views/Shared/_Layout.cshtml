@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>DecorVista</title>
+    <link rel="shortcut icon" href="~/img/favicon.png" />
+    <link rel="stylesheet" href="~/css/plugins.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader"><div id="preloader-status"><div class="preloader-position loader"><span></span></div></div></div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a href="/Home/Index"> <img src="~/img/logo12.png" width="70% !important" class="logo-img" alt="imglogoDecorVista"> </a>
+                <!-- <a class="logo" href="index.html"> <h2>BAUEN</h2> </a> -->
+            </div>
+            <!-- Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link nav-color track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/Consultation/ScheduledAppointments">Designers</a></li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="/Home/About">About</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color dropdown-toggle" href="/Products" aria-expanded="false">Products</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-color " href="/home/blog">Blogs</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link nav-color" href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item nav-color"><a class="nav-link nav-color" href="/admin/">Admin</a></li>
+                    }
+                    else if (User.IsInRole("Designer"))
+                    {
+                        <li class="nav-item nav-color"><a class="nav-link nav-color" href="/admin/consultationmanage">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link" href="/cart"><i class="bi bi-cart3"></i></a></li>
+                        <li class="nav-item nav-color"><a class="nav-link" href="/admin/">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item nav-color dropdown">
+                            <a class="nav-link nav-color dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <li><a class="dropdown-item nav-color" href="/Profile/UpdateProfile">Profile</a></li>
+                                <li>
+                                    <form id="logoutForm" action="/Auth/Logout" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="dropdown-item nav-color" style="cursor:pointer;">Logout</button>
+                                    </form>
+                                </li>
+                                <li><a class="dropdown-item" href="/cart">Cart</a></li>
+                                <li><a class="dropdown-item" href="/Home/ViewOrder">My Orders</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link nav-color dropdown-toggle" href="/Auth/Login">Login</a>
+
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Header Banner -->
+        <section class="banner-header banner-img bg-img bg-fixed pb-0" data-background="/img/banner.jpg" data-overlay-light="3"></section>
+        @RenderBody()
+        <!-- Footer -->
+        <footer class="main-footer dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Phone</h6>
+                            </div>
+                            <p>+84 292-655-0998</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Email</h6>
+                            </div>
+                            <p>architecture@decorvista.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Our Address</h6>
+                            </div>
+                            <p>1 Ly Tu Trong Street, An Phu, Ninh Kieu, Can Tho, Vietnam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-left">
+                                <p>© 2024 DecorVista. All right reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 abot">
+                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="/Home/Index"><i class="ti-twitter"></i></a> <a href="/Home/Index"><i class="ti-instagram"></i></a> <a href="/Home/Index"><i class="ti-pinterest"></i></a> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="right"><a href="#">Terms &amp; Conditions</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="~/js/jquery-3.6.3.min.js"></script>
+    <script src="~/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="~/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/js/jquery.isotope.v3.0.2.js"></script>
+
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scrollIt.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/YouTubePopUp.js"></script>
+    <script src="~/js/before-after.js"></script>
+    <script src="~/js/vegas.slider.min.js"></script>
+    <script src="~/js/custom.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theo dõi lượt xem trang khi người dùng truy cập trang
+            trackPageView();
+
+            // Theo dõi nhấp chuột trên các phần tử có class track-click
+            document.querySelectorAll('.track-click').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var clickedElement = this.getAttribute('data-element-id'); // Lấy id hoặc thông tin của phần tử được click
+
+                    // Gửi thông tin nhấp chuột về server thông qua API
+                    fetch('/api/clicks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            elementId: clickedElement,
+                            timeStamp: new Date().toISOString()
+                        })
+                    });
+                });
+            });
+        });
+
+        // Hàm gửi thông tin lượt xem trang về server
+        function trackPageView() {
+            var path = window.location.pathname; // Lấy đường dẫn hiện tại
+
+            fetch('/api/page-views', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pageUrl: path,
+                    timeStamp: new Date().toISOString()
+                })
+            });
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

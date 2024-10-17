@@ -1,0 +1,603 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<Product>
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>DecorVista</title>
+    <link rel="shortcut icon" href="~/img/favicon.png" />
+    <link rel="stylesheet" href="~/css/plugins.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader"><div id="preloader-status"><div class="preloader-position loader"><span></span></div></div></div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo-wrapper">
+                <a href="@Url.Action("Index", "Home")"> <img src="~/img/logo12.png" width="70% !important" class="logo-img" alt="imglogoDecorVista"> </a>
+            </div>
+            <!-- Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link track-click" data-element-id="button-1" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/Consultation/ScheduledAppointments">Designers</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/Home/About">About</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="/Products" aria-expanded="false">Products</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="/home/blog">Blogs</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link " href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item"><a class="nav-link " href="/admin/">Admin</a></li>
+                    }
+                    else if (User.IsInRole("Designer"))
+                    {
+                        <li class="nav-item"><a class="nav-link " href="/admin/consultationmanage">Admin</a></li>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Hello, @User.Identity.Name
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                <li><a class="dropdown-item" href="/Profile/UpdateProfile">Profile</a></li>
+                                <li>
+                                    <form id="logoutForm" action="/Auth/Logout" method="post">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="dropdown-item " style="cursor:pointer;">Logout</button>
+                                    </form>
+                                </li>
+                                <li><a class="dropdown-item" href="/cart">Cart</a></li>
+                                <li><a class="dropdown-item" href="/Home/ViewOrder">My Orders</a></li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="/Auth/Login">Login</a>
+
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Slider -->
+    <header class="header slider-fade">
+        <div class="owl-carousel owl-theme">
+            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+            <div class="text-left item bg-img" data-overlay-dark="3" data-background="img/slider/1.jpg">
+                <div class="v-middle caption mt-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h1>Innovate Desing in Toronto</h1>
+                                <p>
+                                    Elevate your living space with DecorVista – where exceptional design blends seamlessly with high-quality interiors, crafted to suit your style!
+                                </p>
+                                <div class="butn-light mt-30 mb-30"> <a href="https://1.envato.market/mDnXD" target="_blank"><span>Buy Now</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-left item bg-img" data-overlay-dark="4" data-background="img/slider/2.jpg">
+                <div class="v-middle caption mt-30">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <h1>Innovate Desing in Canada</h1>
+                                <p>
+                                    Transform your home effortlessly with DecorVista – where innovative design meets premium interiors, tailored just for you!
+                                </p>
+                                <div class="butn-light mt-30 mb-30"> <a href="@Url.Action("Index", "Home")" target="_blank"><span>Buy Now</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Content -->
+    <div class="content-wrapper">
+        <!-- Lines -->
+        <section class="content-lines-wrapper">
+            <div class="content-lines-inner">
+                <div class="content-lines"></div>
+            </div>
+        </section>
+        <!--  Gallery -->
+        <section class="about section-padding">
+            <section class="section-padding2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="section-title">Inspiration <span>Gallery</span></h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p>The inspiration gallery on DecorVista offers a curated selection of interior design ideas, helping users explore various styles and trends to inspire their home transformation.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="owl-carousel owl-theme">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="item">
+                                        <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
+                                        <div class="con">
+                                            <h6><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.ProductName</a></h6>
+                                            <h5><a class="track-click" data-element-id="button-1" href="/products/details/@item.ProductId">@item.Price</a></h5>
+                                            <div class="line"></div> <a href="/products/details/@item.ProductId"><i class="ti-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- 2 columns -->
+                        <div class="col-md-6 gallery-item">
+                            <a href="~/img/services/1.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/services/1.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 gallery-item">
+                            <a href="~/img/services/2.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/services/2.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 3 columns -->
+                        <div class="col-md-4 gallery-item">
+                            <a href="~/img/services/3.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/services/3.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="~/img/services/4.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/services/4.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 gallery-item">
+                            <a href="~/img/services/5.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/services/5.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 2 columns -->
+                        <div class="col-md-6 gallery-item">
+                            <a href="~/img/slider/1.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/slider/1.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6 gallery-item">
+                            <a href="~/img/slider/2.jpg" title="" class="img-zoom">
+                                <div class="gallery-box">
+                                    <div class="gallery-img"> <img src="~/img/slider/2.jpg" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Video Gallery -->
+                        <!-- 3 columns -->
+                        <div class="col-md-4">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon">
+                                    <img src="~/img/slider/3.jpg" alt="YouTube">
+                                    <a class="video-gallery-button vid" href="https://youtu.be/RziCmLzpFNY">
+                                        <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon">
+                                    <img src="~/img/slider/4.jpg" alt="YouTube">
+                                    <a class="video-gallery-button vid" href="https://youtu.be/RziCmLzpFNY">
+                                        <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon">
+                                    <img src="~/img/slider/1.jpg" alt="YouTube">
+                                    <a class="video-gallery-button vid" href="https://youtu.be/RziCmLzpFNY">
+                                        <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 2 columns -->
+                        <div class="col-md-6">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon">
+                                    <img src="~/img/slider/1.jpg" alt="YouTube">
+                                    <a class="video-gallery-button vid" href="https://youtu.be/RziCmLzpFNY">
+                                        <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon">
+                                    <img src="~/img/slider/2.jpg" alt="Vimeo">
+                                    <a class="video-gallery-button vid" href="https://vimeo.com/449554367">
+                                        <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+        <!-- Projects -->
+        <section class="projects section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="section-title">Our <span>Projects</span></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+                            @foreach (var item in ViewData["Products"] as List<Product>)
+                            {
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="@item.ImageUrl" alt=""> </div>
+                                    <div class="con">
+                                        <h6><a href="/Products/Details?id=@item.ProductId">@item.ProductName</a></h6>
+                                        <h5><a href="/Products/Details?id=@item.ProductId">@item.Description</a></h5>
+                                        <div class="line"></div> <a href="/Products/Details?id=@item.ProductId"><i class="ti-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="services section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="section-title"><span>Services</span></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="item">
+                            <a href="@Url.Action("Architecture", "Home")">
+                                <img src="~/img/icons/icon-1.png" alt="">
+                                <h5>Architecture</h5>
+                                <div class="line"></div>
+                                <p>Focuses on creating innovative and functional building designs that blend aesthetics with practicality, ensuring every project reflects both beauty and purpose.</p>
+                                <div class="numb">01</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <a href="@Url.Action("InteriorDesign", "Home")">
+                                <img src="~/img/icons/icon-2.png" alt="">
+                                <h5>Interior Design</h5>
+                                <div class="line"></div>
+                                <p>Brings living spaces to life with personalized interior design solutions, combining style, comfort, and functionality to create environments that inspire and elevate everyday living.</p>
+                                <div class="numb">02</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="item">
+                            <a href="@Url.Action("UrbanDesign", "Home")">
+                                <img src="~/img/icons/icon-3.png" alt="">
+                                <h5>Urban Design</h5>
+                                <div class="line"></div>
+                                <p>Aims to shape sustainable and vibrant communities, carefully planning and developing urban spaces that balance growth, accessibility, and livability for future generations.</p>
+                                <div class="numb">03</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+        <!-- Blog -->
+        <section class="bauen-blog section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="section-title">Current <span>News</span></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="owl-carousel owl-theme">
+                            @foreach (var item in ViewData["Blog"] as List<Blog>)
+                            {
+                                <div class="item">
+                                    <div class="position-re o-hidden"> <img src="@item.ImageUrl?.Split(',').FirstOrDefault()" alt=""> </div>
+                                    <div class="con">
+                                        <span class="category">
+                                            <a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Title </a> - @item.Author
+                                        </span>
+                                        <h5><a class="track-click" data-element-id="button-1" href="/home/Detail/@item.Id">@item.Content</a></h5>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Promo video - Testiominals -->
+        <section class="testimonials">
+            <div class="background bg-img bg-fixed section-padding pb-0" data-background="/img/banner2.jpg" data-overlay-dark="3">
+                <div class="container">
+                    <div class="row">
+                        <!-- Promo video -->
+                        <div class="col-md-6">
+                            <div class="vid-area">
+                                <div class="vid-icon">
+                                    <a class="play-button vid" href="https://youtu.be/RziCmLzpFNY">
+                                        <svg class="circle-fill">
+                                            <circle cx="43" cy="43" r="39" stroke="#fff" stroke-width=".5"></circle>
+                                        </svg>
+                                        <svg class="circle-track">
+                                            <circle cx="43" cy="43" r="39" stroke="none" stroke-width="1" fill="none"></circle>
+                                        </svg> <span class="polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="cont mt-15 mb-30">
+                                    <h5>View promo video</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testiominals -->
+                        <div class="col-md-5 offset-md-1">
+                            <div class="testimonials-box animate-box" data-animate-effect="fadeInUp">
+                                <div class="head-box">
+                                    <h4>What Client's Say?</h4>
+                                </div>
+                                <div class="owl-carousel owl-theme">
+                                    <div class="item">
+                                        <span class="quote"><img src="~/img/quot.png" alt=""></span>
+                                        <p>Architect dapibus augue metus the nec feugiat erat hendrerit nec. Duis ve ante the lemon sanleo nec feugiat erat hendrerit necuis ve ante.</p>
+                                        <div class="info">
+                                            <div class="author-img"> <img src="/img/team/1.jpg" alt=""> </div>
+                                            <div class="cont">
+                                                <h6>Jason Brown</h6> <span>Crowne Plaza Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="quote">
+                                            <img src="~/img/quot.png" alt="">
+                                        </span>
+                                        <p>Interior dapibus augue metus the nec feugiat erat hendrerit nec. Duis ve ante the lemon sanleo nec feugiat erat hendrerit necuis ve ante.</p>
+                                        <div class="info">
+                                            <div class="author-img"> <img src="~/img/team/2.jpg" alt=""> </div>
+                                            <div class="cont">
+                                                <h6>Emily White</h6> <span>Armada Owner</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="quote">
+                                            <img src="~/img/quot.png" alt="">
+                                        </span>
+                                        <p>Urban dapibus augue metus the nec feugiat erat hendrerit nec. Duis ve ante the lemon sanleo nec feugiat erat hendrerit necuis ve ante.</p>
+                                        <div class="info">
+                                            <div class="author-img"> <img src="~/img/team/4.jpg" alt=""> </div>
+                                            <div class="cont">
+                                                <h6>Jesica Smith</h6> <span>Alsa Manager</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Clients -->
+        <section class="clients">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="owl-carousel owl-theme">
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/1.png" alt=""></a>
+                            </div>
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/2.png" alt=""></a>
+                            </div>
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/3.png" alt=""></a>
+                            </div>
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/4.png" alt=""></a>
+                            </div>
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/5.png" alt=""></a>
+                            </div>
+                            <div class="clients-logo">
+                                <a href="#0"><img src="~/img/clients/6.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="main-footer dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Phone</h6>
+                            </div>
+                            <p>+84 292-655-0998</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Email</h6>
+                            </div>
+                            <p>architecture@decorvista.com</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-30">
+                        <div class="item fotcont">
+                            <div class="fothead">
+                                <h6>Our Address</h6>
+                            </div>
+                            <p>1 Ly Tu Trong Street, An Phu, Ninh Kieu, Can Tho, Vietnam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-left">
+                                <p>© 2024 DecorVista. All right reserved.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 abot">
+                            <div class="social-icon"> <a href="index.html"><i class="ti-facebook"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-twitter"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-instagram"></i></a> <a href="@Url.Action("Index", "Home")"><i class="ti-pinterest"></i></a> </div>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="right"><a href="#">Terms &amp; Conditions</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- jQuery -->
+    <script src="~/js/jquery-3.6.3.min.js"></script>
+    <script src="~/js/jquery-migrate-3.0.0.min.js"></script>
+    <script src="~/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/js/jquery.isotope.v3.0.2.js"></script>
+
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/scrollIt.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.stellar.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/YouTubePopUp.js"></script>
+    <script src="~/js/before-after.js"></script>
+    <script src="~/js/vegas.slider.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Theo dõi lượt xem trang khi người dùng truy cập trang
+            trackPageView();
+
+            // Theo dõi nhấp chuột trên các phần tử có class track-click
+            document.querySelectorAll('.track-click').forEach(function (element) {
+                element.addEventListener('click', function () {
+                    var clickedElement = this.getAttribute('data-element-id'); // Lấy id hoặc thông tin của phần tử được click
+
+                    // Gửi thông tin nhấp chuột về server thông qua API
+                    fetch('/api/clicks', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            elementId: clickedElement,
+                            timeStamp: new Date().toISOString()
+                        })
+                    });
+                });
+            });
+        });
+
+        // Hàm gửi thông tin lượt xem trang về server
+        function trackPageView() {
+            var path = window.location.pathname; // Lấy đường dẫn hiện tại
+
+            fetch('/api/page-views', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    pageUrl: path,
+                    timeStamp: new Date().toISOString()
+                })
+            });
+        }
+    </script>
+</body>
+</html>

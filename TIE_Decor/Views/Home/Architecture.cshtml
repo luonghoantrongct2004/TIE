@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Architecture";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Services Page -->
+<section class="section-padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title2">Architecture</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>This service emphasizes the creation of innovative and functional building designs that harmonize aesthetics with practicality. Each project is meticulously crafted to reflect both beauty and purpose, ensuring that structures not only captivate the eye but also serve their intended function effectively.</p>
+                <p>By incorporating sustainable practices and modern technologies, the architectural designs aim to enhance the user experience while respecting the environment.</p>
+                <div class="row mb-30">
+                    <div class="col-md-6 gallery-item">
+                        <a href="~/img/services/9.jpg" title="Architecture" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="~/img/services/9.jpg" class="img-fluid mx-auto d-block" alt="Architecture"> </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6 gallery-item">
+                        <a href="~/img/services/10.jpg" title="Architecture" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="~/img/services/10.jpg" class="img-fluid mx-auto d-block" alt="Architecture"> </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-12 gallery-item">
+                        <a href="~/img/services/11.jpg" title="Architecture" class="img-zoom">
+                            <div class="gallery-box">
+                                <div class="gallery-img"> <img src="~/img/services/11.jpg" class="img-fluid mx-auto d-block" alt="Architecture"> </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 sidebar-side">
+                <aside class="sidebar blog-sidebar">
+                    <div class="sidebar-widget services">
+                        <div class="widget-inner">
+                            <div class="sidebar-title">
+                                <h4>All Services</h4>
+                            </div>
+                            <ul>
+                                <li class="active"><a href="@Url.Action("Architecture", "Home")">Achitecture</a></li>
+                                <li><a href="@Url.Action("InteriorDesign", "Home")">Interior Design</a></li>
+                                <li><a href="@Url.Action("UrbanDesign", "Home")">Urban Design</a></li>
+                                <li><a href="@Url.Action("Planning", "Home")">Planning</a></li>
+                                <li><a href="@Url.Action("Modelling", "Home")">3D Modelling</a></li>
+                                <li><a href="@Url.Action("DecorPlan", "Home")">Decor Plan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<dynamic>
+<h2>Appointment History</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Designer</th>
+            <th>Scheduled Time</th>
+            <th>Status</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var appointment in Model)
+            {
+                <tr>
+                    <td>@appointment.DesignerName</td>
+                    <td>@appointment.ScheduledTime.ToString("f")</td>
+                    <td>@appointment.Status</td>
+                    <td>@appointment.Notes</td>
+                    <td>
+                        @if (appointment.Status != "Cancelled" && appointment.Status != "Declined")
+                        {
+                            <input type="text" id="notes_@appointment.ConsultationId" placeholder="Enter cancellation notes" />
+                            <button type="button" class="btn btn-danger" onclick="cancelAppointment(@appointment.ConsultationId)">Cancel</button>
+                        }
+                        else if (appointment.Status == "Declined")
+                        {
+                            <span class="text-danger">This appointment has been declined.</span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">No appointments found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function cancelAppointment(id) {
+        const notes = document.getElementById(`notes_${id}`).value; // Lấy ghi chú từ ô nhập liệu
+        if (confirm('Are you sure you want to cancel this appointment?')) {
+            fetch(`/Consultation/Cancel/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(notes), // Gửi ghi chú trực tiếp
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        location.reload(); // Reload the page to reflect changes
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    alert('An error occurred while trying to cancel the appointment.');
+                });
+        }
+    }
+</script>

@@ -1,0 +1,331 @@
+﻿@model AuthViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="auth-container">
+    <!-- Login Form -->
+    <div id="login-form" class="auth-form visible">
+    <h2>Login</h2>
+    <form id="login-form" action="/Auth/Login" method="post" onsubmit="handleLoginSubmit(event)">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input id="Email" name="Email" type="email" class="form-control" />        </div>
+
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input id="Password" name="Password" type="password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p class="text-center">
+            Don't have an account? <a href="#" class="register-link" onclick="showRegisterForm()">Register</a>
+                You want to Designer? <a href="#" class="register-link" onclick="showRegisterDesignerForm()">Register Designer</a>
+            </p>
+
+        </form>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="auth-form hidden">
+        <h2>Register</h2>
+        <form id="register-form" action="/Auth/Register" method="post" onsubmit="handleRegisterSubmit(event)">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.Username"></label>
+                <input name="Username" class="form-control" />
+                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span> 
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.Email"></label>
+                <input name="Email" type="email" class="form-control" />
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span> 
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.FullName"></label>
+                <input name="FullName" class="form-control" />
+                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.PhoneNumber">Phone Number</label>
+                <input type="number" name="PhoneNumber" class="form-control" id="RegisterModel.PhoneNumber" />
+            </div>
+
+
+            <div class="form-group form-group-inline">
+                <div class="form-inline-group">
+                    <div>
+                        <label asp-for="RegisterModel.Password"></label>
+                        <input name="Password" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> 
+                    </div>
+                    <div>
+                        <label asp-for="RegisterModel.ConfirmPassword"></label>
+                        <input name="ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span> 
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Register</button>
+            <p class="text-center">
+                Already have an account? <a href="#" class="register-link" onclick="showLoginForm()">Login</a>
+            </p>
+        </form>
+    </div>
+    <div id="register-designer-form" class="auth-form hidden">
+        <h2>Register Designer</h2>
+        <form id="register-designer-form" action="/Auth/RegisterDesigner" method="post" onsubmit="handleRegisterSubmit(event)">
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.Username"></label>
+                <input name="Username" class="form-control" />
+                <span asp-validation-for="RegisterModel.Username" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.Email"></label>
+                <input name="Email" type="email" class="form-control" />
+                <span asp-validation-for="RegisterModel.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RegisterModel.FullName"></label>
+                <input name="FullName" class="form-control" />
+                <span asp-validation-for="RegisterModel.FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input type="text" name="phoneNumber" class="form-control" id="phoneNumber" />
+            </div>
+
+
+            <div class="form-group form-group-inline">
+                <div class="form-inline-group">
+                    <div>
+                        <label asp-for="RegisterModel.Password"></label>
+                        <input name="Password" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.Password" class="text-danger"></span> 
+                    </div>
+                    <div>
+                        <label asp-for="RegisterModel.ConfirmPassword"></label>
+                        <input name="ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="RegisterModel.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Register</button>
+            <p class="text-center">
+                Already have an account? <a href="#" class="register-link" onclick="showLoginForm()">Login</a>
+            </p>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Xử lý submit form login
+    function handleLoginSubmit(event) {
+        event.preventDefault(); // Ngăn form submit ngay lập tức
+
+        var form = document.querySelector('#login-form form');
+        var formData = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+
+                    window.location.href = '/';
+                } else {
+                    let errorMessage = data.message;
+                    if (data.errors && data.errors.length > 0) {
+                        errorMessage += '\n' + data.errors.join('\n');
+                    }
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login failed!',
+                        text: errorMessage,
+                        confirmButtonText: 'Try Again'
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'An error occurred!',
+                    text: 'Please try again later.',
+                    confirmButtonText: 'Ok'
+                });
+            });
+    }
+
+    // Xử lý submit form register
+    function handleRegisterSubmit(event) {
+        event.preventDefault(); // Ngăn form submit ngay lập tức
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to register this account?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, register!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.querySelector('#register-form form');
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: data.message,
+                                confirmButtonText: 'Ok'
+                            }).then(() => {
+                                window.location.href = '/'; // Redirect after successful registration
+                            });
+                        } else {
+                            let errorMessage = data.message;
+                            if (data.errors && data.errors.length > 0) {
+                                errorMessage += '\n' + data.errors.join('\n');
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Registration failed!',
+                                text: errorMessage,
+                                confirmButtonText: 'Try Again'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error occurred!',
+                            text: 'Please try again later.',
+                            confirmButtonText: 'Ok'
+                        });
+                    });
+            }
+        });
+    }
+    function handleRegisterSubmit(event) {
+        event.preventDefault(); // Ngăn form submit ngay lập tức
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'Do you want to register this account?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, register!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Kiểm tra xem form nào đang được submit: form user hay form designer
+                var form;
+                if (document.querySelector('#register-form').classList.contains('visible')) {
+                    form = document.querySelector('#register-form form');
+                } else if (document.querySelector('#register-designer-form').classList.contains('visible')) {
+                    form = document.querySelector('#register-designer-form form');
+                }
+
+                var formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: data.message,
+                                confirmButtonText: 'Ok'
+                            }).then(() => {
+                                window.location.href = '/'; // Redirect after successful registration
+                            });
+                        } else {
+                            let errorMessage = data.message;
+                            if (data.errors && data.errors.length > 0) {
+                                errorMessage += '\n' + data.errors.join('\n');
+                            }
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Registration failed!',
+                                text: errorMessage,
+                                confirmButtonText: 'Try Again'
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'An error occurred!',
+                            text: 'Please try again later.',
+                            confirmButtonText: 'Ok'
+                        });
+                    });
+            }
+        });
+    }
+
+
+</script>
+<script>
+    function showRegisterForm() {
+        document.getElementById('login-form').classList.remove('visible');
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
+        document.getElementById('register-form').classList.add('visible');
+
+        // Ẩn form Designer nếu nó đang mở
+        document.getElementById('register-designer-form').classList.remove('visible');
+        document.getElementById('register-designer-form').classList.add('hidden');
+    }
+
+    function showLoginForm() {
+        document.getElementById('register-form').classList.remove('visible');
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.add('visible');
+        document.getElementById('login-form').classList.remove('hidden');
+
+        // Ẩn form Designer nếu nó đang mở
+        document.getElementById('register-designer-form').classList.remove('visible');
+        document.getElementById('register-designer-form').classList.add('hidden');
+    }
+
+    function showRegisterDesignerForm() {
+        document.getElementById('login-form').classList.remove('visible');
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-designer-form').classList.remove('hidden');
+        document.getElementById('register-designer-form').classList.add('visible');
+
+        // Ẩn form Register nếu nó đang mở
+        document.getElementById('register-form').classList.remove('visible');
+        document.getElementById('register-form').classList.add('hidden');
+    }
+
+</script>
