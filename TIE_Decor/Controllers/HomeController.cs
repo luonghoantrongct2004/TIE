@@ -110,5 +110,59 @@ namespace TIE_Decor.Controllers
 
             return View(orders);
         }
+        [HttpPost]
+        public JsonResult IsHeart(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Json(new { success = false, message = "You must be logged in to add a product to favorites!" });
+            }
+
+            var fa = _context.Favorites.ToList();
+            foreach (var item in fa)
+            {
+                if (item.ProductId == id)
+                {
+                    return Json(new { success = false, message = "Product is already in your favorites!" });
+                }
+            }
+
+            var product = _context.Products.FirstOrDefault(i => i.ProductId == id);
+            if (product == null)
+            {
+                return Json(new { success = false, message = "Product not found!" });
+            }
+
+            var favorite = new Favorite()
+            {
+                ProductId = product.ProductId,
+                UserId = userId,
+            };
+
+            _context.Favorites.Add(favorite);
+            _context.SaveChanges();
+
+            return Json(new { success = true, message = "Product added to favorites!" });
+        }
+
+
+        public IActionResult Favorite()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return View(_context.Favorites.Include(u => u.User)
+                .Include(p => p.Product)
+                .Where(u => u.UserId == userId)); 
+        }
+        public IActionResult Remove(int id)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) { return Redirect("/Auth/Login"); }
+            var favorite = _context.Favorites.FirstOrDefault(i => i.Id == id);
+
+            _context.Favorites.Remove(favorite);
+            _context.SaveChanges();
+            return Redirect("/home/Favorite");
+        }
     }
 }
