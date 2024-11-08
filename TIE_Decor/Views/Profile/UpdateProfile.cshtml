@@ -131,6 +131,7 @@
 @section Scripts {
         <script>
             $(document).ready(function () {
+                // Profile Update Submission
                 $('#submitProfile').click(function () {
                     var formData = new FormData($('#updateProfileForm')[0]);
 
@@ -145,10 +146,10 @@
                                 alert(response.message);
                                 location.reload();
                             } else {
-                                // Xóa thông báo lỗi cũ
+                                // Clear previous error messages
                                 $('.text-danger').empty();
 
-                                // Cập nhật các thông báo lỗi
+                                // Update error messages for each field
                                 response.errors.forEach(function (error) {
                                     if (error.includes("FullName")) {
                                         $('#fullNameError').text(error);
@@ -163,12 +164,11 @@
                                     }
                                 });
 
-                                // Giữ lại giá trị nhập vào nếu có lỗi
+                                // Retain input values if there's an error
                                 if (response.model) {
                                     $('#FullName').val(response.model.FullName);
                                     $('#Email').val(response.model.Email);
                                     $('#Phone').val(response.model.Phone);
-                                    // Không cần giữ mật khẩu
                                 }
                             }
                         },
@@ -177,14 +177,15 @@
                         }
                     });
                 });
+
                 // Password Change Submission
                 $('#submitPasswordChange').click(function (e) {
-                    e.preventDefault(); // Ngăn chặn gửi form mặc định
+                    e.preventDefault(); // Prevent default form submission
 
-                    var formData = $('#changePasswordForm').serialize(); // serialize thay cho FormData khi không có file
+                    var formData = $('#changePasswordForm').serialize();
 
                     $.ajax({
-                        url: '@Url.Action("ChangePassword", "Profile")',
+                        url: '@Url.Action("UserChangePassword", "Profile")',
                         type: 'POST',
                         data: formData,
                         success: function (response) {
@@ -192,12 +193,19 @@
                                 alert(response.message);
                                 $('#changePasswordModal').modal('hide');
                             } else {
+                                // Clear previous error messages
                                 $('.text-danger').empty();
-                                response.errors.forEach(function (error) {
-                                    if (error.includes("CurrentPassword")) $('#currentPasswordError').text(error);
-                                    else if (error.includes("NewPassword")) $('#newPasswordError').text(error);
-                                    else if (error.includes("ConfirmPassword")) $('#confirmPasswordError').text(error);
-                                });
+
+                                // Display errors for each field
+                                if (Array.isArray(response.errors)) {
+                                    response.errors.forEach(function (error) {
+                                        if (error.includes("CurrentPassword")) $('#currentPasswordError').text(error);
+                                        else if (error.includes("NewPassword")) $('#newPasswordError').text(error);
+                                        else if (error.includes("ConfirmPassword")) $('#confirmPasswordError').text(error);
+                                    });
+                                } else {
+                                    alert(response.errors); // Display single error alert
+                                }
                             }
                         },
                         error: function (xhr, status, error) {
@@ -206,6 +214,6 @@
                     });
                 });
             });
-
         </script>
+
 }

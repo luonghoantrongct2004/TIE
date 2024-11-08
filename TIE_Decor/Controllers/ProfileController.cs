@@ -107,54 +107,39 @@ namespace TIE_Decor.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(string CurrentPassword, string NewPassword, string ConfirmPassword)
+        public async Task<IActionResult> UserChangePassword(string CurrentPassword, string NewPassword, string ConfirmPassword)
         {
-            // Create a list to store errors
-            var errors = new List<string>();
-
-            // Step 1: Check if any fields are empty
-            if (string.IsNullOrWhiteSpace(CurrentPassword) || string.IsNullOrWhiteSpace(NewPassword) || string.IsNullOrWhiteSpace(ConfirmPassword))
-            {
-                TempData["Err"] = "All fields are required.";
-            }
-
-            // Step 2: Check if NewPassword and ConfirmPassword match
-            if (NewPassword != ConfirmPassword)
-            {
-                TempData["Err"] = "New password and confirm password do not match.";
-            }
-
-            // Step 3: Retrieve the currently logged-in user
             var user = await _userManager.GetUserAsync(User);
+            
             if (user == null)
             {
-                TempData["Err"] = "User not authenticated.";
+                return NotFound();
             }
 
-            // Step 4: Verify if the provided CurrentPassword is correct
-            if (errors.Count == 0) // Only check password if there are no other errors
+            if (user == null)
             {
-                var passwordIsValid = await _userManager.CheckPasswordAsync(user, CurrentPassword);
-                if (!passwordIsValid)
-                {
-                    TempData["Err"] = "Current password is incorrect.";
-                }
+                return Json(new { success = false, errors = "User not found." });
             }
 
-            // Step 5: Update the password if no errors
-            if (errors.Count == 0)
+            if (NewPassword != ConfirmPassword)
             {
-                var passwordChangeResult = await _userManager.ChangePasswordAsync(user, CurrentPassword, NewPassword);
-                if (passwordChangeResult.Succeeded)
-                {
-                    TempData["Success"] = "Password changed successfully!";
-                }
+                return Json(new { success = false, errors = "New password and confirmation password do not match." });
             }
 
-            // If successful, redirect to a confirmation page or the profile view
-            return RedirectToAction("UpdateProfile");
+            if (NewPassword.Length < 8)
+            {
+                return Json(new { success = false, errors = "Password must be at least 8 characters long." });
+            }
 
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, CurrentPassword, NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                return Json(new { success = false, errors = "Failed to change password." });
+            }
+
+            return Json(new { success = true, message = "Password changed successfully." });
         }
+
 
     }
 
