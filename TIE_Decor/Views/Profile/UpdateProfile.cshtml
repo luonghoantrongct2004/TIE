@@ -9,12 +9,13 @@
                     <div class="row g-0">
                         <!-- Profile Image Section -->
                         <div class="col-md-4 text-white text-center" style="border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;">
-                            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                            @if (Model != null && !string.IsNullOrEmpty(Model.ImageUrl))
                             {
                                 <img src="@Model.ImageUrl" alt="Profile Image" class="img-fluid my-5 rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover; background: transparent;" />
                             }
-                            <h5 class="mt-3">@Model.FullName</h5>
+                            <h5 class="mt-3">@Model?.FullName</h5>
                         </div>
+
 
                         <!-- Profile Info Section -->
                         <div class="col-md-8">
@@ -91,88 +92,120 @@
     </div>
 </div>
 
-<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h2>Change Information</h2>
-                <form id="updateProfileForm" action="@Url.Action("UpdateProfile", "Profile")" method="post" enctype="multipart/form-data">
-                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="changePasswordForm" action="@Url.Action("ChangePassword", "Profile")" method="post">
+                        <div class="mb-3">
+                            <input type="hidden" asp-for="Id" value="@Model.Id" />
+                            <label class="form-label">Current Password</label>
+                            <input type="password" name="CurrentPassword" class="form-control" required />
+                            <span class="text-danger" id="currentPasswordError"></span>
+                        </div>
 
-                    <div>
-                        <label asp-for="Password"></label>
-                        <input asp-for="Password" type="password" class="form-control" />
-                        <span class="text-danger" id="passwordError"></span>
-                    </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">New Password</label>
+                            <input asp-for="Password" type="password" name="NewPassword" class="form-control" required />
+                            <span class="text-danger" id="newPasswordError"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label asp-for="ConfirmPassword" class="form-label"></label>
-                        <input asp-for="ConfirmPassword" type="password" class="form-control"/>
-                        <span class="text-danger" id="confirmPasswordError"></span>
-                    </div>
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label">Confirm New Password</label>
+                            <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control" required />
+                            <span class="text-danger" id="confirmPasswordError"></span>
+                        </div>
 
-                    <button type="button" id="submitProfile" class="btn btn-primary mt-3">Change Password</button>
-                </form>
-
+                        <button type="button" id="submitPasswordChange" class="btn btn-primary mt-3">Change Password</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 @section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('#submitProfile').click(function () {
-                var formData = new FormData($('#updateProfileForm')[0]);
+        <script>
+            $(document).ready(function () {
+                $('#submitProfile').click(function () {
+                    var formData = new FormData($('#updateProfileForm')[0]);
 
-                $.ajax({
-                    url: '@Url.Action("UpdateProfile", "Profile")',
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        if (response.success) {
-                            alert(response.message);
-                            location.reload();
-                        } else {
-                            // Xóa thông báo lỗi cũ
-                            $('.text-danger').empty();
+                    $.ajax({
+                        url: '@Url.Action("UpdateProfile", "Profile")',
+                        type: 'POST',
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            if (response.success) {
+                                alert(response.message);
+                                location.reload();
+                            } else {
+                                // Xóa thông báo lỗi cũ
+                                $('.text-danger').empty();
 
-                            // Cập nhật các thông báo lỗi
-                            response.errors.forEach(function (error) {
-                                if (error.includes("FullName")) {
-                                    $('#fullNameError').text(error);
-                                } else if (error.includes("Email")) {
-                                    $('#emailError').text(error);
-                                } else if (error.includes("Password")) {
-                                    $('#passwordError').text(error);
-                                } else if (error.includes("ImageUrl")) {
-                                    $('#imageFileError').text(error);
-                                } else if (error.includes("Phone")) {
-                                    $('#phoneError').text(error);
+                                // Cập nhật các thông báo lỗi
+                                response.errors.forEach(function (error) {
+                                    if (error.includes("FullName")) {
+                                        $('#fullNameError').text(error);
+                                    } else if (error.includes("Email")) {
+                                        $('#emailError').text(error);
+                                    } else if (error.includes("Password")) {
+                                        $('#passwordError').text(error);
+                                    } else if (error.includes("ImageUrl")) {
+                                        $('#imageFileError').text(error);
+                                    } else if (error.includes("Phone")) {
+                                        $('#phoneError').text(error);
+                                    }
+                                });
+
+                                // Giữ lại giá trị nhập vào nếu có lỗi
+                                if (response.model) {
+                                    $('#FullName').val(response.model.FullName);
+                                    $('#Email').val(response.model.Email);
+                                    $('#Phone').val(response.model.Phone);
+                                    // Không cần giữ mật khẩu
                                 }
-                            });
-
-                            // Giữ lại giá trị nhập vào nếu có lỗi
-                            if (response.model) {
-                                $('#FullName').val(response.model.FullName);
-                                $('#Email').val(response.model.Email);
-                                $('#Phone').val(response.model.Phone);
-                                // Không cần giữ mật khẩu
                             }
+                        },
+                        error: function (xhr, status, error) {
+                            alert('An error occurred: ' + error);
                         }
-                    },
-                    error: function (xhr, status, error) {
-                        alert('An error occurred: ' + error);
-                    }
+                    });
+                });
+                // Password Change Submission
+                $('#submitPasswordChange').click(function (e) {
+                    e.preventDefault(); // Ngăn chặn gửi form mặc định
+
+                    var formData = $('#changePasswordForm').serialize(); // serialize thay cho FormData khi không có file
+
+                    $.ajax({
+                        url: '@Url.Action("ChangePassword", "Profile")',
+                        type: 'POST',
+                        data: formData,
+                        success: function (response) {
+                            if (response.success) {
+                                alert(response.message);
+                                $('#changePasswordModal').modal('hide');
+                            } else {
+                                $('.text-danger').empty();
+                                response.errors.forEach(function (error) {
+                                    if (error.includes("CurrentPassword")) $('#currentPasswordError').text(error);
+                                    else if (error.includes("NewPassword")) $('#newPasswordError').text(error);
+                                    else if (error.includes("ConfirmPassword")) $('#confirmPasswordError').text(error);
+                                });
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            alert('An error occurred: ' + error);
+                        }
+                    });
                 });
             });
-        });
 
-    </script>
+        </script>
 }

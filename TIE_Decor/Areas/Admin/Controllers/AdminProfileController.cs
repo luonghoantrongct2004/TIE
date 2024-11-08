@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TIE_Decor.Areas.Admin.Models;
 using TIE_Decor.Entities;
@@ -38,21 +39,16 @@ namespace TIE_Decor.Areas.Admin.Controllers
                 Id = user.Id,
                 FullName = user.FullName,
                 Email = user.Email,
-                Password = string.Empty, 
-                ConfirmPassword = string.Empty,
-                ImageUrl = user.ImageUrl,
-                Phone = user.PhoneNumber
+                Phone = user.PhoneNumber,
+                ImageUrl = user.ImageUrl
             };
-
 
             return View(model);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateProfile([FromForm] AdminProfileViewModel model, IFormFile file)
+        public async Task<IActionResult> UpdateProfile([FromForm] AdminProfileViewModel model, IFormFile? file)
         {
-            // Kiểm tra các trường bắt buộc
             if (string.IsNullOrEmpty(model.FullName))
             {
                 ModelState.AddModelError("FullName", "Full name is required.");
@@ -63,39 +59,28 @@ namespace TIE_Decor.Areas.Admin.Controllers
                 ModelState.AddModelError("Phone", "Phone number is required.");
             }
 
-            if (!string.IsNullOrEmpty(model.Password) && model.Password.Length < 8)
-            {
-                ModelState.AddModelError("Password", "Password must be at least 8 characters long.");
-            }
-
-            // Kiểm tra ModelState
-            if (!ModelState.IsValid)
-            {
-                var errors = ModelState.Where(x => x.Value.Errors.Count > 0)
-                                       .SelectMany(x => x.Value.Errors)
-                                       .Select(x => x.ErrorMessage)
-                                       .ToList();
-                return Json(new { success = false, errors = errors });
-            }
-
-            var existingUser = await _userManager.FindByIdAsync(model.Id);
-            if (existingUser == null)
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
             {
                 return NotFound();
             }
 
-            // Cập nhật thông tin người dùng
-            existingUser.FullName = model.FullName;
-            existingUser.PhoneNumber = model.Phone;
+            user.FullName = model.FullName;
+            user.PhoneNumber = model.Phone;
 
-            // Hash mật khẩu nếu được nhập
+            // Handle password update if provided
             if (!string.IsNullOrEmpty(model.Password))
             {
+                if (model.Password.Length < 8)
+                {
+                    return Json(new { success = false, message = "Password must be at least 8 characters long." });
+                }
+
                 var passwordHasher = new PasswordHasher<User>();
-                existingUser.PasswordHash = passwordHasher.HashPassword(existingUser, model.Password);
+                user.PasswordHash = passwordHasher.HashPassword(user, model.Password);
             }
 
-            // Xử lý upload ảnh
+            // Handle file upload (profile image)
             if (file != null && file.Length > 0)
             {
                 var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
@@ -112,26 +97,46 @@ namespace TIE_Decor.Areas.Admin.Controllers
                     await file.CopyToAsync(fileStream);
                 }
 
-                existingUser.ImageUrl = "/uploads/" + uniqueFileName;
+                user.ImageUrl = "/uploads/" + uniqueFileName;
             }
 
-            try
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
             {
-                var result = await _userManager.UpdateAsync(existingUser);
-                if (result.Succeeded)
-                {
-                    return Json(new { success = true, message = "Change information successfully!" });
-                }
-                else
-                {
-                    var errors = result.Errors.Select(e => e.Description).ToList();
-                    return Json(new { success = false, errors = errors });
-                }
+                return Json(new { success = true, message = "Profile updated successfully." });
             }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, errors = new[] { "Error occurred when changing information: " + ex.Message } });
-            }
+
+            return Json(new { success = false, errors = result.Errors.Select(e => e.Description).ToList() });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string CurrentPassword, string NewPassword, string ConfirmPassword)
+        {
+           
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return Json(new { success = false, errors =  "User not found." });
+            }
+
+            if (NewPassword != ConfirmPassword)
+            {
+                return Json(new { success = false, errors = "New password and confirmation password do not match." });
+            }
+
+            if (NewPassword.Length < 8)
+            {
+                return Json(new { success = false, errors = "Password must be at least 8 characters long." });
+            }
+
+            var changePasswordResult = await _userManager.ChangePasswordAsync(user, CurrentPassword, NewPassword);
+            if (!changePasswordResult.Succeeded)
+            {
+                return Json(new { success = false, errors = "Change password fail!!" });
+            }
+
+            return Json(new { success = true, message = "Password changed successfully." });
+        }
+
     }
 }

@@ -1,181 +1,222 @@
-﻿@model TIE_Decor.Areas.Admin.Models.AdminProfileViewModel
-@{
-    ViewData["Title"] = "Consultation Management";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-<!-- Hiển thị thông tin người dùng -->
+﻿@model AdminProfileViewModel
+
+<!-- Hiển thị thông tin admin -->
 <div class="container">
-    <h3>User Profile</h3>
-    <table class="table">
-        <tr>
-            <th>Full Name</th>
-            <td>@Model.FullName</td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td>@Model.Email</td>
-        </tr>
-        <tr>
-            <th>Phone</th>
-            <td>@Model.Phone</td>
-        </tr>
-        <tr>
-            <th>Profile Image</th>
-            <td>
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
-                    <img src="@Model.ImageUrl" alt="Current Image" style="max-width: 100px; max-height: 100px;" />
-                }
-            </td>
-        </tr>
-    </table>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
-        Change Information
-    </button>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updatePasswordModal">
-        Change Password
-    </button>
-</div>
+    @if (TempData["Err"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Err"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
-<div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <section class="container py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <!-- Admin Image Section -->
+                        <div class="col-md-4 text-white text-center" style="border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;">
+                            @if (Model != null && !string.IsNullOrEmpty(Model.ImageUrl))
+                            {
+                                <img src="@Model.ImageUrl" alt="Profile Image" class="img-fluid my-5 rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover; background: transparent;" />
+                            }
+                            <h5 class="mt-3">@Model?.FullName</h5>
+                        </div>
+
+                        <!-- Admin Info Section -->
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h5 class="card-title">Admin Profile</h5>
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6>Email</h6>
+                                        <p class="text-muted">@Model.Email</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Phone</h6>
+                                        <p class="text-muted">@Model.Phone</p>
+                                    </div>
+                                </div>
+                                <!-- Buttons -->
+                                <div class="d-flex justify-content-start">
+                                    <button type="button" class="btn me-2" data-bs-toggle="modal" data-bs-target="#updateProfileModal">
+                                        Change Information
+                                    </button>
+                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                                        Change Password
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <h2>Change Information</h2>
-                <form id="updateProfileForm" method="post" enctype="multipart/form-data">
-                    @Html.AntiForgeryToken()
+        </div>
+    </section>
 
-                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <!-- Modal for Profile Update -->
+    <div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h2>Change Information</h2>
+                    <form id="updateProfileForm" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" value="@Model.Id" />
 
-                    <div class="mb-3">
-                        <label asp-for="FullName" class="form-label"></label>
-                        <input asp-for="FullName" class="form-control" />
-                        <span class="text-danger" id="fullNameError"></span>
-                    </div>
+                        <div>
+                            <label asp-for="FullName"></label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span class="text-danger" id="fullNameError"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" type="email" class="form-control" readonly />
-                        <span class="text-danger" id="emailError"></span>
-                    </div>
+                        <div>
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" type="email" class="form-control" readonly />
+                            <span class="text-danger" id="emailError"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Leave blank to keep current password" />
-                        <span class="text-danger" id="passwordError"></span>
-                    </div>
+                        <div>
+                            <label asp-for="ImageUrl">Avatar</label>
+                            <input asp-for="ImageUrl" name="file" type="file" class="form-control" accept="image/*" />
+                            <span class="text-danger" id="imageFileError"></span>
+                        </div>
+                        <div>
+                            <label asp-for="Phone"></label>
+                            <input asp-for="Phone" type="number" class="form-control" />
+                            <span class="text-danger" id="phoneError"></span>
+                        </div>
+                        <button type="button" id="submitProfileInf" class="btn btn-primary mt-3">Update Information</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <div class="mb-3">
-                        <label asp-for="ConfirmPassword" class="form-label"></label>
-                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm new password" />
-                        <span class="text-danger" id="confirmPasswordError"></span>
-                    </div>
+    <!-- Modal for Password Change -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="changePasswordForm" method="post">
+                        <div class="mb-3">
+                            <input type="hidden" asp-for="Id" value="@Model.Id" />
+                            <label class="form-label">Current Password</label>
+                            <input type="password" name="CurrentPassword" class="form-control" required />
+                            <span class="text-danger" id="currentPasswordError"></span>
+                        </div>
 
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">New Password</label>
+                            <input asp-for="Password" type="password" name="NewPassword" class="form-control" required />
+                            <span class="text-danger" id="newPasswordError"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label asp-for="ImageUrl" class="form-label">Avatar</label>
-                        <input asp-for="ImageUrl" name="file" type="file" class="form-control" accept="image/*" />
-                        <span class="text-danger" id="imageFileError"></span>
-                    </div>
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label">Confirm New Password</label>
+                            <input asp-for="ConfirmPassword" type="password" name="ConfirmPassword" class="form-control" required />
+                            <span class="text-danger" id="confirmPasswordError"></span>
+                        </div>
 
-                    <div class="mb-3">
-                        <label asp-for="Phone" class="form-label"></label>
-                        <input asp-for="Phone" type="number" class="form-control" />
-                        <span class="text-danger" id="phoneError"></span>
-                    </div>
-
-                    <button type="button" id="submitProfile" class="btn btn-primary mt-3">Update Information</button>
-                </form>
+                        <button type="button" id="submitPasswordChange" class="btn btn-primary mt-3">Change Password</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="updatePasswordModal" tabindex="-1" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h2>Change Information</h2>
-                <form id="updateProfileForm" method="post" enctype="multipart/form-data">
-                    @Html.AntiForgeryToken()
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-                    <input type="hidden" asp-for="Id" value="@Model.Id" />
+<script>
+    $(document).ready(function () {
+        // Profile Update Submission (AJAX)
+        $('#submitProfileInf').click(function () {
+            var formData = new FormData($('#updateProfileForm')[0]);
+            $.ajax({
+                url: '/Admin/AdminProfile/UpdateProfile',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        location.reload(); // Reload the page to reflect updated profile data
+                    } else {
+                        // Clear previous error messages
+                        $('.text-danger').empty();
 
-                    <div class="mb-3">
-                        <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Leave blank to keep current password" />
-                        <span class="text-danger" id="passwordError"></span>
-                    </div>
+                        // Update error messages for each field
+                        response.errors.forEach(function (error) {
+                            if (error.includes("FullName")) {
+                                $('#fullNameError').text(error);
+                            } else if (error.includes("Email")) {
+                                $('#emailError').text(error);
+                            } else if (error.includes("Password")) {
+                                $('#passwordError').text(error);
+                            } else if (error.includes("ImageUrl")) {
+                                $('#imageFileError').text(error);
+                            } else if (error.includes("Phone")) {
+                                $('#phoneError').text(error);
+                            }
+                        });
 
-                    <div class="mb-3">
-                        <label asp-for="ConfirmPassword" class="form-label"></label>
-                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm new password" />
-                        <span class="text-danger" id="confirmPasswordError"></span>
-                    </div>
-                    <button type="button" id="submitProfile" class="btn btn-primary mt-3">Change Password</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure jQuery is included -->
-    <script>
-        $(document).ready(function () {
-            $('#submitProfile').click(function (e) {
-                e.preventDefault(); // Prevent default button action
-
-                var form = $('#updateProfileForm')[0];
-                var formData = new FormData(form);
-
-                $.ajax({
-                    url: '@Url.Action("UpdateProfile", "AdminProfile", new { area = "Admin" })',
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        if (response.success) {
-                            alert(response.message);
-                            location.reload();
-                        } else {
-                            // Clear old error messages
-                            $('.text-danger').empty();
-
-                            // Display new error messages
-                            response.errors.forEach(function (error) {
-                                if (error.includes("Full name")) {
-                                    $('#fullNameError').text(error);
-                                } else if (error.includes("Email")) {
-                                    $('#emailError').text(error);
-                                } else if (error.includes("Password")) {
-                                    $('#passwordError').text(error);
-                                } else if (error.includes("Confirm Password")) {
-                                    $('#confirmPasswordError').text(error);
-                                } else if (error.includes("Phone")) {
-                                    $('#phoneError').text(error);
-                                }
-                            });
-
-                            // Optionally retain form values if needed
-                            // Note: Password fields are typically not retained for security reasons
+                        // Retain entered values if there's an error
+                        if (response.model) {
+                            $('#FullName').val(response.model.FullName);
+                            $('#Email').val(response.model.Email);
+                            $('#Phone').val(response.model.Phone);
                         }
-                    },
-                    error: function (xhr, status, error) {
-                        alert('An error occurred: ' + error);
                     }
-                });
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
             });
         });
-    </script>
-}
+
+        $('#submitPasswordChange').click(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var formData = $('#changePasswordForm').serialize();
+
+            $.ajax({
+                url: '/Admin/AdminProfile/ChangePassword',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    // Clear existing error messages
+                    $('.text-danger').empty();
+
+                    if (response.success) {
+                        alert(response.message);
+                        $('#changePasswordModal').modal('hide');
+                    } else {
+                        alert(response.errors);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        });
+
+    });
+</script>
